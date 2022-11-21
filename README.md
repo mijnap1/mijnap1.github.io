@@ -1,2 +1,2 @@
 # mijnap1.github.io
-My New Portfolio
+This is my portfolio of programming-related skills and accomplishments!
