@@ -1,62 +1,62 @@
 @font-face {
-    font-family: 'Montserrat';
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 200;
-    src: url(fonts/Montserrat-ExtraLight.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
+    src: url(fonts/Poppins-ExtraLight.woff) format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 300;
-    src: url(fonts/Montserrat-Light.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
+    src: url(fonts/Poppins-Light.woff) format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: normal;
-    /*400*/
-    src: url(fonts/Montserrat-Regular.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
+    /* 400 */
+    src: url(fonts/Poppins-Regular.woff) format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 500;
-    src: url(fonts/Montserrat-Medium.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
+    src: url(fonts/Poppins-Medium.woff) format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 700;
-    src: url(fonts/Montserrat-Bold.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'Montserrat';
+    src: url(fonts/Poppins-Bold.woff) format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Poppins', sans-serif;
     font-style: normal;
     font-weight: 900;
-    src: url(fonts/Montserrat-Black.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'OswaldMedium';
+    src: url(fonts/Poppins-Black.woff) format('woff');
+  }
+  
+  @font-face {
+    font-family: 'OswaldMedium', sans-serif;
     font-style: normal;
     font-weight: 500;
     src: url(fonts/Oswald-Medium.woff) format('woff');
-}
-
-@font-face {
-    font-family: 'FuturaPTExtraBold';
+  }
+  
+  @font-face {
+    font-family: 'FuturaPTExtraBold', sans-serif;
     font-style: normal;
     font-weight: 900;
     src: url(fonts/FuturaPT-ExtraBold.woff) format('woff');
-}
-
+  }
+  
 body {
-    font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 16px;
     line-height: 1.8em;
     background: #a9d400;
