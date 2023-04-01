@@ -4,9 +4,10 @@
  */
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 html {
-    font-family: sans-serif;
+    font-family: 'Poppins', sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
 }
