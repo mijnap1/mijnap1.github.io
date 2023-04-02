@@ -1,0 +1,82 @@
+/* Scrollbar elrejtÃ©se */
+
+/*
+html{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: -moz-scrollbars-none;
+}
+html::-webkit-scrollbar{
+    display: none;
+}
+*{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    overflow: -moz-scrollbars-none;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+*/
+
+.scroll-indicator-container {
+    position: fixed;
+    z-index: 5;
+    background: none;
+}
+
+.scroll-indicator-container.sic-vertical {
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+}
+
+.scroll-indicator-container.sic-horizontal {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+}
+
+.scroll-indicator-bar {
+    background: #056d0f;
+}
+
+.scroll-indicator-container.sic-vertical .scroll-indicator-bar {
+    width: 5px;
+    height: 0%;
+    -webkit-transition: height 0.1s ease;
+    -moz-transition: height 0.1s ease;
+    -o-transition: height 0.1s ease;
+    transition: height 0.1s ease;
+}
+
+.scroll-indicator-container.sic-horizontal .scroll-indicator-bar {
+    width: 0%;
+    height: 5px;
+    -webkit-transition: width 0.1s ease;
+    -moz-transition: width 0.1s ease;
+    -o-transition: width 0.1s ease;
+    transition: width 0.1s ease;
+}
+
+/* RÃ¡hagyÃ¡s, ha kell */
+
+.scroll-indicator-start.sis-positioned,
+.scroll-indicator-stop.sis-positioned {
+    position: relative;
+}
+
+.scroll-indicator-start.sis-positioned {
+    top: -40px;
+}
+
+.scroll-indicator-stop.sis-positioned {
+    top: 80px;
+}
+
+/*
+body.navbar-open #scroll-indicator-container{
+    display: none;
+}*/
