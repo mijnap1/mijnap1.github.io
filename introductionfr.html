@@ -140,6 +140,116 @@
         fbq('init', '1492564471071610');
         fbq('track', 'PageView');
     </script>
+        <style>
+
+:root {
+  --animation-count: 10000
+}
+        .wave {
+	 font-size: 5rem;
+	 display: inline-block;
+	 -webkit-font-kerning: none;
+	 font-kerning: none;
+	 transform: translate3d(0px, 0px, 0.1px);
+	 transform-origin: 60% 70%;
+	 user-select: none;
+	 animation: wave-animation 0.5s var(--animation-count) ease-in-out;
+	 animation-play-state: running;
+}
+ @keyframes wave-animation {
+	 0%, 100% {
+		 -webkit-transform: rotate(0deg);
+		 transform: rotate(0deg);
+	}
+	 50% {
+		 -webkit-transform: rotate(30deg);
+		 transform: rotate(30deg);
+	}
+}
+.hand-animation {
+  font-size: 60px;
+  display: inline-block;
+  animation-name: pointing-animation;
+  animation-duration: 1.5s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+.at-item {
+  color: #3079ed;
+  animation-name: angry-animation;
+  animation-duration: 1.5s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+
+@keyframes pointing-animation {
+  0%{
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  20%{
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  40%{
+    -webkit-transform: translateX(-30px);
+    transform: translateX(-30px);
+  }
+  50%{
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  60%{
+    -webkit-transform: translateX(-15px);
+    transform: translateX(-15px);
+  }
+  80%{
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+  100%{
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@-webkit-keyframes pointing-animation {
+  0%{
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  20%{
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  40%{
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  50%{
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  60%{
+    -webkit-transform: translateY(-15px);
+    transform: translateY(-15px);
+  }
+  80%{
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100%{
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+    </style>
     <!-- End Facebook Pixel Code -->
 </head>
 
@@ -291,8 +401,14 @@
                         <div class="item active">
                             <div class="container-fluid">
                                 <div class="creed-title">
-                                    <div class="animated appear" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0">Salut! Je suis Jeehoon,<br> un étudiant en deuxième année venant de Corée du Sud !</div>
-                                    <div class="animated appear" data-show-name="fadeInUp" data-show-delay="150" data-hide-name="fadeOutUp" data-hide-delay="150">Je travaille actuellement en tant que <br><u>développeur Web Full-Stack</u><br>spécialisé dans la création de sites Web esthétiques et réactifs.</div>
+                                    <div style="font-size: 55%;">
+                                        <div class="animated appear" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                            <div class="wave">👋</div>Salut! Je m'appelle Jeehoon, mais vous devriez probablement me connaître sous le nom de Jamie. <span class="hand-animation">👈</span><br> Je suis un étudiant en <span style="color: rgb(6, 149, 6);">deuxième année </span>de <span style="color: rgb(0, 0, 0);">Corée du Sud</span>, <br>
+                                        </div>
+                                        <div class="animated appear" data-show-name="fadeInUp" data-show-delay="150" data-hide-name="fadeOutUp" data-hide-delay="150">
+                                            et je travaille actuellement en tant que <span style="color: rgb(26, 132, 213);">Développeur Web Full-Stack </span><br>spécialisé dans la création de sites Web esthétiques et réactifs. <br> J'aime regarder <span style="color: rgb(234, 170, 32);">les animés</span> et écouter de la <span style="color: rgb(234, 170, 32);">musique</span> dans mon temps libre, et j'adore discuter avec mes pairs pendant mon temps libre !
+                                        </div>
+                                      </div> 
                                 </div>
                             </div>
                         </div>
