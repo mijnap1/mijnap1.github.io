@@ -3,11 +3,16 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-@import url('https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap')
-
+.protest-revolution-regular {
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
 body {
-    margin: 0
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 article,
