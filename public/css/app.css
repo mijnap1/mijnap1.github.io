@@ -1,11 +1,13 @@
 @font-face {
-  font-family: "Protest Riot", sans-serif;
+  font-family: "Allura", cursive;
   font-weight: 400;
   font-style: normal;
 }
+
+}
   
 body {
-    font-family: "Protest Riot", sans-serif;
+    font-family: "Allura", cursive;
     font-weight: 400;
     font-style: normal;
 }
