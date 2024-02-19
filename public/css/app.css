@@ -5,15 +5,9 @@
 }
   
 body {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    line-height: 1.8em;
-    background: #a9d400;
-    color: #000000;
-    font-weight: 300;
-    padding: 0px 20px;
-    font-variant-ligatures: none;
-    -webkit-font-variant-ligatures: none;
+    font-family: "Protest Revolution", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 @media screen and (max-width: 767px) {
