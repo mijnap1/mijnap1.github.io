@@ -1,59 +1,8 @@
 @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 200;
-    src: url(fonts/Poppins-ExtraLight.woff) format('woff');
-  }
-  
-  @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    src: url(fonts/Poppins-Light.woff) format('woff');
-  }
-  
-  @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    /* 400 */
-    src: url(fonts/Poppins-Regular.woff) format('woff');
-  }
-  
-  @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    src: url(fonts/Poppins-Medium.woff) format('woff');
-  }
-  
-  @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    src: url(fonts/Poppins-Bold.woff) format('woff');
-  }
-  
-  @font-face {
-    font-family: 'Poppins', sans-serif;
-    font-style: normal;
-    font-weight: 900;
-    src: url(fonts/Poppins-Black.woff) format('woff');
-  }
-  
-  @font-face {
-    font-family: 'OswaldMedium', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    src: url(fonts/Oswald-Medium.woff) format('woff');
-  }
-  
-  @font-face {
-    font-family: 'FuturaPTExtraBold', sans-serif;
-    font-style: normal;
-    font-weight: 900;
-    src: url(fonts/FuturaPT-ExtraBold.woff) format('woff');
-  }
+  font-family: "Protest Revolution", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
   
 body {
     font-family: 'Poppins', sans-serif;
