@@ -3,16 +3,18 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-.protest-riot-regular {
-  font-family: "Protest Riot", sans-serif;
+.allura-regular {
+  font-family: "Allura", cursive;
   font-weight: 400;
   font-style: normal;
 }
 
 body {
-    font-family: "Protest Riot", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
 }
 
 article,
