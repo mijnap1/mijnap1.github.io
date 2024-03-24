@@ -3,18 +3,16 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-.allura-regular {
-  font-family: "Allura", cursive;
-  font-weight: 400;
-  font-style: normal;
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%
 }
 
 body {
-  font-family: "Allura", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
+    margin: 0
 }
 
 article,
