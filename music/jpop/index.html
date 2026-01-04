@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Jpop Playlist</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/cbf2b0968a.js" crossorigin="anonymous"></script>
+    <meta name="description" content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
+
+    <meta property="og:title" content="Jamie Ryu's Portfolio website">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jamieryus.com">
+
+    <link rel="icon" href="/public/ico/logo/jamie3128.png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="300">
+    <meta property="og:description" content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
+    <meta property="og:site_name" content="jamieryus.com">
+
+    <!-- CSS -->
+    <link type="text/css" href="/public/css/main.css" rel="stylesheet" media="all">
+    <link type="text/css" href="/public/css/app.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/modules/home/css/home.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/public/css/print.css" rel="stylesheet" media="print">
+
+    <link rel="apple-touch-icon-precomposed" href="/public/ico/icon-touch.png">
+    <link rel="shortcut icon" href="/public/ico/jamie-logo.png" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script>
+        var url = "https://www.jamieryus.com/";
+        var base = "https://www.jamieryus.com/";
+        var act_url = "https://www.jamieryus.com";
+        var modul = "home";
+        var alias = "";
+        var website_modules = {
+            "1": {
+                "id": "1",
+                "name": "Home",
+                "alias": ""
+            },
+            "2": {
+                "id": "2",
+                "name": "About us",
+                "alias": "about-us"
+            },
+            "41": {
+                "id": "41",
+                "name": "Social Media",
+                "alias": "social-media"
+            },
+            "9": {
+                "id": "9",
+                "name": "Portfolio",
+                "alias": "portfolio"
+            },
+            "5": {
+                "id": "5",
+                "name": "Contact",
+                "alias": "contact"
+            },
+            "33": {
+                "id": "33",
+                "name": "Impressum",
+                "alias": "impressum"
+            },
+            "32": {
+                "id": "32",
+                "name": "Cookie Policy",
+                "alias": "cookie-policy"
+            },
+            "46": {
+                "id": "46",
+                "name": "Landing pages",
+                "alias": "landing"
+            }
+        };
+        var website_act_module = {
+            "id": "39",
+            "name": "Home",
+            "label": "",
+            "meta_title": "Jamie Ryu's Portfolio",
+            "meta_description": "A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.",
+        };
+        var wcag = false;
+    </script>
+</head>
+
+<body class="loaded ">
+    <svg class="curzr" hidden>
+        <filter id="motionblur" x="-100%" y="-100%" width="400%" height="400%">
+            <feGaussianBlur class="curzr-motion-blur" stdDeviation="0, 0" />
+        </filter>
+        <circle cx="50%" cy="50%" r="10" fill="#0DA122" filter="url(#motionblur)" />
+    </svg>
+    <noscript>
+        <div id="noscript">
+            <div class="box">
+                Accurate functioning of the website require JavaScript usage in your browser. <br>Some functions may not run properly without it! </div>
+        </div>
+    </noscript>
+
+    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
+
+    <div class="navbar-box">
+        <div class="navbar-box-right">
+            <ul>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutme/"><ion-icon name="person-add-outline"></ion-icon> About Me<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/project/"><ion-icon name="albums-outline"></ion-icon> Projects<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon name="musical-notes-outline"></ion-icon> Music<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
+            </ul>
+            <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1100" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <div class="data noanimation" id="toronto-time" aria-live="polite"></div>
+                <div class="tz-row"><ion-icon name="mail-outline"></ion-icon><a class="data noanimation" href="mailto:jamie.ryu07@gmail.com">jamie.ryu07@gmail.com</a></div>
+            </div>
+            <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
+                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
+                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+                <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+            </div>
+            <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <a class="active" href="/music/">en</a><a class="" href="/musicfr/">fr</a>
+            </div>
+        </div>
+    </div>
+
+        <a class="nav-search-btn animated click" href="/search/" aria-label="Open search" title="Search" style="display: none;"
+        data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutRight" data-hide-delay="0">
+        <span class="fa fa-search" aria-hidden="true"></span>
+    </a>
+
+<div id="navbar-open-button" class="navbar-toggle">
+        <span class="icon-bar first"></span>
+        <span class="icon-bar center"></span>
+        <span class="icon-bar last"></span>
+    </div>
+
+    <div id="lang-box" class="animated appear appearjustmobile" data-show-name="fadeInRight" data-show-delay="0" data-hide-name="fadeOutRight" data-hide-delay="0">
+        <a class="txt active" href="/music/">en</a><a class="txt" href="/musicfr/">fr</a>
+    </div>
+
+    <div id="link-box" class="hidden-xs hidden-sm">
+        <div class="theme-toggle-main">
+            <button class="noanimation theme-toggle-btn-main" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false">
+                <ion-icon name="moon"></ion-icon>
+            </button>
+        </div>
+        <div class="search-modal-click"><a href="/search/"><span class="fa fa-search"></span></a></div>
+        <div><a href="/contact/">Contact<span class="arrow-container"><span class="arrow"></span></span></a></div>
+    </div>
+
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog">
+        <div class="search-modal-delete" title="Search Button" data-dismiss="modal">
+            <span class="icon-bar first"></span>
+            <span class="icon-bar last"></span>
+        </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="text" name="searchphraseinput" id="searchphraseinput" value="" class="form-control" placeholder="Search Input" autocomplete="off">
+                    <span class="fa fa-close search-delete" title="Search Button"></span>
+                </div>
+                <div class="modal-body">
+                    <div class="search-hits-box"></div>
+                    <div class="search-modal-product-list"></div>
+                    <div class="search-modal-loading">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="social-box" class="hidden-xs hidden-sm">
+        <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
+        <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+        <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
+        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+        <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+    </div>
+    <div id="footer-box" class="hidden-xs hidden-sm"><span class="year">&copy; 2026</span><span class="separator"></span>
+        <h3 class="company">jamie ryu</h3>
+    </div>
+
+    <div class="frame ">
+        <div class="frame-table-container">
+            <div class="frame-table-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-md-offset-1">
+                            <div class="music-hero">
+                                <div class="music-intro animated appear" data-show-name="fadeInUp" data-show-delay="120" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                    <a class="music-back" href="/music/"><ion-icon name="arrow-back-outline"></ion-icon>Back</a>
+                                    <h2>jpop</h2>
+                                    <p>01.03.26 · 19 tracks</p>
+                                </div>
+                                <div class="music-collection animated appear" data-show-name="fadeInUp" data-show-delay="220" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                    <div class="album-grid">
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="240" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/10.png" alt="Jpop cover 10" loading="lazy"><div class="tile-overlay"><p class="tile-title">IRIS OUT</p><p class="tile-artist">Kenshi Yonezu</p></div></div>
+                                        <div class="album-tile tile-xl animated appear" data-show-name="fadeInUp" data-show-delay="270" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/1.jpeg" alt="Jpop cover 1" loading="lazy"><div class="tile-overlay"><p class="tile-title">Subtitle</p><p class="tile-artist">Official Hige Dandism</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="300" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/7.png" alt="Jpop cover 7" loading="lazy"><div class="tile-overlay"><p class="tile-title">Harunohi</p><p class="tile-artist">aimyon</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="330" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/14.webp" alt="Jpop cover 14" loading="lazy"><div class="tile-overlay"><p class="tile-title">Inferno</p><p class="tile-artist">Mrs. GREEN APPLE</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="360" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/5.jpg" alt="Jpop cover 5" loading="lazy"><div class="tile-overlay"><p class="tile-title">Evening Primrose</p><p class="tile-artist">Novelbright</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="390" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/11.webp" alt="Jpop cover 11" loading="lazy"><div class="tile-overlay"><p class="tile-title">Betelgeuse</p><p class="tile-artist">yuuri</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="420" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/2.jpg" alt="Jpop cover 2" loading="lazy"><div class="tile-overlay"><p class="tile-title">heroine</p><p class="tile-artist">back number</p></div></div>
+                                        <div class="album-tile tile-xl animated appear" data-show-name="fadeInUp" data-show-delay="450" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/13.png" alt="Jpop cover 13" loading="lazy"><div class="tile-overlay"><p class="tile-title">Lilac</p><p class="tile-artist">Mrs. GREEN APPLE</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="480" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/3.jpeg" alt="Jpop cover 3" loading="lazy"><div class="tile-overlay"><p class="tile-title">Koi</p><p class="tile-artist">Gen Hoshino</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="510" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/16.png" alt="Jpop cover 16" loading="lazy"><div class="tile-overlay"><p class="tile-title">Lemon</p><p class="tile-artist">Kenshi Yonezu</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="540" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/8.jpg" alt="Jpop cover 8" loading="lazy"><div class="tile-overlay"><p class="tile-title">utatane</p><p class="tile-artist">Leina</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="570" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/4.webp" alt="Jpop cover 4" loading="lazy"><div class="tile-overlay"><p class="tile-title">Love at First Sight</p><p class="tile-artist">Manato Funatsu</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="600" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/12.jpg" alt="Jpop cover 12" loading="lazy"><div class="tile-overlay"><p class="tile-title">Dried Flower</p><p class="tile-artist">yuuri</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="630" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/6.png" alt="Jpop cover 6" loading="lazy"><div class="tile-overlay"><p class="tile-title">odoriko</p><p class="tile-artist">Vaundy</p></div></div>
+                                        <div class="album-tile tile-xl animated appear" data-show-name="fadeInUp" data-show-delay="660" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/15.jpeg" alt="Jpop cover 15" loading="lazy"><div class="tile-overlay"><p class="tile-title">Ao to natsu</p><p class="tile-artist">Mrs. GREEN APPLE</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="690" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/9.png" alt="Jpop cover 9" loading="lazy"><div class="tile-overlay"><p class="tile-title">Ghost in a Flower</p><p class="tile-artist">yorushika</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="720" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/17.jpg" alt="Jpop cover 17" loading="lazy"><div class="tile-overlay"><p class="tile-title">Pairing</p><p class="tile-artist">masanori otoda</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="750" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/18.jpg" alt="Jpop cover 18" loading="lazy"><div class="tile-overlay"><p class="tile-title">Yoru Ni Kakeru</p><p class="tile-artist">YOASOBI</p></div></div>
+                                        <div class="album-tile animated appear" data-show-name="fadeInUp" data-show-delay="780" data-hide-name="fadeOutUp" data-hide-delay="0"><img src="/public/ico/music/sub-cover/jpop/19.webp" alt="Jpop cover 19" loading="lazy"><div class="tile-overlay"><p class="tile-title">haru wo tsugeru</p><p class="tile-artist">yama</p></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- JS -->
+    <script defer src="/public/js/main.js"></script>
+    <script defer src="/public/js/app.js"></script>
+    <script defer type="text/javascript" src="/public/js/jquery.lazy.min.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/home.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/typed.min.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/home.js"></script>
+    <script>
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            if (!toggle) {
+                return;
+            }
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var stored = localStorage.getItem('theme');
+            var isDark = stored ? stored === 'dark' : prefersDark;
+            function applyTheme() {
+                document.body.classList.toggle('dark-mode', isDark);
+                toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+                toggle.title = isDark ? 'Toggle light mode' : 'Toggle dark mode';
+                toggle.setAttribute('aria-label', toggle.title);
+                toggle.innerHTML = isDark ? '<ion-icon name="sunny"></ion-icon>' : '<ion-icon name="moon"></ion-icon>';
+            }
+            toggle.addEventListener('click', function () {
+                isDark = !isDark;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                applyTheme();
+            });
+            applyTheme();
+        })();
+    </script>
+    <script>
+        (function () {
+            var links = document.querySelectorAll('a[href]:not([target="_blank"])');
+            if (!links.length) {
+                return;
+            }
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    var href = link.getAttribute('href');
+                    if (!href || href.charAt(0) === '#' || link.dataset.leaveAnimating === "1") {
+                        return;
+                    }
+                    var url = new URL(href, window.location.href);
+                    if (url.origin !== window.location.origin) {
+                        return;
+                    }
+                    event.preventDefault();
+                    link.dataset.leaveAnimating = "1";
+                    document.body.classList.add('page-leaving');
+                    window.setTimeout(function () {
+                        window.location.href = url.href;
+                    }, 600);
+                });
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var timeEl = document.getElementById("toronto-time");
+            if (!timeEl || !window.Intl) {
+                return;
+            }
+            timeEl.classList.add("tz-single");
+            timeEl.innerHTML = '<div class="tz-row"><ion-icon name="sunny-outline"></ion-icon><span class="tz-text"></span></div>';
+            var timeTextEl = timeEl.querySelector(".tz-text");
+            function updateTorontoTime() {
+                var formatter = new Intl.DateTimeFormat("en-CA", {
+                    timeZone: "America/Toronto",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: true,
+                    timeZoneName: "shortOffset"
+                });
+                var parts = formatter.formatToParts(new Date());
+                var timeText = "";
+                var tzText = "";
+                for (var i = 0; i < parts.length; i++) {
+                    if (parts[i].type === "timeZoneName") {
+                        tzText = parts[i].value;
+                    } else {
+                        timeText += parts[i].value;
+                    }
+                }
+                timeText = timeText.replace(/\s+$/, "");
+                if (timeTextEl) {
+                    timeTextEl.textContent = timeText + " " + tzText;
+                }
+            }
+            updateTorontoTime();
+            setInterval(updateTorontoTime, 1000);
+        })();
+    </script>
+    <script>
+        (function () {
+            var obj = document.getElementById('handwriting-logo');
+            if (!obj) {
+                return;
+            }
+            obj.addEventListener('load', function () {
+                var svgDoc = obj.contentDocument;
+                if (!svgDoc) {
+                    return;
+                }
+                var svg = svgDoc.querySelector('svg');
+                var paths = svgDoc.querySelectorAll('path');
+                var maxDelay = 0;
+                for (var i = 0; i < paths.length; i++) {
+                    var path = paths[i];
+                    var length = path.getTotalLength();
+                    var delay = i * 0.04;
+                    path.style.fill = 'none';
+                    path.style.stroke = '#000';
+                    path.style.strokeWidth = '2';
+                    path.style.strokeLinecap = 'round';
+                    path.style.strokeLinejoin = 'round';
+                    path.style.strokeDasharray = length;
+                    path.style.strokeDashoffset = length;
+                    path.style.animation = 'handwriting-draw 2.6s ease forwards';
+                    path.style.animationDelay = delay + 's';
+                    if (delay > maxDelay) {
+                        maxDelay = delay;
+                    }
+                }
+                setTimeout(function () {
+                    for (var j = 0; j < paths.length; j++) {
+                        paths[j].style.fill = '#000';
+                        paths[j].style.stroke = 'transparent';
+                    }
+                    if (svg) {
+                        svg.classList.add('is-drawn');
+                    }
+                }, (maxDelay + 2.6) * 1000);
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

@@ -9,35 +9,55 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/cbf2b0968a.js" crossorigin="anonymous"></script>
-    <meta name="description" content="Explore Jamie Ryu's entire 17-year journey in just one simple website.">
+    <meta name="description" content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
 
-    <meta property="og:title" content="Jamie Ryu's &amp;#128313; Portfolio website">
+    <meta property="og:title" content="Jamie Ryu's Portfolio website">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://jamieryus.com">
 
-    <link rel="icon" href="jamie31.png">
+    <link rel="icon" href="/public/ico/logo/jamie3128.png">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="300">
-    <meta property="og:description" content="Explore Jamie Ryu's entire 17-year journey in just one simple website.">
+    <meta property="og:description" content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
     <meta property="og:site_name" content="jamieryus.com">
 
     <!-- CSS -->
-    <link type="text/css" href="public/css/main.css" rel="stylesheet" media="all">
-    <link type="text/css" href="public/css/app.css" rel="stylesheet" media="screen">
-    <link type="text/css" href="modules/home/css/home.css" rel="stylesheet" media="screen">
-    <link type="text/css" href="public/css/print.css" rel="stylesheet" media="print">
+    <link type="text/css" href="/public/css/main.css" rel="stylesheet" media="all">
+    <link type="text/css" href="/public/css/app.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/modules/home/css/home.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/public/css/print.css" rel="stylesheet" media="print">
 
 
-    <link rel="apple-touch-icon-precomposed" href="public/ico/icon-touch.png">
-    <link rel="shortcut icon" href="public/ico/jamie-logo.png" type="image/x-icon">
+    <link rel="apple-touch-icon-precomposed" href="/public/ico/icon-touch.png">
+    <link rel="shortcut icon" href="/public/ico/jamie-logo.png" type="image/x-icon">
     <meta name="msapplication-TileColor" content="#ffffff">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body,
+        .frame,
+        #logo img,
+        #link-box a,
+        #link-box .search-modal-click::before,
+        #social-box a,
+        #footer-box,
+        #footer-box .company,
+        #footer-box .separator,
+        #lang-box a,
+        .navbar-box>.navbar-box-right .langs a {
+            transition: background-color 0.55s ease, color 0.55s ease, border-color 0.55s ease, box-shadow 0.55s ease;
+        }
+
+        .navbar-toggle .icon-bar {
+            transition: all 0.3s 0s ease, background 0s 0s ease;
+        }
+
+    </style>
 
     <script>
         var url = "https://www.jamieryus.com/";
@@ -92,59 +112,58 @@
             "name": "Home",
             "label": "",
             "meta_title": "Jamie Ryu's Portfolio",
-            "meta_description": "Explore Jamie Ryu's entire 17-year journey in just one simple website.",
+            "meta_description": "A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.",
         };
         var wcag = false;
     </script>
 </head>
 
-<body class="loaded ">
-    
+<body class="loaded noscroll">
     <svg class="curzr" hidden>
-  <filter id="motionblur" x="-100%" y="-100%" width="400%" height="400%">
-    <feGaussianBlur class="curzr-motion-blur" stdDeviation="0, 0"/>
-  </filter>
-  <circle cx="50%" cy="50%" r="10" fill="#0DA122" filter="url(#motionblur)" />
-</svg>
-
+        <filter id="motionblur" x="-100%" y="-100%" width="400%" height="400%">
+            <feGaussianBlur class="curzr-motion-blur" stdDeviation="0, 0" />
+        </filter>
+        <circle cx="50%" cy="50%" r="10" fill="#0DA122" filter="url(#motionblur)" />
+    </svg>
     <noscript>
         <div id="noscript">
             <div class="box">
-                Accurate functioning of the website require JavaScript usage in your browser. <br>Some functions may not run properly without it!</div>
+                Accurate functioning of the website require JavaScript usage in your browser. <br>Some functions may not run properly without it! </div>
         </div>
     </noscript>
 
 
-    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="jamie31.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
+    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
 
     <div class="navbar-box">
         <div class="navbar-box-right">
             <ul>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="introduction.html"><ion-icon name="person-add-outline"></ion-icon> About Me<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="project.html"><ion-icon name="albums-outline"></ion-icon> Projects<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="interests.html"><ion-icon name="game-controller-outline"></ion-icon> Interests<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="contact.html"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutme/"><ion-icon name="person-add-outline"></ion-icon> About Me<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/project/"><ion-icon name="albums-outline"></ion-icon> Projects<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon name="musical-notes-outline"></ion-icon> Music<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
 
             </ul>
             <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1100" data-hide-name="fadeOutLeft" data-hide-delay="0">
-                <div><a class="data" href="https://www.google.ca/maps/@50.8802703,-130.1327272,3z" target="_blank">Canada</a><a class="data" href="https://www.google.com/maps/@43.6979107,-79.5321286,10.79z"
-                        target="_blank">Toronto ON</a></div>
-                <div><a class="data noanimation" href="tel:+XXXXXXXX">+647 XXX XXXX</a><a class="data noanimation" href="tel:+XXXXXXXXX">jamie.ryu07@gmail.com</a></div>
+                <div class="data noanimation" id="toronto-time" aria-live="polite"></div>
+                <div class="tz-row"><ion-icon name="mail-outline"></ion-icon><a class="data noanimation" href="mailto:jamie.ryu07@gmail.com">jamie.ryu07@gmail.com</a></div>
             </div>
             <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
                 <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
                 <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
                 <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
-                <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-2b6216232/" target="_blank"><span class="fa fa-linkedin"></span></a>
-            </div>
-            <div class="links animated click" data-show-name="fadeInLeft" data-show-delay="1300" data-hide-name="fadeOutLeft" data-hide-delay="0">
-                <div><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Try it out!</a></div>
+                <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
             </div>
             <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400" data-hide-name="fadeOutLeft" data-hide-delay="0">
-                <a class="active" href="index.html">en</a><a class="" href="fr.html">fr</a> </div>
+                <a class="active" href="/">en</a><a class="" href="/fr/">fr</a> </div>
         </div>
     </div>
+
+    <a class="nav-search-btn animated click" href="/search/" aria-label="Open search" title="Search" style="display: none;"
+        data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutRight" data-hide-delay="0">
+        <span class="fa fa-search" aria-hidden="true"></span>
+    </a>
 
     <div id="navbar-open-button" class="navbar-toggle">
         <span class="icon-bar first"></span>
@@ -152,14 +171,19 @@
         <span class="icon-bar last"></span>
     </div>
 
-    <div id="lang-box" class=" animated appear appearjustmobile" data-show-name="fadeInRight" data-show-delay="0" data-hide-name="fadeOutRight" data-hide-delay="0">
-        <a class="txt active" href="index.html">en</a><a class="txt" href="fr.html">fr</a> </div>
+    <div id="lang-box" class="animated appear appearjustmobile" data-show-name="fadeInRight" data-show-delay="0" data-hide-name="fadeOutRight" data-hide-delay="0">
+        <a class="txt active" href="/">en</a><a class="txt" href="/fr/">fr</a>
+    </div>
 
-    <div class="wcag-box"><a href="#" class="fa fa-low-vision wcag-icon noanimation" title="Dark/Light Mode Button"></a></div>
 
     <div id="link-box" class="hidden-xs hidden-sm">
-        <div class="search-modal-click"><a href="/search"><span class="fa fa-search"></span></a></div>
-        <div><a href="contact.html">Contact<span class="arrow-container"><span class="arrow"></span></span></a></div>
+        <div class="theme-toggle-main">
+            <button class="noanimation theme-toggle-btn-main" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false">
+                <ion-icon name="moon"></ion-icon>
+            </button>
+        </div>
+        <div class="search-modal-click"><a href="/search/"><span class="fa fa-search"></span></a></div>
+        <div><a href="/contact/">Contact<span class="arrow-container"><span class="arrow"></span></span></a></div>
     </div>
 
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog">
@@ -171,7 +195,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <input type="text" name="searchphraseinput" id="searchphraseinput" value="" class="form-control" placeholder="Search Input" autocomplete="off">
-                    <span class="fa fa-close search-delete" title="Keresés törlése"></span>
+                    <span class="fa fa-close search-delete" title="Search Button"></span>
                 </div>
                 <div class="modal-body">
                     <div class="search-hits-box"></div>
@@ -191,12 +215,13 @@
         <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
         <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
         <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
-        <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-2b6216232/" target="_blank"><span class="fa fa-linkedin"></span></a>
+        <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
     </div>
-    <div id="footer-box" class="hidden-xs hidden-sm"><span class="year">&copy; 2024</span><span class="separator"></span>
+    <div id="footer-box" class="hidden-xs hidden-sm">
+        <span class="year">&copy; 2026</span><span class="separator"></span>
         <h3 class="company">jamie ryu</h3>
     </div>
-    <div class="frame ">
+    <div class="frame">
         <div class="frame-table-container">
             <div class="frame-table-box">
 
@@ -205,10 +230,18 @@
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
                                 <div class="home-hello-container">
-                                    <div class="image animated appear" data-show-name="activate" data-show-delay="0" data-hide-name="deactivate" data-hide-delay="0"><a href="public/ico/hamster-2.jpeg"></a></div>
+                                    <div class="image animated appear" data-show-name="activate" data-show-delay="0" data-hide-name="deactivate" data-hide-delay="0">
+                                        <a href="/public/ico/hamster-2.jpeg"></a>
+                                    </div>
                                     <div class="caption animated appear" data-show-name="fadeInUp" data-show-delay="100" data-hide-name="fadeOutUp" data-hide-delay="0">Hello!</div>
-                                    <div class="desc animated appear" data-show-name="fadeInUp" data-show-delay="200" data-hide-name="fadeOutUp" data-hide-delay="0"><b>My name is Jamie Ryu,</b><br>and I am a <span class="formatted-text">Full-Stack Web Developer!</span><br>I build <b>convenient</b> and <b>productive</b> websites.</div>
-                                    <div class="link animated appear" data-show-name="fadeInUp" data-show-delay="300" data-hide-name="fadeOutUp" data-hide-delay="0"><a href="introduction.html"><span id="hello-typed"></span></a></div>
+                                    <div class="desc animated appear" data-show-name="fadeInUp" data-show-delay="200" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                        <b>My name is Jamie Ryu,</b><br>
+                                        and I am a&nbsp;&nbsp;&nbsp;<span class="formatted-text">Full-Stack Web Developer!</span><br>
+                                        I build <b>convenient</b> and <b>productive</b> websites.
+                                    </div>
+                                    <div class="link animated appear" data-show-name="fadeInUp" data-show-delay="300" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                        <a href="/aboutme/"><span id="hello-typed"></span></a>
+                                    </div>
                                     <div id="typed-strings" style="display: none;">
                                         <p>Learn More<span class="arrow"></span></p>
                                     </div>
@@ -216,14 +249,81 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- JS -->
-    <script defer src="public/js/main.js"></script>
-    <script defer src="public/js/app.js"></script>
-    <script defer type="text/javascript" src="public/js/jquery.lazy.min.js"></script>
-    <script defer type="text/javascript" src="modules/home/js/home.js"></script>
-    <script defer type="text/javascript" src="modules/home/js/typed.min.js"></script>
-    <script defer type="text/javascript" src="modules/home/js/home.js"></script>
+    <script defer src="/public/js/main.js"></script>
+    <script defer src="/public/js/app.js"></script>
+    <script defer type="text/javascript" src="/public/js/jquery.lazy.min.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/home.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/typed.min.js"></script>
+    <script>
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            if (!toggle) {
+                return;
+            }
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var stored = localStorage.getItem('theme');
+            var isDark = stored ? stored === 'dark' : prefersDark;
+            function applyTheme() {
+                document.body.classList.toggle('dark-mode', isDark);
+                toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+                toggle.title = isDark ? 'Toggle light mode' : 'Toggle dark mode';
+                toggle.setAttribute('aria-label', toggle.title);
+                toggle.innerHTML = isDark ? '<ion-icon name="sunny"></ion-icon>' : '<ion-icon name="moon"></ion-icon>';
+            }
+            toggle.addEventListener('click', function () {
+                isDark = !isDark;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                applyTheme();
+            });
+            applyTheme();
+        })();
+    </script>
+        <script>
+        (function () {
+            var timeEl = document.getElementById("toronto-time");
+            if (!timeEl || !window.Intl) {
+                return;
+            }
+            timeEl.classList.add("tz-single");
+            timeEl.innerHTML = '<div class="tz-row"><ion-icon name="sunny-outline"></ion-icon><span class="tz-text"></span></div>';
+            var timeTextEl = timeEl.querySelector(".tz-text");
+            function updateTorontoTime() {
+                var formatter = new Intl.DateTimeFormat("en-CA", {
+                    timeZone: "America/Toronto",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: true,
+                    timeZoneName: "shortOffset"
+                });
+                var parts = formatter.formatToParts(new Date());
+                var timeText = "";
+                var tzText = "";
+                for (var i = 0; i < parts.length; i++) {
+                    if (parts[i].type === "timeZoneName") {
+                        tzText = parts[i].value;
+                    } else {
+                        timeText += parts[i].value;
+                    }
+                }
+                timeText = timeText.replace(/\s+$/, "");
+                if (timeTextEl) {
+                    timeTextEl.textContent = timeText + " " + tzText;
+                }
+            }
+            updateTorontoTime();
+            setInterval(updateTorontoTime, 1000);
+        })();
+    </script>
 
 </body>
 

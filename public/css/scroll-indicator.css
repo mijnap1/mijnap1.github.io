@@ -1,24 +1,3 @@
-/* Scrollbar elrejtÃ©se */
-
-/*
-html{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow: -moz-scrollbars-none;
-}
-html::-webkit-scrollbar{
-    display: none;
-}
-*{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    overflow: -moz-scrollbars-none;
-}
-::-webkit-scrollbar{
-    display: none;
-}
-*/
-
 .scroll-indicator-container {
     position: fixed;
     z-index: 5;

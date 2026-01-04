@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>À propos de moi</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/cbf2b0968a.js" crossorigin="anonymous"></script>
+    <meta name="description" content="Un portfolio organisé du travail, de la croissance et des idées de Jamie Ryu en tant que développeur full-stack.">
+
+    <meta property="og:title" content="Site portfolio de Jamie Ryu">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jamieryus.com">
+
+    <link rel="icon" href="/public/ico/logo/jamie3128.png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="300">
+    <meta property="og:description" content="Un portfolio organisé du travail, de la croissance et des idées de Jamie Ryu en tant que développeur full-stack.">
+    <meta property="og:site_name" content="jamieryus.com">
+
+    <!-- CSS -->
+    <link type="text/css" href="/public/css/main.css" rel="stylesheet" media="all">
+    <link type="text/css" href="/public/css/app.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/modules/home/css/home.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/public/css/print.css" rel="stylesheet" media="print">
+
+
+    <link rel="apple-touch-icon-precomposed" href="/public/ico/icon-touch.png">
+    <link rel="shortcut icon" href="/public/ico/jamie-logo.png" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        #nav-label {
+            padding: 0px 0px 0px 110px;
+        }
+
+        #nav-label span {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        #footer-box {
+            padding: 10px 18px;
+            border-radius: 12px;
+            overflow: hidden;
+            isolation: isolate;
+        }
+
+        #footer-box::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: url(/public/ico/footer.png) center/cover no-repeat;
+            opacity: 0.95;
+            z-index: -1;
+        }
+
+        .wave {
+            display: inline-block;
+            position: relative;
+            color: transparent;
+            user-select: none;
+        }
+
+        .wave::before {
+            content: attr(data-emoji);
+            display: inline-block;
+            color: #000;
+            transform-origin: 50% 65%;
+            animation: none;
+            will-change: transform, filter;
+            transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.2, 1);
+        }
+
+        .wave:hover::before {
+            content: attr(data-emoji-hover);
+            animation: cloverHoverPop 0.9s cubic-bezier(0.22, 0.8, 0.2, 1);
+        }
+
+        .wave:not(:hover)::before {
+            animation: cloverReturnPop 0.7s cubic-bezier(0.22, 0.8, 0.2, 1);
+        }
+
+        @keyframes cloverBloom {
+            0% {
+                transform: rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+            }
+            25% {
+                transform: rotate(-6deg) scale(1.04);
+                filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.14));
+            }
+            50% {
+                transform: rotate(6deg) scale(1.06);
+                filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.18));
+            }
+            75% {
+                transform: rotate(-4deg) scale(1.03);
+                filter: drop-shadow(0 3px 7px rgba(0, 0, 0, 0.12));
+            }
+            100% {
+                transform: rotate(0deg) scale(1);
+                filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+            }
+        }
+
+        @keyframes cloverHoverPop {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            40% {
+                transform: scale(1.08) rotate(3deg);
+            }
+            70% {
+                transform: scale(1.02) rotate(-1deg);
+            }
+            100% {
+                transform: scale(1.05) rotate(1deg);
+            }
+        }
+
+        @keyframes cloverReturnPop {
+            0% {
+                transform: scale(1.05) rotate(1deg);
+            }
+            55% {
+                transform: scale(0.99) rotate(-0.5deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        .card-snap {
+            position: relative;
+            width: 100%;
+            max-width: 520px;
+            aspect-ratio: 3 / 4;
+            margin: 0 auto;
+            perspective: 1200px;
+            transform-style: preserve-3d;
+        }
+
+        .card-snap .card-stack {
+            position: absolute;
+            inset: 0;
+            transform-style: preserve-3d;
+            pointer-events: none;
+        }
+
+        .card-snap .card {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 0;
+            overflow: hidden;
+            transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+            transform-style: preserve-3d;
+            will-change: transform;
+        }
+
+        .card-snap .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-snap[data-active-index="0"] .card:nth-child(1) {
+            z-index: 2;
+            transform: translate3d(-10px, -12px, 0) rotate(-4deg);
+        }
+
+        .card-snap[data-active-index="0"] .card:nth-child(2) {
+            z-index: 1;
+            transform: translate3d(22px, 16px, -18px) rotate(3deg) scale(0.98);
+        }
+
+        .card-snap[data-active-index="1"] .card:nth-child(1) {
+            z-index: 1;
+            transform: translate3d(46px, 28px, -22px) rotate(6deg) scale(0.98);
+        }
+
+        .card-snap[data-active-index="1"] .card:nth-child(2) {
+            z-index: 2;
+            transform: translate3d(-8px, -10px, 0) rotate(-2deg);
+        }
+
+        @media screen and (max-width: 991px) {
+            .card-snap {
+                max-width: 460px;
+            }
+
+        }
+    </style>
+
+    <script>
+        var url = "https://www.jamieryus.com/";
+        var base = "https://www.jamieryus.com/";
+        var act_url = "https://www.jamieryus.com";
+        var modul = "home";
+        var alias = "";
+        var website_modules = {
+            "1": {
+                "id": "1",
+                "name": "Home",
+                "alias": ""
+            },
+            "2": {
+                "id": "2",
+                "name": "About us",
+                "alias": "about-us"
+            },
+            "41": {
+                "id": "41",
+                "name": "Social Media",
+                "alias": "social-media"
+            },
+            "9": {
+                "id": "9",
+                "name": "Portfolio",
+                "alias": "portfolio"
+            },
+            "5": {
+                "id": "5",
+                "name": "Contact",
+                "alias": "contact"
+            },
+            "33": {
+                "id": "33",
+                "name": "Impressum",
+                "alias": "impressum"
+            },
+            "32": {
+                "id": "32",
+                "name": "Cookie Policy",
+                "alias": "cookie-policy"
+            },
+            "46": {
+                "id": "46",
+                "name": "Landing pages",
+                "alias": "landing"
+            }
+        };
+        var website_act_module = {
+            "id": "39",
+            "name": "Home",
+            "label": "",
+            "meta_title": "Jamie Ryu's Portfolio",
+            "meta_description": "A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.",
+        };
+        var wcag = false;
+    </script>
+</head>
+
+<body class="loaded about-fr">
+    <svg class="curzr" hidden>
+        <filter id="motionblur" x="-100%" y="-100%" width="400%" height="400%">
+            <feGaussianBlur class="curzr-motion-blur" stdDeviation="0, 0" />
+        </filter>
+        <circle cx="50%" cy="50%" r="10" fill="#0DA122" filter="url(#motionblur)" />
+    </svg>
+    <noscript>
+        <div id="noscript">
+            <div class="box">
+                Accurate functioning of the website require JavaScript usage in your browser. <br>Some functions may not run properly without it! </div>
+        </div>
+    </noscript>
+
+
+    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
+    <h2 id="nav-label" class="hidden-xs hidden-sm animated now" data-show-name="activate" data-show-delay="0" data-hide-name="deactivate" data-hide-delay="0">
+        <span class="animated now" data-show-name="fadeInUpAboutLabel" data-show-delay="0" data-hide-name="fadeOutUpAboutLabel" data-hide-delay="0">à propos de moi</span>
+    </h2>
+
+    <div class="navbar-box">
+        <div class="navbar-box-right">
+            <ul>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutme/"><ion-icon name="person-add-outline"></ion-icon> À propos de moi<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/project/"><ion-icon name="albums-outline"></ion-icon> Projets<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon name="musical-notes-outline"></ion-icon> Musique<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
+
+            </ul>
+            <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1100" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <div class="data noanimation" id="toronto-time" aria-live="polite"></div>
+                <div class="tz-row"><ion-icon name="mail-outline"></ion-icon><a class="data noanimation" href="mailto:jamie.ryu07@gmail.com">jamie.ryu07@gmail.com</a></div>
+            </div>
+            <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
+                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
+                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+                <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+            </div>
+            <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <a class="active" href="/aboutme/">en</a><a class="" href="/aboutmefr/">fr</a> </div>
+        </div>
+    </div>
+
+        <a class="nav-search-btn animated click" href="/search/" aria-label="Open search" title="Search" style="display: none;"
+        data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutRight" data-hide-delay="0">
+        <span class="fa fa-search" aria-hidden="true"></span>
+    </a>
+
+<div id="navbar-open-button" class="navbar-toggle">
+        <span class="icon-bar first"></span>
+        <span class="icon-bar center"></span>
+        <span class="icon-bar last"></span>
+    </div>
+
+    <div id="lang-box" class=" animated appear appearjustmobile" data-show-name="fadeInRight" data-show-delay="0" data-hide-name="fadeOutRight" data-hide-delay="0">
+        <a class="txt" href="/aboutme/">en</a><a class="txt active" href="/aboutmefr/">fr</a> </div>
+
+
+    <div id="link-box" class="hidden-xs hidden-sm">
+        <div class="theme-toggle-main">
+            <button class="noanimation theme-toggle-btn-main" id="theme-toggle" type="button" aria-label="Basculer en mode sombre" title="Basculer en mode sombre" aria-pressed="false">
+                <ion-icon name="moon"></ion-icon>
+            </button>
+        </div>
+        <div class="search-modal-click"><a href="/search/"><span class="fa fa-search"></span></a></div>
+        <div><a href="/contact/">Contact<span class="arrow-container"><span class="arrow"></span></span></a></div>
+    </div>
+
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog">
+        <div class="search-modal-delete" title="Search Button" data-dismiss="modal">
+            <span class="icon-bar first"></span>
+            <span class="icon-bar last"></span>
+        </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="text" name="searchphraseinput" id="searchphraseinput" value="" class="form-control" placeholder="Rechercher" autocomplete="off">
+                    <span class="fa fa-close search-delete" title="Fermer la recherche"></span>
+                </div>
+                <div class="modal-body">
+                    <div class="search-hits-box"></div>
+                    <div class="search-modal-product-list"></div>
+                    <div class="search-modal-loading">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="social-box" class="hidden-xs hidden-sm">
+        <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
+        <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+        <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
+        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+        <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+    </div>
+    <div id="footer-box" class="hidden-xs hidden-sm"><span class="year">&copy; 2026</span><span class="separator"></span>
+        <h3 class="company">jamie ryu</h3>
+    </div>
+    <div class="frame about-frame">
+        <div class="frame-table-container">
+            <div class="frame-table-box">
+                <div id="norotation">
+                    <div class="box">
+                        <img src="/public/design/norotation.jpg" alt="Remettez votre téléphone à l'endroit !">
+                        <div class="txt">Remettez votre téléphone à l'endroit !</div>
+                    </div>
+                </div>
+
+                <main class="about-scroll">
+                    <section class="about-section about-hero" id="about-hero">
+                        <div class="about-hero-grid">
+                            <div class="about-hero-text">
+                                <h2 class="about-quote-title animated appear" data-show-name="fadeInUp" data-show-delay="120" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                    <span class="char" style="--char-delay: 0.00s">C</span><span class="char" style="--char-delay: 0.03s">e</span><span class="char space" style="--char-delay: 0.06s">&nbsp;</span><span class="char" style="--char-delay: 0.09s">q</span><span class="char" style="--char-delay: 0.12s">u</span><span class="char" style="--char-delay: 0.15s">i</span><span class="char space" style="--char-delay: 0.18s">&nbsp;</span><span class="char" style="--char-delay: 0.21s">n</span><span class="char" style="--char-delay: 0.24s">o</span><span class="char" style="--char-delay: 0.27s">u</span><span class="char" style="--char-delay: 0.30s">s</span><span class="char space" style="--char-delay: 0.33s">&nbsp;</span><span class="char" style="--char-delay: 0.36s">s</span><span class="char" style="--char-delay: 0.39s">e</span><span class="char" style="--char-delay: 0.42s">m</span><span class="char" style="--char-delay: 0.45s">b</span><span class="char" style="--char-delay: 0.48s">l</span><span class="char" style="--char-delay: 0.51s">e</span><span class="char space" style="--char-delay: 0.54s">&nbsp;</span><span class="char" style="--char-delay: 0.57s">ê</span><span class="char" style="--char-delay: 0.60s">t</span><span class="char" style="--char-delay: 0.63s">r</span><span class="char" style="--char-delay: 0.66s">e</span><br><span class="char" style="--char-delay: 0.69s">d</span><span class="char" style="--char-delay: 0.72s">e</span><span class="char" style="--char-delay: 0.75s">s</span><span class="char space" style="--char-delay: 0.78s">&nbsp;</span><span class="char" style="--char-delay: 0.81s">é</span><span class="char" style="--char-delay: 0.84s">p</span><span class="char" style="--char-delay: 0.87s">r</span><span class="char" style="--char-delay: 0.90s">e</span><span class="char" style="--char-delay: 0.93s">u</span><span class="char" style="--char-delay: 0.96s">v</span><span class="char" style="--char-delay: 0.99s">e</span><span class="char" style="--char-delay: 1.02s">s</span><span class="char space" style="--char-delay: 1.05s">&nbsp;</span><span class="char" style="--char-delay: 1.08s">a</span><span class="char" style="--char-delay: 1.11s">m</span><span class="char" style="--char-delay: 1.14s">è</span><span class="char" style="--char-delay: 1.17s">r</span><span class="char" style="--char-delay: 1.20s">e</span><span class="char" style="--char-delay: 1.23s">s</span><span class="char space" style="--char-delay: 1.26s">&nbsp;</span><span class="char" style="--char-delay: 1.29s">s</span><span class="char" style="--char-delay: 1.32s">o</span><span class="char" style="--char-delay: 1.35s">n</span><span class="char" style="--char-delay: 1.38s">t</span><span class="char space" style="--char-delay: 1.41s">&nbsp;</span><span class="char" style="--char-delay: 1.44s">s</span><span class="char" style="--char-delay: 1.47s">o</span><span class="char" style="--char-delay: 1.50s">u</span><span class="char" style="--char-delay: 1.53s">v</span><span class="char" style="--char-delay: 1.56s">e</span><span class="char" style="--char-delay: 1.59s">n</span><span class="char" style="--char-delay: 1.62s">t</span><br><span class="char" style="--char-delay: 1.65s">d</span><span class="char" style="--char-delay: 1.68s">e</span><span class="char" style="--char-delay: 1.71s">s</span><span class="char space" style="--char-delay: 1.74s">&nbsp;</span><span class="char" style="--char-delay: 1.77s">b</span><span class="char" style="--char-delay: 1.80s">é</span><span class="char" style="--char-delay: 1.83s">n</span><span class="char" style="--char-delay: 1.86s">é</span><span class="char" style="--char-delay: 1.89s">d</span><span class="char" style="--char-delay: 1.92s">i</span><span class="char" style="--char-delay: 1.95s">c</span><span class="char" style="--char-delay: 1.98s">t</span><span class="char" style="--char-delay: 2.01s">i</span><span class="char" style="--char-delay: 2.04s">o</span><span class="char" style="--char-delay: 2.07s">n</span><span class="char" style="--char-delay: 2.10s">s</span><span class="char space" style="--char-delay: 2.13s">&nbsp;</span><span class="char" style="--char-delay: 2.16s">d</span><span class="char" style="--char-delay: 2.19s">é</span><span class="char" style="--char-delay: 2.22s">g</span><span class="char" style="--char-delay: 2.25s">u</span><span class="char" style="--char-delay: 2.28s">i</span><span class="char" style="--char-delay: 2.31s">s</span><span class="char" style="--char-delay: 2.34s">é</span><span class="char" style="--char-delay: 2.37s">e</span><span class="char" style="--char-delay: 2.40s">s</span><span class="char" style="--char-delay: 2.43s">.</span><span class="char space" style="--char-delay: 2.46s">&nbsp;</span><span class="char wave" style="--char-delay: 2.49s" data-emoji="☘️" data-emoji-hover="🍀">☘️</span>
+
+                                </h2>
+                            </div>
+                            <div class="about-hero-visual">
+                                <div class="card-snap animated appear" data-show-name="fadeInRight" data-show-delay="260" data-hide-name="fadeOutRight" data-hide-delay="0" data-active-index="0">
+                                    <div class="card-stack">
+                                        <div class="card">
+                                            <img src="/public/ico/about-me/jamie1.png" alt="Portrait de Jamie 1">
+                                        </div>
+                                        <div class="card">
+                                            <img src="/public/ico/about-me/jamie2.png" alt="Portrait de Jamie 2">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="about-scroll-hint animated appear" data-show-name="fadeInUp" data-show-delay="3000" data-hide-name="fadeOutUp" data-hide-delay="0"><span class="scroll-text">Faites défiler pour explorer</span></div>
+                    </section>
+
+                    <section class="about-section about-story" id="about-story">
+                        <div class="about-section-head">
+                            <span class="about-eyebrow about-eyebrow-quote animated appear" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0">qui je suis</span>
+                        </div>
+                        <div class="about-story-grid">
+                            <p class="about-story-lead animated appear" data-show-name="fadeInUp" data-show-delay="220" data-hide-name="fadeOutUp" data-hide-delay="0">Salut, Jamie ici ! Je suis un développeur web junior en ascension basé entre Séoul, Montréal et Toronto. Je suis actuellement étudiant en première année à l'Université de Toronto, étudiant les mathématiques et l'informatique.</p>
+                        </div>
+                        <div class="sticker-sprinkles sticker-story">
+                            <img class="sticker-draggable animated appear" src="/public/ico/sticker/sticker1.png" alt="Sticker collage 1" draggable="false" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0" style="top: -50px; left: 38%; --sticker-tilt: 6deg;">
+                            <img class="sticker-draggable animated appear" src="/public/ico/sticker/sticker2.png" alt="Sticker collage 2" draggable="false" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0" style="top: 66%; left: 72%; --sticker-tilt: -10deg;">
+                            <img class="sticker-draggable animated appear" src="/public/ico/sticker/sticker 3.png" alt="Sticker collage 3" draggable="false" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0" style="top: 64%; left: -6%; --sticker-tilt: 9deg;">
+                            <img class="sticker-draggable animated appear" src="/public/ico/sticker/sticker4.png" alt="Sticker collage 4" draggable="false" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0" style="top: -220px; left: 88%; --sticker-tilt: -10deg;">
+                        </div>
+                    </section>
+
+                    <section class="about-section about-experience" id="about-experience">
+                        <div class="about-section-head">
+                            <span class="about-eyebrow about-eyebrow-quote about-eyebrow-quote-line-first animated appear" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0">expérience de vie</span>
+                        </div>
+                        <div class="about-story-grid">
+                            <p class="about-story-lead animated appear" data-show-name="fadeInUp" data-show-delay="220" data-hide-name="fadeOutUp" data-hide-delay="0">Une <span class="about-emphasis">sélection d'expériences</span> qui reflètent ma croissance au fil des ans.</p>
+                        </div>
+                        <div class="about-experience-tiles">
+                            <div class="experience-folder tilt-left" data-label="Los Angeles" data-location="la">
+                                <img src="/public/ico/folder-close.png" alt="Dossier LA" draggable="false" data-closed-src="/public/ico/folder-close.png" data-open-src="/public/ico/folder-open.png">
+                                <span class="folder-label" aria-hidden="true">Los Angeles</span>
+                                <div class="experience-gallery" data-location="la">
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/la/la1.jpg" alt="Photo LA 1" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/la/la2.jpg" alt="Photo LA 2" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/la/la3.png" alt="Photo LA 3" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/la/la4.png" alt="Photo LA 4" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/la/la5.jpg" alt="Photo LA 5" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/la/la6.jpg" alt="Photo LA 6" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/la/la7.jpg" alt="Photo LA 7" loading="lazy">
+                                    </figure>
+                                </div>
+                            </div>
+                            <div class="experience-folder tilt-right" data-label="Singapore" data-location="sg">
+                                <img src="/public/ico/folder-close.png" alt="Dossier Singapour" draggable="false" data-closed-src="/public/ico/folder-close.png" data-open-src="/public/ico/folder-open.png">
+                                <span class="folder-label" aria-hidden="true">Singapour</span>
+                                <div class="experience-gallery" data-location="sg">
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg1.jpg" alt="Photo Singapour 1" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg2.jpg" alt="Photo Singapour 2" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg3.jpg" alt="Photo Singapour 3" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg4.png" alt="Photo Singapour 4" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg5.png" alt="Photo Singapour 5" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg6.png" alt="Photo Singapour 6" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg7.jpg" alt="Photo Singapour 7" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg8.jpg" alt="Photo Singapour 8" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg9.jpg" alt="Photo Singapour 9" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg10.jpg" alt="Photo Singapour 10" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/sg/sg11.png" alt="Photo Singapour 11" loading="lazy">
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+
+                    <section class="about-section about-skills" id="about-skills">
+                        <div class="about-section-head">
+                            <span class="about-eyebrow about-eyebrow-quote animated appear" data-show-name="fadeInUp" data-show-delay="0" data-hide-name="fadeOutUp" data-hide-delay="0">compétences</span>
+                        </div>
+                        <div class="about-skills-wrap">
+                            <div class="awards-container animated appear" data-show-name="showAwards" data-show-delay="0" data-hide-name="hideAwards" data-hide-delay="0">
+                                <img class="img one" src="/public/ico/language/python.png" alt="python">
+                                <img class="img two" src="/public/ico/language/js.png" alt="javascript">
+                                <div class="hidden-sm hidden-md hidden-lg"></div>
+                                <img class="img ten" src="/public/ico/language/html.png" alt="html">
+                                <img class="img three" src="/public/ico/language/css.png" alt="css">
+                                <div class="hidden-sm hidden-md hidden-lg"></div>
+                                <img class="img nine" src="/public/ico/language/react.png" alt="react">
+                                <img class="img eight" src="/public/ico/language/typescript.png" alt="typescript">
+                                <div class="hidden-sm hidden-md hidden-lg"></div>
+                                <img class="img four" src="/public/ico/language/docker.webp" alt="docker">
+                                <img class="img five" src="/public/ico/language/nodejs.webp" alt="nodejs">
+                                <div class="hidden-sm hidden-md hidden-lg"></div>
+                                <img class="img seven" src="/public/ico/language/github.png" alt="github">
+                                <img class="img six" src="/public/ico/language/csharp.png" alt="csharp">
+
+                                <div class="do-not-click">
+                                    <img class="icon cursor" src="/public/ico/icon-noclick.svg" alt="cursor">
+                                    <span class="text cursor">Ne pas<br>cliquer !</span>
+                                    <div class="clearfix"></div>
+                                    <img class="icon smile" src="/public/ico/icon-smile.svg" alt="sourire">
+                                    <span class="text smile">je te l'avais dit !</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            </div>
+        </div>
+    </div>
+    <!-- JS -->
+    <script defer src="/public/js/main.js"></script>
+    <script defer src="/public/js/app.js"></script>
+    <script defer type="text/javascript" src="/public/js/jquery.lazy.min.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/home.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/typed.min.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/home.js"></script>
+    <script>
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            if (!toggle) {
+                return;
+            }
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var stored = localStorage.getItem('theme');
+            var isDark = stored ? stored === 'dark' : prefersDark;
+            function applyTheme() {
+                document.body.classList.toggle('dark-mode', isDark);
+                toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+                toggle.title = isDark ? 'Basculer en mode clair' : 'Basculer en mode sombre';
+                toggle.setAttribute('aria-label', toggle.title);
+                toggle.innerHTML = isDark ? '<ion-icon name="sunny"></ion-icon>' : '<ion-icon name="moon"></ion-icon>';
+            }
+            toggle.addEventListener('click', function () {
+                isDark = !isDark;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                applyTheme();
+            });
+            applyTheme();
+        })();
+    </script>
+    <script>
+        (function () {
+            var snap = document.querySelector('.card-snap');
+            if (!snap) {
+                return;
+            }
+            snap.addEventListener('mouseenter', function () {
+                snap.dataset.activeIndex = '1';
+            });
+            snap.addEventListener('mouseleave', function () {
+                snap.dataset.activeIndex = '0';
+            });
+        })();
+    </script>
+        <script>
+        (function () {
+            var timeEl = document.getElementById("toronto-time");
+            if (!timeEl || !window.Intl) {
+                return;
+            }
+            timeEl.classList.add("tz-single");
+            timeEl.innerHTML = '<div class="tz-row"><ion-icon name="sunny-outline"></ion-icon><span class="tz-text"></span></div>';
+            var timeTextEl = timeEl.querySelector(".tz-text");
+            function updateTorontoTime() {
+                var formatter = new Intl.DateTimeFormat("en-CA", {
+                    timeZone: "America/Toronto",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                    hour: "numeric",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: true,
+                    timeZoneName: "shortOffset"
+                });
+                var parts = formatter.formatToParts(new Date());
+                var timeText = "";
+                var tzText = "";
+                for (var i = 0; i < parts.length; i++) {
+                    if (parts[i].type === "timeZoneName") {
+                        tzText = parts[i].value;
+                    } else {
+                        timeText += parts[i].value;
+                    }
+                }
+                timeText = timeText.replace(/\s+$/, "");
+                if (timeTextEl) {
+                    timeTextEl.textContent = timeText + " " + tzText;
+                }
+            }
+            updateTorontoTime();
+            setInterval(updateTorontoTime, 1000);
+        })();
+    </script>
+    <script>
+        (function () {
+            var tiles = document.querySelector('.about-experience-tiles');
+            if (!tiles) {
+                return;
+            }
+            var folders = tiles.querySelectorAll('.experience-folder');
+            folders.forEach(function (folder) {
+                folder.addEventListener('pointerdown', function (event) {
+                    if (event.button !== 0 && event.button !== undefined) {
+                        return;
+                    }
+                    event.preventDefault();
+                    folder.dataset.dragging = "0";
+                    var tilesRect = tiles.getBoundingClientRect();
+                    var rect = folder.getBoundingClientRect();
+                    folder.style.left = (rect.left - tilesRect.left) + "px";
+                    folder.style.top = (rect.top - tilesRect.top) + "px";
+                    folder.style.right = "auto";
+                    folder.setPointerCapture(event.pointerId);
+                    folder.classList.add('is-dragging');
+                    var offsetX = event.clientX - rect.left;
+                    var offsetY = event.clientY - rect.top;
+                    var startX = event.clientX;
+                    var startY = event.clientY;
+                    function onMove(moveEvent) {
+                        var dx = Math.abs(moveEvent.clientX - startX);
+                        var dy = Math.abs(moveEvent.clientY - startY);
+                        if (dx > 3 || dy > 3) {
+                            folder.dataset.dragging = "1";
+                        }
+                        var x = moveEvent.clientX - tilesRect.left - offsetX;
+                        var y = moveEvent.clientY - tilesRect.top - offsetY;
+                        folder.style.left = x + "px";
+                        folder.style.top = y + "px";
+                    }
+                    function onUp() {
+                        folder.classList.remove('is-dragging');
+                        folder.removeEventListener('pointermove', onMove);
+                        folder.removeEventListener('pointerup', onUp);
+                        folder.removeEventListener('pointercancel', onUp);
+                    }
+                    folder.addEventListener('pointermove', onMove);
+                    folder.addEventListener('pointerup', onUp);
+                    folder.addEventListener('pointercancel', onUp);
+                });
+                folder.addEventListener('click', function () {
+                    if (folder.dataset.dragging === "1") {
+                        folder.dataset.dragging = "0";
+                        return;
+                    }
+                    var section = folder.closest('.about-experience');
+                    if (!section) {
+                        return;
+                    }
+                    var isOpen = folder.classList.contains('is-open');
+                    var siblings = section.querySelectorAll('.experience-folder');
+                    siblings.forEach(function (sibling) {
+                        sibling.classList.remove('is-open');
+                        var siblingImg = sibling.querySelector('img');
+                        if (siblingImg) {
+                            siblingImg.src = siblingImg.getAttribute('data-closed-src') || siblingImg.src;
+                        }
+                    });
+                    if (!isOpen) {
+                        folder.classList.add('is-open');
+                        var img = folder.querySelector('img');
+                        if (img) {
+                            img.src = img.getAttribute('data-open-src') || img.src;
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var stickers = document.querySelectorAll('.sticker-draggable');
+            if (!stickers.length) {
+                return;
+            }
+            stickers.forEach(function (sticker) {
+                sticker.addEventListener('pointerdown', function (event) {
+                    if (event.button !== 0 && event.button !== undefined) {
+                        return;
+                    }
+                    event.preventDefault();
+                    var container = sticker.parentElement;
+                    if (!container) {
+                        return;
+                    }
+                    var containerRect = container.getBoundingClientRect();
+                    var rect = sticker.getBoundingClientRect();
+                    sticker.style.left = (rect.left - containerRect.left) + "px";
+                    sticker.style.top = (rect.top - containerRect.top) + "px";
+                    sticker.style.right = "auto";
+                    sticker.style.bottom = "auto";
+                    sticker.setPointerCapture(event.pointerId);
+                    sticker.classList.add('is-dragging');
+                    var offsetX = event.clientX - rect.left;
+                    var offsetY = event.clientY - rect.top;
+                    function onMove(moveEvent) {
+                        var x = moveEvent.clientX - containerRect.left - offsetX;
+                        var y = moveEvent.clientY - containerRect.top - offsetY;
+                        sticker.style.left = x + "px";
+                        sticker.style.top = y + "px";
+                    }
+                    function onUp() {
+                        sticker.classList.remove('is-dragging');
+                        sticker.removeEventListener('pointermove', onMove);
+                        sticker.removeEventListener('pointerup', onUp);
+                        sticker.removeEventListener('pointercancel', onUp);
+                    }
+                    sticker.addEventListener('pointermove', onMove);
+                    sticker.addEventListener('pointerup', onUp);
+                    sticker.addEventListener('pointercancel', onUp);
+                });
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var links = document.querySelectorAll('a[href]:not([target="_blank"])');
+            if (!links.length) {
+                return;
+            }
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    var href = link.getAttribute('href');
+                    if (!href || href.charAt(0) === '#' || link.dataset.leaveAnimating === "1") {
+                        return;
+                    }
+                    var url = new URL(href, window.location.href);
+                    if (url.origin !== window.location.origin) {
+                        return;
+                    }
+                    event.preventDefault();
+                    link.dataset.leaveAnimating = "1";
+                    document.body.classList.add('page-leaving');
+                    window.setTimeout(function () {
+                        window.location.href = url.href;
+                    }, 600);
+                });
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

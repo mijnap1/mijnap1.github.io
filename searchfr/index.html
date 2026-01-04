@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <title>Recherche</title>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://kit.fontawesome.com/cbf2b0968a.js" crossorigin="anonymous"></script>
+    <meta name="description" content="Un portfolio organisé du travail, de la croissance et des idées de Jamie Ryu en tant que développeur full-stack.">
+
+    <meta property="og:title" content="Site web portfolio de Jamie Ryu">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://jamieryus.com">
+
+    <link rel="icon" href="/public/ico/logo/jamie3128.png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="300">
+    <meta property="og:description" content="Un portfolio organisé du travail, de la croissance et des idées de Jamie Ryu en tant que développeur full-stack.">
+    <meta property="og:site_name" content="jamieryus.com">
+
+    <!-- CSS -->
+    <link type="text/css" href="/public/css/main.css" rel="stylesheet" media="all">
+    <link type="text/css" href="/public/css/app.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/modules/home/css/home.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/public/css/print.css" rel="stylesheet" media="print">
+
+
+    <link rel="apple-touch-icon-precomposed" href="/public/ico/icon-touch.png">
+    <link rel="shortcut icon" href="/public/ico/jamie-logo.png" type="image/x-icon">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <script>
+        var url = "https://www.jamieryus.com/";
+        var base = "https://www.jamieryus.com/";
+        var act_url = "https://www.jamieryus.com";
+        var modul = "home";
+        var alias = "";
+        var website_modules = {
+            "1": {
+                "id": "1",
+                "name": "Home",
+                "alias": ""
+            },
+            "2": {
+                "id": "2",
+                "name": "About us",
+                "alias": "about-us"
+            },
+            "41": {
+                "id": "41",
+                "name": "Social Media",
+                "alias": "social-media"
+            },
+            "9": {
+                "id": "9",
+                "name": "Portfolio",
+                "alias": "portfolio"
+            },
+            "5": {
+                "id": "5",
+                "name": "Contact",
+                "alias": "contact"
+            },
+            "33": {
+                "id": "33",
+                "name": "Impressum",
+                "alias": "impressum"
+            },
+            "32": {
+                "id": "32",
+                "name": "Cookie Policy",
+                "alias": "cookie-policy"
+            },
+            "46": {
+                "id": "46",
+                "name": "Landing pages",
+                "alias": "landing"
+            }
+        };
+        var website_act_module = {
+            "id": "39",
+            "name": "Home",
+            "label": "",
+            "meta_title": "Portfolio de Jamie Ryu",
+            "meta_description": "Un portfolio organisé du travail, de la croissance et des idées de Jamie Ryu en tant que développeur full-stack.",
+        };
+        var wcag = false;
+    </script>
+</head>
+
+<body class="loaded search-page-body">
+    <svg class="curzr" hidden>
+        <filter id="motionblur" x="-100%" y="-100%" width="400%" height="400%">
+            <feGaussianBlur class="curzr-motion-blur" stdDeviation="0, 0" />
+        </filter>
+        <circle cx="50%" cy="50%" r="10" fill="#0DA122" filter="url(#motionblur)" />
+    </svg>
+    <noscript>
+        <div id="noscript">
+            <div class="box">
+                Le fonctionnement précis du site web nécessite l'utilisation de JavaScript dans votre navigateur. <br>Certaines fonctions peuvent ne pas fonctionner correctement sans cela ! </div>
+        </div>
+    </noscript>
+
+
+    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
+
+    <div class="navbar-box">
+        <div class="navbar-box-right">
+            <ul>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutme/"><ion-icon name="person-add-outline"></ion-icon> À Propos de Moi<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/project/"><ion-icon name="albums-outline"></ion-icon> Projets<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon name="musical-notes-outline"></ion-icon> Musique<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
+
+            </ul>
+            <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1100" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <div class="data noanimation" id="toronto-time" aria-live="polite"></div>
+                <div class="tz-row"><ion-icon name="mail-outline"></ion-icon><a class="data noanimation" href="mailto:jamie.ryu07@gmail.com">jamie.ryu07@gmail.com</a></div>
+            </div>
+            <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
+                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
+                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+                <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+            </div>
+            <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400" data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <a class="active" href="/search/">en</a><a class="" href="/searchfr/">fr</a> </div>
+        </div>
+    </div>
+
+        <a class="nav-search-btn animated click" href="/searchfr/" aria-label="Open search" title="Search" style="display: none;"
+        data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutRight" data-hide-delay="0">
+        <span class="fa fa-search" aria-hidden="true"></span>
+    </a>
+
+<div id="navbar-open-button" class="navbar-toggle">
+        <span class="icon-bar first"></span>
+        <span class="icon-bar center"></span>
+        <span class="icon-bar last"></span>
+    </div>
+
+    <div id="lang-box" class=" animated appear appearjustmobile" data-show-name="fadeInRight" data-show-delay="0" data-hide-name="fadeOutRight" data-hide-delay="0">
+        <a class="txt " href="/search/">en</a><a class="txt active" href="/searchfr/">fr</a> </div>
+
+
+    <div id="link-box" class="hidden-xs hidden-sm">
+        <div class="theme-toggle-main">
+            <button class="noanimation theme-toggle-btn-main" id="theme-toggle" type="button" aria-label="Basculer en mode sombre" title="Basculer en mode sombre" aria-pressed="false">
+                <ion-icon name="moon"></ion-icon>
+            </button>
+        </div>
+        <div class="link-divider"></div>
+        <div><a href="/contact/">Contact<span class="arrow-container"><span class="arrow"></span></span></a></div>
+    </div>
+    <!-- searchModal -->
+    <div class="modal fade" id="searchModal" tabindex="-1" role="dialog">
+        <div class="search-modal-delete" title="Fermer la recherche" data-dismiss="modal">
+            <span class="icon-bar first"></span>
+            <span class="icon-bar last"></span>
+        </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <input type="text" name="searchphraseinput" id="searchphraseinput" value="" class="form-control" placeholder="Rechercher dans les articles du blog" autocomplete="off">
+                    <span class="fa fa-close search-delete" title="Effacer la recherche"></span>
+                </div>
+                <div class="modal-body">
+                    <div class="search-hits-box"></div>
+                    <div class="search-modal-product-list"></div>
+                    <div class="search-modal-loading">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Load Facebook SDK for JavaScript -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml: true,
+                version: 'v5.0'
+            });
+        };
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/fr_FR/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <!-- Your customer chat code -->
+    <div class="fb-customerchat" attribution=setup_tool page_id="167423676490" theme_color="#00d1aa" greeting_dialog_display="hide" logged_in_greeting="Bonjour, bienvenue ! En quoi pouvons-nous vous aider ?" logged_out_greeting="Bonjour, bienvenue ! En quoi pouvons-nous vous aider ?">
+    </div>
+
+    <div id="social-box" class="hidden-xs hidden-sm">
+        <a class="noanimation" href="https://www.instagram.com/jamie_ryu_yammy/" target="_blank"><span class="fa fa-instagram"></span></a>
+        <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+        <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
+        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+        <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+    </div>
+    <div id="footer-box" class="hidden-xs hidden-sm"><span class="year">&copy; 2026</span><span class="separator"></span>
+        <h3 class="company">jamie ryu</h3>
+    </div>
+    <div class="frame ">
+        <div class="frame-table-container">
+            <div class="frame-table-box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <div class="animated now" data-show-name="fadeInUp" data-show-delay="50" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                <div class="search-page">
+                                    <form id="search_main_form" method="GET" action="https://mijnap.github.io">
+                                        <div class="form-group gr-form">
+                                            <input class="gr-field" type="text" name="s" value="" placeholder="N'hésitez pas à explorer tout sujet qui vous intrigue !" autocomplete="off">
+                                        </div>
+                                    </form>
+                                    <div class="search-results-wrap">
+                                        <div class="search-count" id="search-count"></div>
+                                        <div class="search-results" id="search-results"></div>
+                                        <div class="search-empty" id="search-empty">Aucun résultat pour le moment. Essayez un mot-clé différent.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    <!-- JS -->
+    <script defer src="/public/js/main.js?v=90902202"></script>
+    <script defer src="/public/js/app.js?v=90902202"></script>
+    <script defer type="text/javascript" src="/public/js/jquery.lazy.min.js"></script>
+    <script defer type="text/javascript" src="/modules/home/js/home.js?v=90902202"></script>
+    <script defer type="text/javascript" src="/modules/home/js/typed.min.js?v=90902202"></script>
+    <script defer type="text/javascript" src="/modules/home/js/home.js?v=90902202"></script>
+    <script>
+        (function () {
+            var input = document.querySelector('.gr-field');
+            var form = document.getElementById('search_main_form');
+            var resultsEl = document.getElementById('search-results');
+            var emptyEl = document.getElementById('search-empty');
+            var countEl = document.getElementById('search-count');
+            if (!input || !form || !resultsEl || !emptyEl || !countEl) {
+                return;
+            }
+
+            var pages = [
+                {
+                    section: 'Accueil',
+                    title: 'Accueil',
+                    url: '/fr/',
+                    description: 'Page d\'accueil principale et aperçu rapide.',
+                    keywords: 'accueil principal aperçu'
+                },
+                {
+                    section: 'À Propos',
+                    title: 'À Propos de Moi',
+                    url: '/aboutmefr/',
+                    description: 'Arrière-plan, histoire et compétences.',
+                    keywords: 'à propos aboutme histoire compétences'
+                },
+                {
+                    section: 'Projets',
+                    title: 'Scratch 3.0',
+                    url: '/projectfr/#scratch',
+                    description: 'Projets de langage de programmation visuel.',
+                    keywords: 'scratch projets portfolio'
+                },
+                {
+                    section: 'Projets',
+                    title: 'Mon Semestre',
+                    url: '/projectfr/#mysemester',
+                    description: 'Application web de planification de notes.',
+                    keywords: 'mon semestre planificateur notes'
+                },
+                {
+                    section: 'Projets',
+                    title: 'Minuteur Notion',
+                    url: '/projectfr/#notion-timer',
+                    description: 'Minuteur style Pomodoro pour Notion.',
+                    keywords: 'notion minuteur productivité'
+                },
+                {
+                    section: 'Projets',
+                    title: 'TeamTomorrow',
+                    url: '/projectfr/#team-tomorrow',
+                    description: 'Plateforme EdTech et de mentorat.',
+                    keywords: 'teamtomorrow mentorat éducation'
+                },
+                {
+                    section: 'Projets',
+                    title: 'UTKCC',
+                    url: '/projectfr/#utkcc',
+                    description: 'Communauté Coréenne de l\'Université de Toronto.',
+                    keywords: 'utkcc uoft communauté'
+                },
+                {
+                    section: 'Projets',
+                    title: 'LFTimes',
+                    url: '/projectfr/#lftimes',
+                    description: 'Publication d\'actualités étudiantes.',
+                    keywords: 'lftimes actualités publication'
+                },
+                {
+                    section: 'Musique',
+                    title: 'Musique',
+                    url: '/musicfr/',
+                    description: 'Musique personnels et loisirs.',
+                    keywords: 'intérêts loisirs jeux'
+                },
+                {
+                    section: 'Contact',
+                    title: 'Contact',
+                    url: '/contactfr/',
+                    description: 'Contactez-nous, réseaux sociaux et email.',
+                    keywords: 'contact email réseaux sociaux'
+                },
+                {
+                    section: 'Recherche',
+                    title: 'Recherche',
+                    url: '/searchfr/',
+                    description: 'Rechercher sur le site.',
+                    keywords: 'recherche'
+                }
+            ];
+
+            function normalize(value) {
+                return String(value || '').toLowerCase().trim();
+            }
+
+            function renderResults(matches) {
+                resultsEl.innerHTML = '';
+                resultsEl.classList.remove('is-visible');
+                if (!matches.length) {
+                    countEl.textContent = '';
+                    emptyEl.style.display = 'block';
+                    return;
+                }
+                emptyEl.style.display = 'none';
+                countEl.textContent = matches.length + ' result' + (matches.length === 1 ? '' : 's');
+                matches.forEach(function (item, index) {
+                    var card = document.createElement('a');
+                    card.className = 'search-result';
+                    card.href = item.url;
+                    card.style.transitionDelay = (index * 40) + 'ms';
+                    card.innerHTML =
+                        '<div class="search-result-meta">' + item.section + '</div>' +
+                        '<div class="search-result-title">' + item.title + '</div>' +
+                        '<div class="search-result-desc">' + item.description + '</div>';
+                    resultsEl.appendChild(card);
+                });
+                requestAnimationFrame(function () {
+                    resultsEl.classList.add('is-visible');
+                });
+            }
+
+            function runSearch(value) {
+                var query = normalize(value);
+                if (!query) {
+                    renderResults([]);
+                    return;
+                }
+                var matches = pages.filter(function (page) {
+                    var haystack = normalize(page.title + ' ' + page.description + ' ' + page.keywords);
+                    return haystack.indexOf(query) !== -1;
+                });
+                renderResults(matches);
+            }
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                runSearch(input.value);
+            });
+
+            input.addEventListener('input', function (event) {
+                runSearch(event.target.value);
+            });
+
+            var params = new URLSearchParams(window.location.search);
+            var preset = params.get('s');
+            if (preset) {
+                input.value = preset;
+                runSearch(preset);
+            }
+        })();
+    </script>
+    <script>
+        (function () {
+            var toggle = document.getElementById('theme-toggle');
+            if (!toggle) {
+                return;
+            }
+            var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            var stored = localStorage.getItem('theme');
+            var isDark = stored ? stored === 'dark' : prefersDark;
+            function applyTheme() {
+                document.body.classList.toggle('dark-mode', isDark);
+                toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+                toggle.title = isDark ? 'Basculer en mode clair' : 'Basculer en mode sombre';
+                toggle.setAttribute('aria-label', toggle.title);
+                toggle.innerHTML = isDark ? '<ion-icon name="sunny"></ion-icon>' : '<ion-icon name="moon"></ion-icon>';
+            }
+            toggle.addEventListener('click', function () {
+                isDark = !isDark;
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                applyTheme();
+            });
+            applyTheme();
+        })();
+    </script>
+    <script>
+        /* <![CDATA[ */
+        var google_conversion_id = 875692668;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
+        /* ]]> */
+    </script>
+    <script src="//www.googleadservices.com/pagead/conversion.js"></script>
+    <noscript><div style="display:inline;"><img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/875692668/?value=0&amp;guid=ON&amp;script=0"/></div></noscript>
+
+    <script type="text/javascript">
+        (function(e, t, o, n, p, r, i) {
+            e.visitorGlobalObjectAlias = n;
+            e[e.visitorGlobalObjectAlias] = e[e.visitorGlobalObjectAlias] || function() {
+                (e[e.visitorGlobalObjectAlias].q = e[e.visitorGlobalObjectAlias].q || []).push(arguments)
+            };
+            e[e.visitorGlobalObjectAlias].l = (new Date).getTime();
+            r = t.createElement("script");
+            r.src = o;
+            r.async = true;
+            i = t.getElementsByTagName("script")[0];
+            i.parentNode.insertBefore(r, i)
+        })(window, document, "https://diffuser-cdn.app-us1.com/diffuser/diffuser.js", "vgo");
+        vgo('setAccount', '799540561');
+        vgo('setTrackByDefault', true);
+        vgo('process');
+    </script>
+        <script>
+        (function () {
+            var timeEl = document.getElementById("toronto-time");
+            if (!timeEl || !window.Intl) {
+                return;
+            }
+            function updateTorontoTime() {
+                var formatter = new Intl.DateTimeFormat("en-CA", {
+                    timeZone: "America/Toronto",
+                    hour: "numeric",
+                    minute: "2-digit",
+                    second: "2-digit",
+                    hour12: true,
+                    timeZoneName: "shortOffset"
+                });
+                var parts = formatter.formatToParts(new Date());
+                var timeText = "";
+                var tzText = "";
+                for (var i = 0; i < parts.length; i++) {
+                    if (parts[i].type === "timeZoneName") {
+                        tzText = parts[i].value;
+                    } else {
+                        timeText += parts[i].value;
+                    }
+                }
+                timeText = timeText.replace(/\s+$/, "");
+                timeEl.textContent = "Fuseau horaire : " + timeText + " Canada" + " (" + tzText + ")";
+            }
+            updateTorontoTime();
+            setInterval(updateTorontoTime, 1000);
+        })();
+    </script>
+</body>
+
+</html>

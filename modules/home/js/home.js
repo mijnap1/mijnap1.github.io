@@ -1,5 +1,4 @@
 $(document).ready(function() {
-    //képek betöltése
     $('.lazyajax').show().lazy({
         effect: "fadeIn",
         effectTime: 1000

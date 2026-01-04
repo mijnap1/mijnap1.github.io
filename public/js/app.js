@@ -389,6 +389,39 @@ $(document).ready(function() {
     /* ABOUT END */
 
     /* PORTFOLIO */
+    function normalizePortfolioAlias(value) {
+        return String(value || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+    }
+    function getPortfolioTargetFromUrl() {
+        var hashValue = window.location.hash ? window.location.hash.slice(1) : '';
+        var params = new URLSearchParams(window.location.search);
+        return params.get('project') || params.get('slide') || hashValue;
+    }
+    function getPortfolioTargetIndexFromUrl() {
+        if (!$('#carousel_portfolio').length) {
+            return 0;
+        }
+        var target = getPortfolioTargetFromUrl();
+        if (!target) {
+            return 0;
+        }
+        if (/^\d+$/.test(target)) {
+            return parseInt(target, 10);
+        }
+        var normalizedTarget = normalizePortfolioAlias(decodeURIComponent(target));
+        var foundIndex = 0;
+        $('#carousel_portfolio .item').each(function(index) {
+            var alias = $(this).data('alias');
+            if (!alias) {
+                return;
+            }
+            if (normalizePortfolioAlias(alias) === normalizedTarget) {
+                foundIndex = index + 1;
+                return false;
+            }
+        });
+        return foundIndex;
+    }
     var portfolio_waiting_time = 2000;
     var portfolio_change = false;
     setTimeout(function() {
@@ -396,6 +429,14 @@ $(document).ready(function() {
     }, portfolio_waiting_time);
     var portfolio_first = true;
     var portfolio_last = false;
+    var initialPortfolioIndex = getPortfolioTargetIndexFromUrl();
+    if (initialPortfolioIndex) {
+        var $portfolioItems = $('#carousel_portfolio .item');
+        $portfolioItems.removeClass('active');
+        $portfolioItems.eq(initialPortfolioIndex - 1).addClass('active');
+        jQuery('.carousel-page-number .current').text(padded(initialPortfolioIndex));
+    }
+
     $('#carousel_portfolio').carousel({
         interval: false,
         wrap: false,
@@ -482,6 +523,95 @@ $(document).ready(function() {
     $('#carousel_portfolio_change_right').click(function() {
         $('#carousel_portfolio').carousel('next');
     });
+    function getPortfolioMax() {
+        var maxText = jQuery('.carousel-page-number .max').text();
+        var max = parseInt(maxText, 10);
+        if (isNaN(max) || max < 1) {
+            return 0;
+        }
+        return max;
+    }
+    function getPortfolioCurrentIndex() {
+        var currentindex = $('#carousel_portfolio .active').index('#carousel_portfolio .item');
+        return parseInt(currentindex, 10) + 1;
+    }
+    function gotoPortfolioIndex(targetIndex) {
+        var max = getPortfolioMax();
+        if (!max) {
+            return;
+        }
+        if (targetIndex < 1) {
+            targetIndex = 1;
+        } else if (targetIndex > max) {
+            targetIndex = max;
+        }
+        $('#carousel_portfolio').carousel(targetIndex - 1);
+    }
+    function gotoPortfolioFromUrl() {
+        var foundIndex = getPortfolioTargetIndexFromUrl();
+        if (!foundIndex) {
+            return;
+        }
+        if (getPortfolioCurrentIndex() === foundIndex) {
+            return;
+        }
+        gotoPortfolioIndex(foundIndex);
+    }
+    function startPortfolioCounterEdit() {
+        var $current = jQuery('.carousel-page-number .current');
+        if (!$current.length || $current.attr('contenteditable') === 'true') {
+            return;
+        }
+        $current.attr('contenteditable', 'true').addClass('editing').focus();
+        var range = document.createRange();
+        range.selectNodeContents($current.get(0));
+        var selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    function finishPortfolioCounterEdit(commit) {
+        var $current = jQuery('.carousel-page-number .current');
+        if (!$current.length) {
+            return;
+        }
+        var text = $current.text().replace(/\D/g, '');
+        var target = parseInt(text, 10);
+        $current.attr('contenteditable', 'false').removeClass('editing');
+        if (commit && !isNaN(target)) {
+            gotoPortfolioIndex(target);
+            return;
+        }
+        var actual = getPortfolioCurrentIndex();
+        $current.text(padded(actual));
+    }
+    jQuery('.carousel-page-number .current').on('keydown', function(event) {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            finishPortfolioCounterEdit(true);
+        } else if (event.key === 'Escape') {
+            event.preventDefault();
+            finishPortfolioCounterEdit(false);
+        }
+    });
+    jQuery('.carousel-page-number .current').on('blur', function() {
+        finishPortfolioCounterEdit(true);
+    });
+    jQuery('.carousel-page-number').on('dblclick', function(event) {
+        event.preventDefault();
+        startPortfolioCounterEdit();
+    });
+    gotoPortfolioFromUrl();
+    (function() {
+        var lastTap = 0;
+        jQuery('.carousel-page-number').on('touchend', function(event) {
+            var now = Date.now();
+            if (now - lastTap < 300) {
+                event.preventDefault();
+                startPortfolioCounterEdit();
+            }
+            lastTap = now;
+        });
+    })();
     //animacio lekezelese amikor kivezetjük
     $('#carousel_portfolio').on('slide.bs.carousel', function() {
         //console.log('slide');
