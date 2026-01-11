@@ -60,11 +60,103 @@
         .theme-toggle-mobile {
             display: none;
         }
+        .mobile-alert {
+            display: none;
+        }
+        .mobile-alert-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            margin-right: 8px;
+        }
+        .mobile-alert-close {
+            border: 0px;
+            background: transparent;
+            color: inherit;
+            font-size: 18px;
+            line-height: 1;
+            padding: 2px;
+            margin-left: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @keyframes bell-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+            20% {
+                transform: rotate(12deg);
+            }
+            40% {
+                transform: rotate(-12deg);
+            }
+            60% {
+                transform: rotate(10deg);
+            }
+            80% {
+                transform: rotate(-10deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
+        @keyframes alert-fade-in {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-6px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
         .home-hello-container .desc br.before-formatted {
             display: none;
         }
 
         @media screen and (max-width: 767px) {
+            .mobile-alert {
+                position: fixed;
+                top: 14px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 20;
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                padding: 8px 14px;
+                background: #e9f6c3;
+                color: #1f2a16;
+                font-size: 11px;
+                line-height: 14px;
+                letter-spacing: 0.02em;
+                text-align: left;
+                border-radius: 999px;
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+                border: 1px solid rgba(31, 42, 22, 0.12);
+                width: calc(100% - 24px);
+                padding-right: 32px;
+                transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+                animation: alert-fade-in 0.5s ease 0.2s both;
+            }
+            .mobile-alert:hover {
+                opacity: 0.85;
+                transform: translateX(-50%) translateY(-1px);
+                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+            }
+            .mobile-alert-close {
+                position: absolute;
+                top: 50%;
+                right: 12px;
+                transform: translateY(-50%);
+            }
+            .mobile-alert-icon {
+                animation: bell-ring 1.2s ease-in-out infinite;
+                transform-origin: center;
+            }
             #logo img {
                 width: 75px;
                 height: 75px;
@@ -191,6 +283,11 @@
 </head>
 
 <body class="loaded noscroll">
+    <div class="mobile-alert" role="status" aria-live="polite">
+        <span class="mobile-alert-icon" aria-hidden="true"><ion-icon name="notifications-outline"></ion-icon></span>
+        <span class="mobile-alert-text">Best viewed on a PC or larger screen for the best experience! Thanks!</span>
+        <button class="mobile-alert-close" type="button" aria-label="Dismiss notification">×</button>
+    </div>
     <svg class="curzr" hidden>
         <filter id="motionblur" x="-100%" y="-100%" width="400%" height="400%">
             <feGaussianBlur class="curzr-motion-blur" stdDeviation="0, 0" />
@@ -362,6 +459,20 @@
                 });
             });
             applyTheme();
+        })();
+    </script>
+    <script>
+        (function () {
+            var closeBtn = document.querySelector('.mobile-alert-close');
+            if (!closeBtn) {
+                return;
+            }
+            closeBtn.addEventListener('click', function () {
+                var alertEl = closeBtn.closest('.mobile-alert');
+                if (alertEl) {
+                    alertEl.style.display = 'none';
+                }
+            });
         })();
     </script>
         <script>
