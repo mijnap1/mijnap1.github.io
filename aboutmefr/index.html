@@ -225,6 +225,9 @@
             body {
                 overflow: auto;
             }
+            body {
+                overflow-x: hidden;
+            }
             #logo img {
                 width: 75px;
                 height: 75px;
@@ -233,7 +236,8 @@
                 top: 35px;
             }
             #lang-box {
-                top: 600px;
+                top: auto;
+                bottom: 98px;
             }
             .nav-search-btn {
                 top: 35px;
@@ -265,8 +269,26 @@
                 transition-delay: 0s;
                 pointer-events: none;
             }
+            .about-section-head {
+                margin-bottom: 16px;
+            }
+            .about-eyebrow {
+                font-size: 14px;
+                letter-spacing: 0.2em;
+            }
+            .about-story-lead {
+                font-size: 16px;
+                line-height: 26px;
+            }
             .card-snap {
                 max-width: 280px;
+            }
+            .sticker-draggable {
+                width: 60px;
+                max-width: 18vw;
+            }
+            .experience-card {
+                padding: 4px;
             }
             .about-scroll .animated.appear {
                 opacity: 1;
@@ -839,6 +861,19 @@
                     }, 600);
                 });
             });
+        })();
+    </script>
+    <script>
+        (function () {
+            if (window.innerWidth > 767) {
+                return;
+            }
+            var awards = document.querySelector('.awards-container');
+            if (!awards) {
+                return;
+            }
+            awards.classList.remove('hideAwards');
+            awards.classList.add('showAwards');
         })();
     </script>
 
