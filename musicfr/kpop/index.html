@@ -95,6 +95,60 @@
         };
         var wcag = false;
     </script>
+    <style>
+        body {
+            overflow: auto;
+        }
+        .theme-toggle-mobile {
+            display: none;
+        }
+        @media screen and (max-width: 767px) {
+            html,
+            body {
+                overflow: auto;
+            }
+            #logo img {
+                width: 75px;
+                height: 75px;
+            }
+            .navbar-toggle {
+                top: 35px;
+            }
+            #lang-box {
+                top: 642px;
+            }
+            .nav-search-btn {
+                top: 35px;
+            }
+            .theme-toggle-mobile {
+                position: fixed;
+                top: 85px;
+                right: 35px;
+                width: 50px;
+                height: 40px;
+                border: 0px;
+                background: transparent;
+                color: #000;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 11;
+                opacity: 1;
+                transition: opacity 0.4s ease 0.6s;
+            }
+            .theme-toggle-mobile ion-icon {
+                font-size: 23px;
+            }
+            body.dark-mode .theme-toggle-mobile {
+                color: #fff;
+            }
+            body.navbar-open .theme-toggle-mobile {
+                opacity: 0;
+                transition-delay: 0s;
+                pointer-events: none;
+            }
+        }
+    </style>
 </head>
 
 <body class="loaded ">
@@ -138,10 +192,14 @@
         </div>
     </div>
 
-        <a class="nav-search-btn animated click" href="/search/" aria-label="Open search" title="Search" style="display: none;"
+    <a class="nav-search-btn animated click" href="/search/" aria-label="Open search" title="Search" style="display: none;"
         data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutRight" data-hide-delay="0">
         <span class="fa fa-search" aria-hidden="true"></span>
     </a>
+
+    <button class="noanimation theme-toggle-btn-main theme-toggle-mobile" id="theme-toggle-mobile" type="button" aria-label="Basculer le mode sombre" title="Basculer le mode sombre" aria-pressed="false">
+        <ion-icon name="moon"></ion-icon>
+    </button>
 
 <div id="navbar-open-button" class="navbar-toggle">
         <span class="icon-bar first"></span>
@@ -250,8 +308,8 @@
     <script defer type="text/javascript" src="/modules/home/js/home.js"></script>
     <script>
         (function () {
-            var toggle = document.getElementById('theme-toggle');
-            if (!toggle) {
+            var toggles = document.querySelectorAll('.theme-toggle-btn-main');
+            if (!toggles.length) {
                 return;
             }
             var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -259,15 +317,19 @@
             var isDark = stored ? stored === 'dark' : prefersDark;
             function applyTheme() {
                 document.body.classList.toggle('dark-mode', isDark);
-                toggle.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-                toggle.title = isDark ? 'Basculer le mode clair' : 'Basculer le mode sombre';
-                toggle.setAttribute('aria-label', toggle.title);
-                toggle.innerHTML = isDark ? '<ion-icon name="sunny"></ion-icon>' : '<ion-icon name="moon"></ion-icon>';
+                toggles.forEach(function (button) {
+                    button.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+                    button.title = isDark ? 'Basculer le mode clair' : 'Basculer le mode sombre';
+                    button.setAttribute('aria-label', button.title);
+                    button.innerHTML = isDark ? '<ion-icon name="sunny"></ion-icon>' : '<ion-icon name="moon"></ion-icon>';
+                });
             }
-            toggle.addEventListener('click', function () {
-                isDark = !isDark;
-                localStorage.setItem('theme', isDark ? 'dark' : 'light');
-                applyTheme();
+            toggles.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    isDark = !isDark;
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                    applyTheme();
+                });
             });
             applyTheme();
         })();
