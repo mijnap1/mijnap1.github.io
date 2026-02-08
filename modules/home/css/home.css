@@ -834,3 +834,230 @@
         margin-bottom: 50px;
     }
 }
+
+.music-motif {
+    padding: 60px 0 100px;
+}
+
+.music-motif-inner {
+    border: 1px solid rgba(169, 212, 0, 0.3);
+    border-radius: 24px;
+    padding: 40px;
+    background: linear-gradient(135deg, rgba(169, 212, 0, 0.08), rgba(27, 210, 88, 0.08));
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+    gap: 32px;
+    align-items: center;
+}
+
+.music-motif-copy h2 {
+    font-size: 42px;
+    line-height: 48px;
+    margin-bottom: 16px;
+}
+
+.music-motif-copy p {
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.music-motif-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.motif-start {
+    background: #a9d400;
+    color: #0b1600;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 24px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.motif-start:focus,
+.motif-start:hover {
+    background: #1bd258;
+}
+
+.motif-start.shake {
+    animation: motif-shake 0.35s ease;
+}
+
+.motif-status {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.music-motif-board {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    gap: 18px;
+    max-width: 420px;
+}
+
+.motif-pad {
+    height: 120px;
+    border-radius: 18px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    box-shadow: 0 16px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.motif-pad:nth-child(1) {
+    background: linear-gradient(140deg, rgba(169, 212, 0, 0.9), rgba(169, 212, 0, 0.5));
+}
+
+.motif-pad:nth-child(2) {
+    background: linear-gradient(140deg, rgba(27, 210, 88, 0.85), rgba(27, 210, 88, 0.5));
+}
+
+.motif-pad:nth-child(3) {
+    background: linear-gradient(140deg, rgba(31, 200, 210, 0.85), rgba(31, 200, 210, 0.5));
+}
+
+.motif-pad:nth-child(4) {
+    background: linear-gradient(140deg, rgba(255, 197, 66, 0.85), rgba(255, 197, 66, 0.5));
+}
+
+.motif-pad:focus,
+.motif-pad:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.14);
+}
+
+.motif-pad.is-lit {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8), 0 24px 50px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.08);
+}
+
+.motif-reveal {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(169, 212, 0, 0.3);
+    grid-column: 1 / -1;
+}
+
+.motif-reveal h3 {
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.motif-link {
+    display: inline-block;
+    margin-top: 6px;
+    text-decoration: none;
+    color: #0b1600;
+    font-weight: 700;
+    position: relative;
+    padding-right: 40px;
+}
+
+.motif-link .arrow {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 1px;
+    height: 18px;
+    margin-top: -9px;
+    background: #0b1600;
+}
+
+.motif-link .arrow::after,
+.motif-link .arrow::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 0;
+    background: #0b1600;
+    transition: height 0.2s ease;
+}
+
+.motif-link .arrow::before {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: top right;
+}
+
+.motif-link .arrow::after {
+    right: 0;
+    transform: rotate(-45deg);
+    transform-origin: top left;
+}
+
+.motif-link:hover .arrow::after,
+.motif-link:hover .arrow::before {
+    height: 9px;
+}
+
+@keyframes motif-shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
+}
+
+@media (max-width: 991px) {
+    .music-motif {
+        padding: 40px 0 70px;
+    }
+    .music-motif-inner {
+        padding: 32px 24px;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 767px) {
+    .music-motif-copy h2 {
+        font-size: 32px;
+        line-height: 38px;
+    }
+    .music-motif-board {
+        max-width: 100%;
+    }
+    .motif-pad {
+        height: 100px;
+    }
+}
+
+body.dark-mode .music-motif-inner {
+    border-color: rgba(169, 212, 0, 0.4);
+    background: linear-gradient(135deg, rgba(169, 212, 0, 0.16), rgba(27, 210, 88, 0.16));
+}
+
+body.dark-mode .music-motif-copy p,
+body.dark-mode .motif-status {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+body.dark-mode .motif-start {
+    color: #0b1600;
+}
+
+body.dark-mode .motif-link {
+    color: #ffffff;
+}
+
+body.dark-mode .motif-link .arrow,
+body.dark-mode .motif-link .arrow::after,
+body.dark-mode .motif-link .arrow::before {
+    background: #ffffff;
+}
