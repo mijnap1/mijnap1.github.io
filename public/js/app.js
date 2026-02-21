@@ -443,6 +443,13 @@ $(document).ready(function() {
         //transitionDuration: carouselTransitionDuration,
         pause: 'cycle' //hover, cycle
     });
+    function runPortfolioInitialAnimations() {
+        $("#carousel_portfolio .item.active .animated.appear").each(function() {
+            initAnimation($(this));
+        });
+    }
+    setTimeout(runPortfolioInitialAnimations, 50);
+    $(window).on('load', runPortfolioInitialAnimations);
 
     $('#carousel_portfolio').on('slid.bs.carousel', function() {
         portfolio_change = true;
