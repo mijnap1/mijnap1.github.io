@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Intro Preview</title>
+    <link type="text/css" href="/public/css/main.css" rel="stylesheet" media="all">
+    <link type="text/css" href="/public/css/app.css" rel="stylesheet" media="screen">
+    <link type="text/css" href="/modules/home/css/home.css" rel="stylesheet" media="screen">
+    <style>
+        body.intro-preview-page {
+            min-height: 100vh;
+            margin: 0;
+            background: #ffffff;
+            color: #111111;
+            font-family: "Poppins", sans-serif;
+            overflow: hidden;
+        }
+
+        .intro-preview-shell {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 32px 18px;
+        }
+
+        .intro-preview-controls {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .intro-preview-replay {
+            border: 0;
+            border-radius: 999px;
+            padding: 12px 22px;
+            background: #aad400;
+            color: #152100;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .intro-preview-note {
+            font-size: 13px;
+            line-height: 20px;
+            color: rgba(17, 17, 17, 0.72);
+        }
+    </style>
+</head>
+
+<body class="intro-preview-page">
+    <div id="intro-loader" class="intro-loader" aria-hidden="true">
+        <span class="intro-loader__bar intro-loader__bar--top"></span>
+        <span class="intro-loader__bar intro-loader__bar--bottom"></span>
+        <span class="intro-loader__bar intro-loader__bar--left"></span>
+        <span class="intro-loader__bar intro-loader__bar--right"></span>
+        <div class="intro-loader__video-shell">
+            <video id="intro-loader-video" class="intro-loader__video" playsinline muted preload="auto">
+                <source src="/savee.mov?v=3">
+            </video>
+        </div>
+    </div>
+
+    <main class="intro-preview-shell">
+        <div class="intro-preview-controls">
+            <button class="intro-preview-replay" type="button" id="intro-preview-replay">Replay Intro</button>
+            <div class="intro-preview-note">Preview page for the homepage intro animation.</div>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            var loader = document.getElementById('intro-loader');
+            var video = document.getElementById('intro-loader-video');
+            var replayButton = document.getElementById('intro-preview-replay');
+            var resetTimer = null;
+
+            if (!loader) {
+                return;
+            }
+
+            function clearTimers() {
+                window.clearTimeout(resetTimer);
+            }
+
+            function resetLoader() {
+                clearTimers();
+                loader.classList.remove('is-visible', 'is-exiting');
+                if (video) {
+                    video.pause();
+                    video.currentTime = 0;
+                }
+                void loader.offsetWidth;
+            }
+
+            function beginExit() {
+                if (loader.classList.contains('is-exiting')) {
+                    return;
+                }
+                loader.classList.add('is-exiting');
+                resetTimer = window.setTimeout(function () {
+                    loader.setAttribute('aria-hidden', 'true');
+                }, 420);
+            }
+
+            function playIntro() {
+                resetLoader();
+                loader.setAttribute('aria-hidden', 'false');
+
+                window.setTimeout(function () {
+                    loader.classList.add('is-visible');
+                    if (!video) {
+                        beginExit();
+                        return;
+                    }
+
+                    video.currentTime = 0.02;
+                    var playAttempt = video.play();
+                    if (playAttempt && typeof playAttempt.catch === 'function') {
+                        playAttempt.catch(function () {
+                            beginExit();
+                        });
+                    }
+                }, 24);
+            }
+
+            if (video) {
+                video.addEventListener('ended', beginExit);
+            }
+
+            if (replayButton) {
+                replayButton.addEventListener('click', playIntro);
+            }
+
+            playIntro();
+        })();
+    </script>
+</body>
+
+</html>

@@ -9,7 +9,8 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://kit.fontawesome.com/cbf2b0968a.js" crossorigin="anonymous"></script>
-    <meta name="description" content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
+    <meta name="description"
+        content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
 
     <meta property="og:title" content="Jamie Ryu's Portfolio website">
     <meta property="og:type" content="website">
@@ -18,7 +19,8 @@
     <link rel="icon" href="/public/ico/logo/jamie3128.png">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="300">
-    <meta property="og:description" content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
+    <meta property="og:description"
+        content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
     <meta property="og:site_name" content="jamieryus.com">
 
     <!-- CSS -->
@@ -34,10 +36,15 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+        rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <style>
         body,
         .frame,
@@ -60,9 +67,11 @@
         .theme-toggle-mobile {
             display: none;
         }
+
         .mobile-alert {
             display: none;
         }
+
         .mobile-alert-icon {
             display: inline-flex;
             align-items: center;
@@ -70,6 +79,7 @@
             font-size: 18px;
             margin-right: 8px;
         }
+
         .mobile-alert-close {
             border: 0px;
             background: transparent;
@@ -83,36 +93,45 @@
             align-items: center;
             justify-content: center;
         }
+
         @keyframes bell-ring {
             0% {
                 transform: rotate(0deg);
             }
+
             20% {
                 transform: rotate(12deg);
             }
+
             40% {
                 transform: rotate(-12deg);
             }
+
             60% {
                 transform: rotate(10deg);
             }
+
             80% {
                 transform: rotate(-10deg);
             }
+
             100% {
                 transform: rotate(0deg);
             }
         }
+
         @keyframes alert-fade-in {
             0% {
                 opacity: 0;
                 transform: translateX(-50%) translateY(-6px);
             }
+
             100% {
                 opacity: 1;
                 transform: translateX(-50%) translateY(0);
             }
         }
+
         .home-hello-container .desc br.before-formatted {
             display: none;
         }
@@ -142,35 +161,43 @@
                 transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
                 animation: alert-fade-in 0.5s ease 0.2s both;
             }
+
             .mobile-alert:hover {
                 opacity: 0.85;
                 transform: translateX(-50%) translateY(-1px);
                 box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
             }
+
             .mobile-alert-close {
                 position: absolute;
                 top: 50%;
                 right: 12px;
                 transform: translateY(-50%);
             }
+
             .mobile-alert-icon {
                 animation: bell-ring 1.2s ease-in-out infinite;
                 transform-origin: center;
             }
+
             #logo img {
                 width: 75px;
                 height: 75px;
             }
+
             .navbar-toggle {
                 top: 35px;
             }
+
             #lang-box {
                 top: auto;
                 bottom: 53px;
             }
+
             .nav-search-btn {
                 top: 35px;
             }
+
             .theme-toggle-mobile {
                 position: fixed;
                 top: 85px;
@@ -187,27 +214,34 @@
                 opacity: 1;
                 transition: opacity 0.4s ease 0.6s;
             }
+
             .theme-toggle-mobile ion-icon {
                 font-size: 23px;
             }
+
             body.dark-mode .theme-toggle-mobile {
                 color: #fff;
             }
+
             body.navbar-open .theme-toggle-mobile {
                 opacity: 0;
                 transition-delay: 0s;
                 pointer-events: none;
             }
+
             .home-hello-container .desc {
                 font-size: 16px;
                 line-height: 24px;
             }
+
             .home-hello-container .desc br {
                 display: none;
             }
+
             .home-hello-container .desc br.before-formatted {
                 display: inline;
             }
+
             .home-hello-container .desc .formatted-text {
                 display: inline-block;
                 margin: 6px 0px 0px;
@@ -215,13 +249,13 @@
                 line-height: 24px;
                 letter-spacing: 0.02em;
             }
+
             .home-hello-container .desc .formatted-text::before {
                 height: 5px;
                 width: 100%;
                 bottom: 2px;
             }
         }
-
     </style>
 
     <script>
@@ -281,9 +315,27 @@
         };
         var wcag = false;
     </script>
+    <script>
+        (function () {
+            document.documentElement.classList.add('has-intro-loader');
+        })();
+    </script>
 </head>
 
 <body class="loaded noscroll">
+    <div id="intro-frame" class="intro-frame" aria-hidden="true">
+        <span class="intro-frame__bar intro-frame__bar--top"></span>
+        <span class="intro-frame__bar intro-frame__bar--bottom"></span>
+        <span class="intro-frame__bar intro-frame__bar--left"></span>
+        <span class="intro-frame__bar intro-frame__bar--right"></span>
+    </div>
+    <div id="intro-loader" class="intro-loader" hidden aria-hidden="true">
+        <div class="intro-loader__video-shell">
+            <video id="intro-loader-video" class="intro-loader__video" playsinline muted preload="auto">
+                <source src="/savee.mov?v=3">
+            </video>
+        </div>
+    </div>
     <div class="mobile-alert" role="status" aria-live="polite">
         <span class="mobile-alert-icon" aria-hidden="true"><ion-icon name="notifications-outline"></ion-icon></span>
         <span class="mobile-alert-text">Best viewed on a PC or larger screen for the full experience! Thanks!</span>
@@ -298,44 +350,66 @@
     <noscript>
         <div id="noscript">
             <div class="box">
-                Accurate functioning of the website require JavaScript usage in your browser. <br>Some functions may not run properly without it! </div>
+                Accurate functioning of the website require JavaScript usage in your browser. <br>Some functions may not
+                run properly without it! </div>
         </div>
     </noscript>
 
 
-    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
+    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png"
+                alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
 
     <div class="navbar-box">
         <div class="navbar-box-right">
             <ul>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutme/"><ion-icon name="person-add-outline"></ion-icon> About Me<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/project/"><ion-icon name="albums-outline"></ion-icon> Projects<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon name="musical-notes-outline"></ion-icon> Music<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700"
+                    data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutme/"><ion-icon
+                            name="person-add-outline"></ion-icon> About Me<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800"
+                    data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/project/"><ion-icon
+                            name="albums-outline"></ion-icon> Projects<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900"
+                    data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon
+                            name="musical-notes-outline"></ion-icon> Music<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000"
+                    data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon
+                            name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
 
             </ul>
-            <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1100" data-hide-name="fadeOutLeft" data-hide-delay="0">
+            <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1100"
+                data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <div class="data noanimation" id="toronto-time" aria-live="polite"></div>
-                <div class="tz-row"><ion-icon name="mail-outline"></ion-icon><a class="data noanimation" href="mailto:jamie.ryu07@gmail.com">jamie.ryu07@gmail.com</a></div>
+                <div class="tz-row"><ion-icon name="mail-outline"></ion-icon><a class="data noanimation"
+                        href="mailto:jamie.ryu07@gmail.com">jamie.ryu07@gmail.com</a></div>
             </div>
-            <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
-                <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
-                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
-                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
-                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
-                <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+            <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200"
+                data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span
+                        class="fa fa-instagram"></span></a>
+                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span
+                        class="fa fa-github"></span></a>
+                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span
+                        class="fa fa-itch-io"></span></a>
+                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span
+                        class="fa fa-discord"></span></a>
+                <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span
+                        class="fa fa-linkedin"></span></a>
             </div>
-            <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400" data-hide-name="fadeOutLeft" data-hide-delay="0">
-                <a class="active" href="/">en</a><a class="" href="/fr/">fr</a> </div>
+            <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400"
+                data-hide-name="fadeOutLeft" data-hide-delay="0">
+                <a class="active" href="/">en</a><a class="" href="/fr/">fr</a>
+            </div>
         </div>
     </div>
 
-    <a class="nav-search-btn animated click" href="/search/" aria-label="Open search" title="Search" style="display: none;"
-        data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutRight" data-hide-delay="0">
+    <a class="nav-search-btn animated click" href="/search/" aria-label="Open search" title="Search"
+        style="display: none;" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutRight"
+        data-hide-delay="0">
         <span class="fa fa-search" aria-hidden="true"></span>
     </a>
 
-    <button class="noanimation theme-toggle-btn-main theme-toggle-mobile" id="theme-toggle-mobile" type="button" aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false">
+    <button class="noanimation theme-toggle-btn-main theme-toggle-mobile" id="theme-toggle-mobile" type="button"
+        aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false">
         <ion-icon name="moon"></ion-icon>
     </button>
 
@@ -345,14 +419,16 @@
         <span class="icon-bar last"></span>
     </div>
 
-    <div id="lang-box" class="animated appear appearjustmobile" data-show-name="fadeInRight" data-show-delay="0" data-hide-name="fadeOutRight" data-hide-delay="0">
+    <div id="lang-box" class="animated appear appearjustmobile" data-show-name="fadeInRight" data-show-delay="0"
+        data-hide-name="fadeOutRight" data-hide-delay="0">
         <a class="txt active" href="/">en</a><a class="txt" href="/fr/">fr</a>
     </div>
 
 
     <div id="link-box" class="hidden-xs hidden-sm">
         <div class="theme-toggle-main">
-            <button class="noanimation theme-toggle-btn-main" id="theme-toggle" type="button" aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false">
+            <button class="noanimation theme-toggle-btn-main" id="theme-toggle" type="button"
+                aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false">
                 <ion-icon name="moon"></ion-icon>
             </button>
         </div>
@@ -368,7 +444,8 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <input type="text" name="searchphraseinput" id="searchphraseinput" value="" class="form-control" placeholder="Search Input" autocomplete="off">
+                    <input type="text" name="searchphraseinput" id="searchphraseinput" value="" class="form-control"
+                        placeholder="Search Input" autocomplete="off">
                     <span class="fa fa-close search-delete" title="Search Button"></span>
                 </div>
                 <div class="modal-body">
@@ -385,11 +462,14 @@
     </div>
 
     <div id="social-box" class="hidden-xs hidden-sm">
-        <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
+        <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span
+                class="fa fa-instagram"></span></a>
         <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
         <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
-        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
-        <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span
+                class="fa fa-discord"></span></a>
+        <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span
+                class="fa fa-linkedin"></span></a>
     </div>
     <div id="footer-box" class="hidden-xs hidden-sm">
         <span class="year">&copy; 2026</span><span class="separator"></span>
@@ -404,16 +484,21 @@
                         <div class="row">
                             <div class="col-lg-10 col-lg-offset-1">
                                 <div class="home-hello-container">
-                                    <div class="image animated appear" data-show-name="activate" data-show-delay="0" data-hide-name="deactivate" data-hide-delay="0">
+                                    <div class="image animated appear" data-show-name="activate" data-show-delay="0"
+                                        data-hide-name="deactivate" data-hide-delay="0">
                                         <a href="/public/ico/hamster-2.jpeg"></a>
                                     </div>
-                                    <div class="caption animated appear" data-show-name="fadeInUp" data-show-delay="100" data-hide-name="fadeOutUp" data-hide-delay="0">Hello!</div>
-                                    <div class="desc animated appear" data-show-name="fadeInUp" data-show-delay="200" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                    <div class="caption animated appear" data-show-name="fadeInUp" data-show-delay="100"
+                                        data-hide-name="fadeOutUp" data-hide-delay="0">Hello!</div>
+                                    <div class="desc animated appear" data-show-name="fadeInUp" data-show-delay="200"
+                                        data-hide-name="fadeOutUp" data-hide-delay="0">
                                         <b>My name is Jamie Ryu,</b><br>
-                                        and I am a&nbsp;&nbsp;&nbsp;<br class="before-formatted"><span class="formatted-text">Full-Stack Web Developer!</span><br>
+                                        and I am a&nbsp;&nbsp;&nbsp;<br class="before-formatted"><span
+                                            class="formatted-text">Full-Stack Web Developer!</span><br>
                                         I build <b>convenient</b> and <b>productive</b> websites.
                                     </div>
-                                    <div class="link animated appear" data-show-name="fadeInUp" data-show-delay="300" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                    <div class="link animated appear" data-show-name="fadeInUp" data-show-delay="300"
+                                        data-hide-name="fadeOutUp" data-hide-delay="0">
                                         <a href="/aboutme/"><span id="hello-typed"></span></a>
                                     </div>
                                     <div id="typed-strings" style="display: none;">
@@ -476,7 +561,7 @@
             });
         })();
     </script>
-        <script>
+    <script>
         (function () {
             var timeEl = document.getElementById("toronto-time");
             if (!timeEl || !window.Intl) {
