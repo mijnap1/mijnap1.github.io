@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>Intro Preview</title>
+    <link rel="preload" href="/public/intro/savee.mov?v=3" as="video" type="video/quicktime">
     <link type="text/css" href="/public/css/main.css" rel="stylesheet" media="all">
     <link type="text/css" href="/public/css/app.css" rel="stylesheet" media="screen">
     <link type="text/css" href="/modules/home/css/home.css" rel="stylesheet" media="screen">
@@ -65,7 +66,7 @@
         <span class="intro-loader__bar intro-loader__bar--right"></span>
         <div class="intro-loader__video-shell">
             <video id="intro-loader-video" class="intro-loader__video" playsinline muted preload="auto">
-                <source src="/savee.mov?v=3">
+                <source src="/public/intro/savee.mov?v=3">
             </video>
         </div>
     </div>
@@ -83,6 +84,10 @@
             var video = document.getElementById('intro-loader-video');
             var replayButton = document.getElementById('intro-preview-replay');
             var resetTimer = null;
+            var maxIntroTimer = null;
+            var EXIT_DURATION_MS = 200;
+            var MAX_INTRO_DURATION_MS = 1120;
+            var INTRO_START_TIME_S = 0.12;
 
             if (!loader) {
                 return;
@@ -90,6 +95,7 @@
 
             function clearTimers() {
                 window.clearTimeout(resetTimer);
+                window.clearTimeout(maxIntroTimer);
             }
 
             function resetLoader() {
@@ -109,28 +115,31 @@
                 loader.classList.add('is-exiting');
                 resetTimer = window.setTimeout(function () {
                     loader.setAttribute('aria-hidden', 'true');
-                }, 420);
+                }, EXIT_DURATION_MS);
             }
 
             function playIntro() {
                 resetLoader();
                 loader.setAttribute('aria-hidden', 'false');
 
-                window.setTimeout(function () {
+                requestAnimationFrame(function () {
                     loader.classList.add('is-visible');
                     if (!video) {
                         beginExit();
                         return;
                     }
 
-                    video.currentTime = 0.02;
+                    video.currentTime = INTRO_START_TIME_S;
+                    video.playbackRate = 1.46;
                     var playAttempt = video.play();
                     if (playAttempt && typeof playAttempt.catch === 'function') {
                         playAttempt.catch(function () {
                             beginExit();
                         });
                     }
-                }, 24);
+                });
+
+                maxIntroTimer = window.setTimeout(beginExit, MAX_INTRO_DURATION_MS);
             }
 
             if (video) {

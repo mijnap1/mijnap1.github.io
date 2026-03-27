@@ -5342,12 +5342,12 @@ class MotionBlur {
   }
   
   (() => {
-    const cursor = new MotionBlur()
-    if(!/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      document.onmousemove = function (event) {
-        cursor.move(event)
-      }
-    } else {
-      cursor.remove()
+    const cursorEl = document.querySelector(".curzr")
+    if (cursorEl) {
+      cursorEl.remove()
     }
+    document.body.style.cursor = ""
+    document.body.querySelectorAll("button, label, input, textarea, select, a").forEach((el) => {
+      el.style.cursor = ""
+    })
   })()

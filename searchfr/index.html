@@ -202,10 +202,10 @@
             </div>
             <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
-                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
-                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
-                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
                 <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
             </div>
             <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400" data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <a class="active" href="/search/">en</a><a class="" href="/searchfr/">fr</a> </div>
@@ -534,38 +534,7 @@
         vgo('setTrackByDefault', true);
         vgo('process');
     </script>
-        <script>
-        (function () {
-            var timeEl = document.getElementById("toronto-time");
-            if (!timeEl || !window.Intl) {
-                return;
-            }
-            function updateTorontoTime() {
-                var formatter = new Intl.DateTimeFormat("en-CA", {
-                    timeZone: "America/Toronto",
-                    hour: "numeric",
-                    minute: "2-digit",
-                    second: "2-digit",
-                    hour12: true,
-                    timeZoneName: "shortOffset"
-                });
-                var parts = formatter.formatToParts(new Date());
-                var timeText = "";
-                var tzText = "";
-                for (var i = 0; i < parts.length; i++) {
-                    if (parts[i].type === "timeZoneName") {
-                        tzText = parts[i].value;
-                    } else {
-                        timeText += parts[i].value;
-                    }
-                }
-                timeText = timeText.replace(/\s+$/, "");
-                timeEl.textContent = "Fuseau horaire : " + timeText + " Canada" + " (" + tzText + ")";
-            }
-            updateTorontoTime();
-            setInterval(updateTorontoTime, 1000);
-        })();
-    </script>
+    <script defer src="/public/js/toronto-time.js"></script>
 </body>
 
 </html>

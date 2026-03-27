@@ -69,26 +69,27 @@
         .wave {
             display: inline-block;
             position: relative;
-            color: transparent;
             user-select: none;
         }
 
-        .wave::before {
-            content: attr(data-emoji);
+        .wave img {
             display: inline-block;
-            color: #000;
+            width: 1.55em;
+            height: 1.55em;
+            object-fit: contain;
+            margin-left: -0.18em;
+            vertical-align: -0.24em;
             transform-origin: 50% 65%;
             animation: none;
             will-change: transform, filter;
             transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.2, 1);
         }
 
-        .wave:hover::before {
-            content: attr(data-emoji-hover);
+        .wave:hover img {
             animation: cloverHoverPop 0.9s cubic-bezier(0.22, 0.8, 0.2, 1);
         }
 
-        .wave:not(:hover)::before {
+        .wave:not(:hover) img {
             animation: cloverReturnPop 0.7s cubic-bezier(0.22, 0.8, 0.2, 1);
         }
 
@@ -382,22 +383,23 @@
             <ul>
                 <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutme/"><ion-icon name="person-add-outline"></ion-icon> About Me<span class="arrow"></span></a></li>
                 <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/project/"><ion-icon name="albums-outline"></ion-icon> Projects<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon name="musical-notes-outline"></ion-icon> Music<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/playground/"><ion-icon name="sparkles-outline"></ion-icon> Playground<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon name="musical-notes-outline"></ion-icon> Music<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1100" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
 
             </ul>
-            <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1100" data-hide-name="fadeOutLeft" data-hide-delay="0">
+            <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <div class="data noanimation" id="toronto-time" aria-live="polite"></div>
                 <div class="tz-row"><ion-icon name="mail-outline"></ion-icon><a class="data noanimation" href="mailto:jamie.ryu07@gmail.com">jamie.ryu07@gmail.com</a></div>
             </div>
-            <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
+            <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1300" data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
-                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
-                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
-                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
                 <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
             </div>
-            <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400" data-hide-name="fadeOutLeft" data-hide-delay="0">
+            <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1500" data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <a class="active" href="/aboutme/">en</a><a class="" href="/aboutmefr/">fr</a> </div>
         </div>
     </div>
@@ -457,10 +459,10 @@
 
     <div id="social-box" class="hidden-xs hidden-sm">
         <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
-        <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
-        <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
-        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
         <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+        <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+        <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
     </div>
     <div id="footer-box" class="hidden-xs hidden-sm"><span class="year">&copy; 2026</span><span class="separator"></span>
         <h3 class="company">jamie ryu</h3>
@@ -480,7 +482,7 @@
                         <div class="about-hero-grid">
                             <div class="about-hero-text">
                                 <h2 class="about-quote-title animated appear" data-show-name="fadeInUp" data-show-delay="120" data-hide-name="fadeOutUp" data-hide-delay="0">
-                                    <span class="char" style="--char-delay: 0.00s">W</span><span class="char" style="--char-delay: 0.03s">h</span><span class="char" style="--char-delay: 0.06s">a</span><span class="char" style="--char-delay: 0.09s">t</span><span class="char space" style="--char-delay: 0.12s">&nbsp;</span><span class="char" style="--char-delay: 0.15s">s</span><span class="char" style="--char-delay: 0.18s">e</span><span class="char" style="--char-delay: 0.21s">e</span><span class="char" style="--char-delay: 0.24s">m</span><span class="char" style="--char-delay: 0.27s">s</span><span class="char space" style="--char-delay: 0.30s">&nbsp;</span><span class="char" style="--char-delay: 0.33s">t</span><span class="char" style="--char-delay: 0.36s">o</span><br><span class="char" style="--char-delay: 0.39s">u</span><span class="char" style="--char-delay: 0.42s">s</span><span class="char space" style="--char-delay: 0.45s">&nbsp;</span><span class="char" style="--char-delay: 0.48s">a</span><span class="char" style="--char-delay: 0.51s">s</span><span class="char space" style="--char-delay: 0.54s">&nbsp;</span><span class="char" style="--char-delay: 0.57s">b</span><span class="char" style="--char-delay: 0.60s">i</span><span class="char" style="--char-delay: 0.63s">t</span><span class="char" style="--char-delay: 0.66s">t</span><span class="char" style="--char-delay: 0.69s">e</span><span class="char" style="--char-delay: 0.72s">r</span><span class="char space" style="--char-delay: 0.75s">&nbsp;</span><span class="nowrap"><span class="char" style="--char-delay: 0.78s">t</span><span class="char" style="--char-delay: 0.81s">r</span><span class="char" style="--char-delay: 0.84s">i</span><span class="char" style="--char-delay: 0.87s">a</span><span class="char" style="--char-delay: 0.90s">l</span><span class="char" style="--char-delay: 0.93s">s</span></span><br><span class="char" style="--char-delay: 0.96s">a</span><span class="char" style="--char-delay: 0.99s">r</span><span class="char" style="--char-delay: 1.02s">e</span><span class="char space" style="--char-delay: 1.05s">&nbsp;</span><span class="char" style="--char-delay: 1.08s">o</span><span class="char" style="--char-delay: 1.11s">f</span><span class="char" style="--char-delay: 1.14s">t</span><span class="char" style="--char-delay: 1.17s">e</span><span class="char" style="--char-delay: 1.20s">n</span><span class="char space" style="--char-delay: 1.23s">&nbsp;</span><span class="nowrap"><span class="char" style="--char-delay: 1.26s">b</span><span class="char" style="--char-delay: 1.29s">l</span><span class="char" style="--char-delay: 1.32s">e</span><span class="char" style="--char-delay: 1.35s">s</span><span class="char" style="--char-delay: 1.38s">s</span><span class="char" style="--char-delay: 1.41s">i</span><span class="char" style="--char-delay: 1.44s">n</span><span class="char" style="--char-delay: 1.47s">g</span><span class="char" style="--char-delay: 1.50s">s</span></span><br><span class="char" style="--char-delay: 1.53s">i</span><span class="char" style="--char-delay: 1.56s">n</span><span class="char space" style="--char-delay: 1.59s">&nbsp;</span><span class="char" style="--char-delay: 1.62s">d</span><span class="char" style="--char-delay: 1.65s">i</span><span class="char" style="--char-delay: 1.68s">s</span><span class="char" style="--char-delay: 1.71s">g</span><span class="char" style="--char-delay: 1.74s">u</span><span class="char" style="--char-delay: 1.77s">i</span><span class="char" style="--char-delay: 1.80s">s</span><span class="char" style="--char-delay: 1.83s">e</span><span class="char" style="--char-delay: 1.86s">.</span><span class="char space" style="--char-delay: 1.89s">&nbsp;</span><span class="char wave" style="--char-delay: 1.92s" data-emoji="☘️" data-emoji-hover="🍀">☘️</span>
+                                    <span class="char" style="--char-delay: 0.00s">W</span><span class="char" style="--char-delay: 0.03s">h</span><span class="char" style="--char-delay: 0.06s">a</span><span class="char" style="--char-delay: 0.09s">t</span><span class="char space" style="--char-delay: 0.12s">&nbsp;</span><span class="char" style="--char-delay: 0.15s">s</span><span class="char" style="--char-delay: 0.18s">e</span><span class="char" style="--char-delay: 0.21s">e</span><span class="char" style="--char-delay: 0.24s">m</span><span class="char" style="--char-delay: 0.27s">s</span><span class="char space" style="--char-delay: 0.30s">&nbsp;</span><span class="char" style="--char-delay: 0.33s">t</span><span class="char" style="--char-delay: 0.36s">o</span><br><span class="char" style="--char-delay: 0.39s">u</span><span class="char" style="--char-delay: 0.42s">s</span><span class="char space" style="--char-delay: 0.45s">&nbsp;</span><span class="char" style="--char-delay: 0.48s">a</span><span class="char" style="--char-delay: 0.51s">s</span><span class="char space" style="--char-delay: 0.54s">&nbsp;</span><span class="char" style="--char-delay: 0.57s">b</span><span class="char" style="--char-delay: 0.60s">i</span><span class="char" style="--char-delay: 0.63s">t</span><span class="char" style="--char-delay: 0.66s">t</span><span class="char" style="--char-delay: 0.69s">e</span><span class="char" style="--char-delay: 0.72s">r</span><span class="char space" style="--char-delay: 0.75s">&nbsp;</span><span class="nowrap"><span class="char" style="--char-delay: 0.78s">t</span><span class="char" style="--char-delay: 0.81s">r</span><span class="char" style="--char-delay: 0.84s">i</span><span class="char" style="--char-delay: 0.87s">a</span><span class="char" style="--char-delay: 0.90s">l</span><span class="char" style="--char-delay: 0.93s">s</span></span><br><span class="char" style="--char-delay: 0.96s">a</span><span class="char" style="--char-delay: 0.99s">r</span><span class="char" style="--char-delay: 1.02s">e</span><span class="char space" style="--char-delay: 1.05s">&nbsp;</span><span class="char" style="--char-delay: 1.08s">o</span><span class="char" style="--char-delay: 1.11s">f</span><span class="char" style="--char-delay: 1.14s">t</span><span class="char" style="--char-delay: 1.17s">e</span><span class="char" style="--char-delay: 1.20s">n</span><span class="char space" style="--char-delay: 1.23s">&nbsp;</span><span class="nowrap"><span class="char" style="--char-delay: 1.26s">b</span><span class="char" style="--char-delay: 1.29s">l</span><span class="char" style="--char-delay: 1.32s">e</span><span class="char" style="--char-delay: 1.35s">s</span><span class="char" style="--char-delay: 1.38s">s</span><span class="char" style="--char-delay: 1.41s">i</span><span class="char" style="--char-delay: 1.44s">n</span><span class="char" style="--char-delay: 1.47s">g</span><span class="char" style="--char-delay: 1.50s">s</span></span><br><span class="char" style="--char-delay: 1.53s">i</span><span class="char" style="--char-delay: 1.56s">n</span><span class="char space" style="--char-delay: 1.59s">&nbsp;</span><span class="char" style="--char-delay: 1.62s">d</span><span class="char" style="--char-delay: 1.65s">i</span><span class="char" style="--char-delay: 1.68s">s</span><span class="char" style="--char-delay: 1.71s">g</span><span class="char" style="--char-delay: 1.74s">u</span><span class="char" style="--char-delay: 1.77s">i</span><span class="char" style="--char-delay: 1.80s">s</span><span class="char" style="--char-delay: 1.83s">e</span><span class="char" style="--char-delay: 1.86s">.</span><span class="char space" style="--char-delay: 1.89s">&nbsp;</span><span class="char wave" style="--char-delay: 1.92s"><img src="/public/ico/sticker/clover.png" alt="Clover" loading="lazy"></span>
 
                                 </h2>
                             </div>
@@ -548,6 +550,7 @@
                                     <figure class="experience-card">
                                         <img src="/public/ico/about-me/pictures/la/la7.jpg" alt="LA photo 7" loading="lazy">
                                     </figure>
+                                    <button class="experience-gallery-more" type="button">View more</button>
                                 </div>
                             </div>
                             <div class="experience-folder tilt-right animated appear" data-label="Singapore" data-location="sg" data-show-name="fadeInUp" data-show-delay="220" data-hide-name="fadeOutUp" data-hide-delay="0">
@@ -587,6 +590,7 @@
                                     <figure class="experience-card">
                                         <img src="/public/ico/about-me/pictures/sg/sg11.png" alt="Singapore photo 11" loading="lazy">
                                     </figure>
+                                    <button class="experience-gallery-more" type="button">View more</button>
                                 </div>
                             </div>
                         </div>
@@ -726,6 +730,16 @@
             }
             var folders = tiles.querySelectorAll('.experience-folder');
             folders.forEach(function (folder) {
+                var moreButton = folder.querySelector('.experience-gallery-more');
+                var gallery = folder.querySelector('.experience-gallery');
+                if (moreButton && gallery) {
+                    moreButton.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        var isExpanded = gallery.classList.toggle('is-expanded');
+                        moreButton.textContent = isExpanded ? 'Show less' : 'View more';
+                    });
+                }
                 folder.addEventListener('pointerdown', function (event) {
                     if (event.button !== 0 && event.button !== undefined) {
                         return;
@@ -738,24 +752,61 @@
                     folder.style.top = (rect.top - tilesRect.top) + "px";
                     folder.style.right = "auto";
                     folder.setPointerCapture(event.pointerId);
-                    folder.classList.add('is-dragging');
+                    folder.classList.add('is-pressed');
                     var offsetX = event.clientX - rect.left;
                     var offsetY = event.clientY - rect.top;
                     var startX = event.clientX;
                     var startY = event.clientY;
+                    var currentX = rect.left - tilesRect.left;
+                    var currentY = rect.top - tilesRect.top;
+                    var targetX = currentX;
+                    var targetY = currentY;
+                    var hasStartedDragging = false;
+                    var animationFrame = 0;
+                    function animateTowardTarget() {
+                        var dx = targetX - currentX;
+                        var dy = targetY - currentY;
+                        currentX += dx * 0.1;
+                        currentY += dy * 0.1;
+                        if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
+                            currentX = targetX;
+                            currentY = targetY;
+                        }
+                        folder.style.left = currentX + "px";
+                        folder.style.top = currentY + "px";
+                        if (hasStartedDragging || Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2) {
+                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                        } else {
+                            animationFrame = 0;
+                        }
+                    }
                     function onMove(moveEvent) {
                         var dx = Math.abs(moveEvent.clientX - startX);
                         var dy = Math.abs(moveEvent.clientY - startY);
                         if (dx > 3 || dy > 3) {
                             folder.dataset.dragging = "1";
+                            if (!hasStartedDragging) {
+                                hasStartedDragging = true;
+                                folder.classList.remove('is-pressed');
+                                folder.classList.add('is-dragging');
+                            }
                         }
-                        var x = moveEvent.clientX - tilesRect.left - offsetX;
-                        var y = moveEvent.clientY - tilesRect.top - offsetY;
-                        folder.style.left = x + "px";
-                        folder.style.top = y + "px";
+                        if (!hasStartedDragging) {
+                            return;
+                        }
+                        targetX = moveEvent.clientX - tilesRect.left - offsetX;
+                        targetY = moveEvent.clientY - tilesRect.top - offsetY;
+                        if (!animationFrame) {
+                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                        }
                     }
                     function onUp() {
+                        hasStartedDragging = false;
+                        folder.classList.remove('is-pressed');
                         folder.classList.remove('is-dragging');
+                        if (!animationFrame && (Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2)) {
+                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                        }
                         folder.removeEventListener('pointermove', onMove);
                         folder.removeEventListener('pointerup', onUp);
                         folder.removeEventListener('pointercancel', onUp);
@@ -777,6 +828,14 @@
                     var siblings = section.querySelectorAll('.experience-folder');
                     siblings.forEach(function (sibling) {
                         sibling.classList.remove('is-open');
+                        var siblingGallery = sibling.querySelector('.experience-gallery');
+                        var siblingMoreButton = sibling.querySelector('.experience-gallery-more');
+                        if (siblingGallery) {
+                            siblingGallery.classList.remove('is-expanded');
+                        }
+                        if (siblingMoreButton) {
+                            siblingMoreButton.textContent = 'View more';
+                        }
                         var siblingImg = sibling.querySelector('img');
                         if (siblingImg) {
                             siblingImg.src = siblingImg.getAttribute('data-closed-src') || siblingImg.src;
@@ -816,17 +875,64 @@
                     sticker.style.right = "auto";
                     sticker.style.bottom = "auto";
                     sticker.setPointerCapture(event.pointerId);
-                    sticker.classList.add('is-dragging');
+                    sticker.classList.add('is-pressed');
                     var offsetX = event.clientX - rect.left;
                     var offsetY = event.clientY - rect.top;
+                    var pointerStartX = event.clientX;
+                    var pointerStartY = event.clientY;
+                    var currentX = rect.left - containerRect.left;
+                    var currentY = rect.top - containerRect.top;
+                    var targetX = currentX;
+                    var targetY = currentY;
+                    var hasStartedDragging = false;
+                    var dragThreshold = 8;
+                    var animationFrame = 0;
+
+                    function animateTowardTarget() {
+                        var dx = targetX - currentX;
+                        var dy = targetY - currentY;
+                        currentX += dx * 0.16;
+                        currentY += dy * 0.16;
+
+                        if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
+                            currentX = targetX;
+                            currentY = targetY;
+                        }
+
+                        sticker.style.left = currentX + "px";
+                        sticker.style.top = currentY + "px";
+
+                        if (hasStartedDragging || Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2) {
+                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                        } else {
+                            animationFrame = 0;
+                        }
+                    }
+
                     function onMove(moveEvent) {
-                        var x = moveEvent.clientX - containerRect.left - offsetX;
-                        var y = moveEvent.clientY - containerRect.top - offsetY;
-                        sticker.style.left = x + "px";
-                        sticker.style.top = y + "px";
+                        if (!hasStartedDragging) {
+                            var deltaX = moveEvent.clientX - pointerStartX;
+                            var deltaY = moveEvent.clientY - pointerStartY;
+                            if (Math.hypot(deltaX, deltaY) < dragThreshold) {
+                                return;
+                            }
+                            hasStartedDragging = true;
+                            sticker.classList.remove('is-pressed');
+                            sticker.classList.add('is-dragging');
+                        }
+                        targetX = moveEvent.clientX - containerRect.left - offsetX;
+                        targetY = moveEvent.clientY - containerRect.top - offsetY;
+                        if (!animationFrame) {
+                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                        }
                     }
                     function onUp() {
+                        hasStartedDragging = false;
+                        sticker.classList.remove('is-pressed');
                         sticker.classList.remove('is-dragging');
+                        if (!animationFrame && (Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2)) {
+                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                        }
                         sticker.removeEventListener('pointermove', onMove);
                         sticker.removeEventListener('pointerup', onUp);
                         sticker.removeEventListener('pointercancel', onUp);
@@ -878,6 +984,7 @@
         })();
     </script>
 
+    <script defer src="/public/js/toronto-time.js"></script>
 </body>
 
 </html>

@@ -34,6 +34,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="/public/intro/savee.mov?v=3" as="video" type="video/quicktime">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
@@ -238,9 +239,21 @@
         };
         var wcag = false;
     </script>
+    <script>
+        (function () {
+            document.documentElement.classList.add('has-intro-loader');
+        })();
+    </script>
 </head>
 
 <body class="loaded noscroll">
+    <div id="intro-loader" class="intro-loader" hidden aria-hidden="true">
+        <div class="intro-loader__video-shell">
+            <video id="intro-loader-video" class="intro-loader__video" playsinline muted preload="auto">
+                <source src="/public/intro/savee.mov?v=3">
+            </video>
+        </div>
+    </div>
     <div class="mobile-alert" role="status" aria-live="polite">
         <span class="mobile-alert-icon" aria-hidden="true"><ion-icon name="notifications-outline"></ion-icon></span>
         <span class="mobile-alert-text">Meilleure expérience sur PC ou grand écran. Merci !</span>
@@ -277,10 +290,10 @@
             </div>
             <div class="socials animated click" data-show-name="fadeInLeft" data-show-delay="1200" data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
-                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
-                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
-                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
                 <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+                <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+                <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+                <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
             </div>
             <div class="langs animated click" data-show-name="fadeInLeft" data-show-delay="1400" data-hide-name="fadeOutLeft" data-hide-delay="0">
                 <a class="active" href="/">en</a><a class="" href="/fr/">fr</a> </div>
@@ -343,10 +356,10 @@
 
     <div id="social-box" class="hidden-xs hidden-sm">
         <a class="noanimation" href="https://www.instagram.com/jamieryu._" target="_blank"><span class="fa fa-instagram"></span></a>
-        <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
-        <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
-        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
         <a class="noanimation" href="https://www.linkedin.com/in/jamie-ryu-901310359/" target="_blank"><span class="fa fa-linkedin"></span></a>
+        <a class="noanimation" href="https://github.com/mijnap1" target="_blank"><span class="fa fa-github"></span></a>
+        <a class="noanimation" href="https://discord.com/users/442315083033346049" target="_blank"><span class="fa fa-discord"></span></a>
+        <a class="noanimation" href="https://jamie3128.itch.io/" target="_blank"><span class="fa fa-itch-io"></span></a>
     </div>
     <div id="footer-box" class="hidden-xs hidden-sm">
         <span class="year">&copy; 2026</span><span class="separator"></span>
@@ -433,39 +446,8 @@
             });
         })();
     </script>
-        <script>
-        (function () {
-            var timeEl = document.getElementById("toronto-time");
-            if (!timeEl || !window.Intl) {
-                return;
-            }
-            function updateTorontoTime() {
-                var formatter = new Intl.DateTimeFormat("en-CA", {
-                    timeZone: "America/Toronto",
-                    hour: "numeric",
-                    minute: "2-digit",
-                    second: "2-digit",
-                    hour12: true,
-                    timeZoneName: "shortOffset"
-                });
-                var parts = formatter.formatToParts(new Date());
-                var timeText = "";
-                var tzText = "";
-                for (var i = 0; i < parts.length; i++) {
-                    if (parts[i].type === "timeZoneName") {
-                        tzText = parts[i].value;
-                    } else {
-                        timeText += parts[i].value;
-                    }
-                }
-                timeText = timeText.replace(/\s+$/, "");
-                timeEl.textContent = "Fuseau horaire : " + timeText + " Canada" + " (" + tzText + ")";
-            }
-            updateTorontoTime();
-            setInterval(updateTorontoTime, 1000);
-        })();
-    </script>
 
+    <script defer src="/public/js/toronto-time.js"></script>
 </body>
 
 </html>
