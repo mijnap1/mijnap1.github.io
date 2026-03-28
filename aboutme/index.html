@@ -552,6 +552,40 @@
                                     <button class="experience-gallery-more" type="button">View more</button>
                                 </div>
                             </div>
+                            <div class="experience-folder tilt-center animated appear" data-label="Canada" data-location="cn" data-show-name="fadeInUp" data-show-delay="220" data-hide-name="fadeOutUp" data-hide-delay="0">
+                                <img src="/public/ico/folder-close.png" alt="Canada folder" draggable="false" data-closed-src="/public/ico/folder-close.png" data-open-src="/public/ico/folder-open.png">
+                                <span class="folder-label" aria-hidden="true">Canada</span>
+                                <div class="experience-gallery" data-location="cn">
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn1.jpg" alt="Canada photo 1" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn2.jpg" alt="Canada photo 2" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn3.jpg" alt="Canada photo 3" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn4.jpg" alt="Canada photo 4" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn5.jpg" alt="Canada photo 5" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn6.jpg" alt="Canada photo 6" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn7.jpg" alt="Canada photo 7" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn8.jpg" alt="Canada photo 8" loading="lazy">
+                                    </figure>
+                                    <figure class="experience-card">
+                                        <img src="/public/ico/about-me/pictures/cn/cn9.jpg" alt="Canada photo 9" loading="lazy">
+                                    </figure>
+                                    <button class="experience-gallery-more" type="button">View more</button>
+                                </div>
+                            </div>
                             <div class="experience-folder tilt-right animated appear" data-label="Singapore" data-location="sg" data-show-name="fadeInUp" data-show-delay="220" data-hide-name="fadeOutUp" data-hide-delay="0">
                                 <img src="/public/ico/folder-close.png" alt="Singapore folder" draggable="false" data-closed-src="/public/ico/folder-close.png" data-open-src="/public/ico/folder-open.png">
                                 <span class="folder-label" aria-hidden="true">Singapore</span>
@@ -594,6 +628,18 @@
                             </div>
                         </div>
                     </section>
+
+                    <div class="about-preview" id="about-preview" aria-hidden="true">
+                        <div class="about-preview-shell" role="dialog" aria-modal="true" aria-label="Photo preview">
+                            <button class="about-preview-close" type="button" aria-label="Close preview">&times;</button>
+                            <div class="about-preview-image-wrap">
+                                <img class="about-preview-image" src="" alt="">
+                            </div>
+                            <div class="about-preview-meta">
+                                <span class="about-preview-caption"></span>
+                            </div>
+                        </div>
+                    </div>
 
 
                     <section class="about-section about-skills" id="about-skills">
@@ -727,10 +773,57 @@
             if (!tiles) {
                 return;
             }
+            var preview = document.getElementById('about-preview');
+            var previewImage = preview ? preview.querySelector('.about-preview-image') : null;
+            var previewCaption = preview ? preview.querySelector('.about-preview-caption') : null;
+            var previewClose = preview ? preview.querySelector('.about-preview-close') : null;
+            function openPreview(image, folder) {
+                if (!preview || !previewImage || !previewCaption) {
+                    return;
+                }
+                previewImage.src = image.getAttribute('src') || '';
+                previewImage.alt = image.getAttribute('alt') || '';
+                previewCaption.textContent = folder ? (folder.getAttribute('data-label') || '') : '';
+                preview.classList.add('is-open');
+                preview.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('about-preview-open');
+            }
+            function closePreview() {
+                if (!preview) {
+                    return;
+                }
+                preview.classList.remove('is-open');
+                preview.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('about-preview-open');
+            }
+            if (preview && previewClose) {
+                previewClose.addEventListener('click', function () {
+                    closePreview();
+                });
+                preview.addEventListener('click', function (event) {
+                    if (event.target === preview) {
+                        closePreview();
+                    }
+                });
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape' && preview.classList.contains('is-open')) {
+                        closePreview();
+                    }
+                });
+            }
             var folders = tiles.querySelectorAll('.experience-folder');
             folders.forEach(function (folder) {
                 var moreButton = folder.querySelector('.experience-gallery-more');
                 var gallery = folder.querySelector('.experience-gallery');
+                var cards = folder.querySelectorAll('.experience-card');
+                if (gallery) {
+                    gallery.addEventListener('pointerdown', function (event) {
+                        event.stopPropagation();
+                    });
+                    gallery.addEventListener('click', function (event) {
+                        event.stopPropagation();
+                    });
+                }
                 if (moreButton && gallery) {
                     moreButton.addEventListener('click', function (event) {
                         event.preventDefault();
@@ -739,6 +832,20 @@
                         moreButton.textContent = isExpanded ? 'Show less' : 'View more';
                     });
                 }
+                cards.forEach(function (card) {
+                    card.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        if (folder.dataset.dragging === "1") {
+                            return;
+                        }
+                        var image = card.querySelector('img');
+                        if (!image) {
+                            return;
+                        }
+                        openPreview(image, folder);
+                    });
+                });
                 folder.addEventListener('pointerdown', function (event) {
                     if (event.button !== 0 && event.button !== undefined) {
                         return;
@@ -815,6 +922,9 @@
                     folder.addEventListener('pointercancel', onUp);
                 });
                 folder.addEventListener('click', function () {
+                    if (preview && preview.classList.contains('is-open')) {
+                        return;
+                    }
                     if (folder.dataset.dragging === "1") {
                         folder.dataset.dragging = "0";
                         return;

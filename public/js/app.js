@@ -561,6 +561,19 @@ $(document).ready(function() {
         var new_url = url + alias + '/' + help_alias;
         window.history.replaceState({}, "", new_url);
     }
+    function animateActivePortfolioItem() {
+        $('#carousel_portfolio .item.active .animated.appear').each(function() {
+            var $node = $(this);
+            var showClass = $node.data('show-name');
+            if (!showClass) {
+                return;
+            }
+            $node.removeClass(showClass + ' ' + ($node.data('hide-name') || ''));
+            // Force a reflow so the first active slide can replay its entrance classes on fresh load.
+            void this.offsetWidth;
+            $node.addClass(showClass);
+        });
+    }
     function setPortfolioActiveIndexImmediate(targetIndex) {
         var max = getPortfolioMax();
         if (!max) {
@@ -631,6 +644,9 @@ $(document).ready(function() {
             'yourname': '/public/ico/projects/grid/yourname.png',
             'Chess Game': '/public/ico/projects/grid/chess.png'
         };
+        var gridImagePositionMap = {
+            'Notion-timer': '42% center'
+        };
         var cards = [];
         $('#carousel_portfolio .item').each(function(index) {
             var $item = $(this);
@@ -640,12 +656,13 @@ $(document).ready(function() {
             var intro = $.trim($item.find('.portfolio-intro').first().text());
             var alias = $item.data('alias');
             var imgSrc = gridImageMap[alias] || $img.attr('src') || '';
+            var imgPosition = gridImagePositionMap[alias] || 'center center';
             var imgAlt = $img.attr('alt') || title;
             var linkHref = $link.attr('href') || '';
             var linkLabel = $.trim($link.text());
             cards.push(
                 '<article class="portfolio-grid-card" style="--grid-card-delay:' + (500 + (index * 28)) + 'ms">' +
-                    '<div class="portfolio-grid-card-media" role="img" aria-label="' + escapePortfolioHtml(imgAlt) + '" style="background-image:url(\'' + escapePortfolioHtml(imgSrc) + '\')"></div>' +
+                    '<div class="portfolio-grid-card-media" role="img" aria-label="' + escapePortfolioHtml(imgAlt) + '" style="background-image:url(\'' + escapePortfolioHtml(imgSrc) + '\');background-position:' + escapePortfolioHtml(imgPosition) + '"></div>' +
                     '<div class="portfolio-grid-card-body">' +
                         '<div class="portfolio-grid-card-index">' + padded(index + 1) + '</div>' +
                         '<div class="portfolio-grid-card-title">' + escapePortfolioHtml(title) + '</div>' +
@@ -799,6 +816,7 @@ $(document).ready(function() {
         startPortfolioCounterEdit();
     });
     gotoPortfolioFromUrl();
+    animateActivePortfolioItem();
     (function() {
         var lastTap = 0;
         jQuery('.carousel-page-number').on('touchend', function(event) {
