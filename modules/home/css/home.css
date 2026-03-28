@@ -51,6 +51,9 @@ body.intro-active .intro-loader[hidden] {
     justify-content: center;
     width: min(26vw, 320px);
     max-width: calc(100vw - 48px);
+    overflow: hidden;
+    line-height: 0;
+    background: #ffffff;
 }
 
 .intro-loader__video {
@@ -60,6 +63,7 @@ body.intro-active .intro-loader[hidden] {
     max-height: min(62vh, 520px);
     object-fit: contain;
     background: transparent;
+    margin-bottom: -2px;
 }
 
 @keyframes intro-page-fade-in {

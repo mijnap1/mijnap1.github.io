@@ -326,6 +326,55 @@ body.dark-mode .folder-label {
     color: #e6e6e6;
 }
 
+body.dark-mode .experience-gallery-more {
+    color: #e6e6e6;
+    opacity: 0.94;
+}
+
+body.dark-mode .experience-gallery-more:hover,
+body.dark-mode .experience-gallery-more:focus {
+    color: #c8ef53;
+}
+
+body.dark-mode .about-preview {
+    background:
+        radial-gradient(circle at top, rgba(18, 22, 26, 0.34), transparent 54%),
+        rgba(6, 8, 10, 0.72);
+}
+
+body.dark-mode .about-preview-shell {
+    background:
+        linear-gradient(180deg, rgba(24, 28, 32, 0.96), rgba(16, 18, 21, 0.94));
+    border-color: rgba(230, 230, 230, 0.12);
+    box-shadow:
+        0 32px 70px rgba(0, 0, 0, 0.48),
+        0 1px 0 rgba(255, 255, 255, 0.06) inset;
+}
+
+body.dark-mode .about-preview-image-wrap {
+    background:
+        linear-gradient(180deg, rgba(29, 34, 38, 0.95), rgba(17, 20, 23, 0.98));
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 1px 0 rgba(0, 0, 0, 0.24);
+}
+
+body.dark-mode .about-preview-caption {
+    color: rgba(230, 230, 230, 0.84);
+}
+
+body.dark-mode .about-preview-close {
+    background: rgba(26, 31, 35, 0.94);
+    color: #f2f2f2;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28);
+}
+
+body.dark-mode .about-preview-close:hover,
+body.dark-mode .about-preview-close:focus {
+    background: rgba(34, 39, 44, 0.98);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.34);
+}
+
 body.dark-mode .about-emphasis {
     background-image: linear-gradient(rgba(230, 230, 230, 0.7), rgba(230, 230, 230, 0.7));
 }
@@ -1882,6 +1931,15 @@ body:not(.dark-mode) .music-dock__control.is-active:hover {
 .about-experience {
     position: relative;
     z-index: 2;
+    transition: padding-bottom 0.3s ease;
+}
+
+.about-experience.has-open-gallery {
+    padding-bottom: 340px;
+}
+
+.about-experience.has-expanded-gallery {
+    padding-bottom: 520px;
 }
 
 .about-skills {
@@ -2637,6 +2695,14 @@ body.about-preview-open {
     .about-highlights-grid {
         grid-template-columns: 1fr;
     }
+
+    .about-experience.has-open-gallery {
+        padding-bottom: 300px;
+    }
+
+    .about-experience.has-expanded-gallery {
+        padding-bottom: 450px;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -2651,6 +2717,14 @@ body.about-preview-open {
     .about-hero-card {
         padding: 20px;
         transform: none;
+    }
+
+    .about-experience.has-open-gallery {
+        padding-bottom: 260px;
+    }
+
+    .about-experience.has-expanded-gallery {
+        padding-bottom: 400px;
     }
 }
 

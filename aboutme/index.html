@@ -777,6 +777,15 @@
             var previewImage = preview ? preview.querySelector('.about-preview-image') : null;
             var previewCaption = preview ? preview.querySelector('.about-preview-caption') : null;
             var previewClose = preview ? preview.querySelector('.about-preview-close') : null;
+            function updateSectionState(section) {
+                if (!section) {
+                    return;
+                }
+                var hasOpenGallery = section.querySelector('.experience-folder.is-open');
+                var hasExpandedGallery = section.querySelector('.experience-gallery.is-expanded');
+                section.classList.toggle('has-open-gallery', !!hasOpenGallery);
+                section.classList.toggle('has-expanded-gallery', !!hasExpandedGallery);
+            }
             function openPreview(image, folder) {
                 if (!preview || !previewImage || !previewCaption) {
                     return;
@@ -828,8 +837,10 @@
                     moreButton.addEventListener('click', function (event) {
                         event.preventDefault();
                         event.stopPropagation();
+                        var section = folder.closest('.about-experience');
                         var isExpanded = gallery.classList.toggle('is-expanded');
                         moreButton.textContent = isExpanded ? 'Show less' : 'View more';
+                        updateSectionState(section);
                     });
                 }
                 cards.forEach(function (card) {
@@ -957,6 +968,7 @@
                             img.src = img.getAttribute('data-open-src') || img.src;
                         }
                     }
+                    updateSectionState(section);
                 });
             });
         })();
