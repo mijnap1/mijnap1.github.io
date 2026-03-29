@@ -13,13 +13,13 @@
 
     <meta property="og:title" content="Site web portfolio de Jamie Ryu">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jamieryus.com">
+    <meta property="og:url" content="https://jamieryu.com">
 
     <link rel="icon" href="/public/ico/logo/jamie3128.png">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="300">
     <meta property="og:description" content="Un portfolio organisé du travail, de la croissance et des idées de Jamie Ryu en tant que développeur full-stack.">
-    <meta property="og:site_name" content="jamieryus.com">
+    <meta property="og:site_name" content="jamieryu.com">
 
     <!-- CSS -->
     <link type="text/css" href="/public/css/main.css" rel="stylesheet" media="all">
@@ -90,11 +90,11 @@
         @keyframes alert-fade-in {
             0% {
                 opacity: 0;
-                transform: translateX(-50%) translateY(-6px);
+                transform: translate3d(-50%, -6px, 0);
             }
             100% {
                 opacity: 1;
-                transform: translateX(-50%) translateY(0);
+                transform: translate3d(-50%, 0, 0);
             }
         }
 
@@ -103,7 +103,7 @@
                 position: fixed;
                 top: 14px;
                 left: 50%;
-                transform: translateX(-50%);
+                transform: translate3d(-50%, 0, 0);
                 z-index: 20;
                 display: inline-flex;
                 align-items: center;
@@ -120,13 +120,17 @@
                 border: 1px solid rgba(31, 42, 22, 0.12);
                 width: calc(100% - 24px);
                 padding-right: 32px;
-                transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-                animation: alert-fade-in 0.5s ease 0.2s both;
+                will-change: opacity, transform;
+                backface-visibility: hidden;
+                transition: opacity 0.3s ease, box-shadow 0.3s ease;
             }
             .mobile-alert:hover {
                 opacity: 0.85;
-                transform: translateX(-50%) translateY(-1px);
+                transform: translate3d(-50%, -1px, 0);
                 box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+            }
+            body.intro-reveal .mobile-alert {
+                animation: alert-fade-in 0.38s ease 0.06s both;
             }
             .mobile-alert-icon {
                 animation: bell-ring 1.2s ease-in-out infinite;
@@ -180,12 +184,85 @@
                 pointer-events: none;
             }
         }
+
+        html[lang="fr"] .home-hello-container .caption {
+            margin-left: -18px;
+            font-size: 220px;
+            line-height: 165px;
+            max-width: 1120px;
+        }
+
+        html[lang="fr"] .home-hello-container .desc {
+            margin-top: 68px;
+        }
+
+        html[lang="fr"] .home-hello-container .desc br.before-formatted {
+            display: none;
+        }
+
+        @media screen and (max-width: 1400px) {
+            html[lang="fr"] .home-hello-container .caption {
+                font-size: 185px;
+                line-height: 142px;
+            }
+        }
+
+        @media screen and (max-width: 1199px) {
+            html[lang="fr"] .home-hello-container .caption {
+                font-size: 172px;
+                line-height: 132px;
+            }
+        }
+
+        @media screen and (max-width: 991px) {
+            html[lang="fr"] .home-hello-container .caption {
+                margin-left: -10px;
+                font-size: 152px;
+                line-height: 116px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            html[lang="fr"] .home-hello-container .caption {
+                margin-left: 0;
+                font-size: 72px;
+                line-height: 54px;
+            }
+
+            html[lang="fr"] .home-hello-container .desc {
+                margin-top: 34px;
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            html[lang="fr"] .home-hello-container .desc br {
+                display: none;
+            }
+
+            html[lang="fr"] .home-hello-container .desc br.before-formatted {
+                display: inline;
+            }
+
+            html[lang="fr"] .home-hello-container .desc .formatted-text {
+                display: inline-block;
+                margin: 6px 0px 0px;
+                font-size: 18px;
+                line-height: 24px;
+                letter-spacing: 0.02em;
+            }
+
+            html[lang="fr"] .home-hello-container .desc .formatted-text::before {
+                height: 5px;
+                width: 100%;
+                bottom: 2px;
+            }
+        }
     </style>
 
     <script>
-        var url = "https://www.jamieryus.com/";
-        var base = "https://www.jamieryus.com/";
-        var act_url = "https://www.jamieryus.com";
+        var url = "https://www.jamieryu.com/";
+        var base = "https://www.jamieryu.com/";
+        var act_url = "https://www.jamieryu.com";
         var modul = "home";
         var alias = "";
         var website_modules = {
@@ -241,7 +318,40 @@
     </script>
     <script>
         (function () {
-            document.documentElement.classList.add('has-intro-loader');
+            function normalizeHomePath(pathname) {
+                if (!pathname) {
+                    return null;
+                }
+                return pathname.replace(/\/+$/, '') || '/';
+            }
+
+            function isOtherHomeLanguage(referrer, current) {
+                try {
+                    if (!referrer) {
+                        return false;
+                    }
+
+                    var refUrl = new URL(referrer, window.location.origin);
+                    if (refUrl.origin !== window.location.origin) {
+                        return false;
+                    }
+
+                    var refPath = normalizeHomePath(refUrl.pathname);
+                    var currentPath = normalizeHomePath(current);
+                    var homePaths = {
+                        '/': true,
+                        '/fr': true
+                    };
+
+                    return !!homePaths[refPath] && !!homePaths[currentPath] && refPath !== currentPath;
+                } catch (error) {
+                    return false;
+                }
+            }
+
+            if (!isOtherHomeLanguage(document.referrer, window.location.pathname)) {
+                document.documentElement.classList.add('has-intro-loader');
+            }
         })();
     </script>
 </head>
@@ -273,15 +383,15 @@
     </noscript>
 
 
-    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
+    <h1 id="logo"><a href="/fr/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
 
     <div class="navbar-box">
         <div class="navbar-box-right">
             <ul>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutme/"><ion-icon name="person-add-outline"></ion-icon> À Propos de Moi<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/project/"><ion-icon name="albums-outline"></ion-icon> Projets<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/music/"><ion-icon name="musical-notes-outline"></ion-icon> Musique<span class="arrow"></span></a></li>
-                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contact/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="700" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/aboutmefr/"><ion-icon name="person-add-outline"></ion-icon> À Propos de Moi<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="800" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/projectfr/"><ion-icon name="albums-outline"></ion-icon> Projets<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="900" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/musicfr/"><ion-icon name="musical-notes-outline"></ion-icon> Musique<span class="arrow"></span></a></li>
+                <li class=" animated click" data-show-name="fadeInLeft" data-show-delay="1000" data-hide-name="fadeOutLeft" data-hide-delay="0"><a href="/contactfr/"><ion-icon name="send-outline"></ion-icon> Contact<span class="arrow"></span></a></li>
 
             </ul>
             <div class="contacts animated click" data-show-name="fadeInLeft" data-show-delay="1100" data-hide-name="fadeOutLeft" data-hide-delay="0">
@@ -327,7 +437,7 @@
             </button>
         </div>
         <div class="search-modal-click"><a href="/searchfr/"><span class="fa fa-search"></span></a></div>
-        <div><a href="/contact/">Contact<span class="arrow-container"><span class="arrow"></span></span></a></div>
+        <div><a href="/contactfr/">Contact<span class="arrow-container"><span class="arrow"></span></span></a></div>
     </div>
 
     <div class="modal fade" id="searchModal" tabindex="-1" role="dialog">
@@ -380,11 +490,11 @@
                                     <div class="caption animated appear" data-show-name="fadeInUp" data-show-delay="100" data-hide-name="fadeOutUp" data-hide-delay="0">Bonjour!</div>
                                     <div class="desc animated appear" data-show-name="fadeInUp" data-show-delay="200" data-hide-name="fadeOutUp" data-hide-delay="0">
                                         <b>Je m'appelle Jamie Ryu,</b><br>
-                                        et je suis un <span class="formatted-text">développeur web full-stack !</span><br>
+                                        et je suis un&nbsp;&nbsp;&nbsp;<br class="before-formatted"><span class="formatted-text">développeur web full-stack !</span><br>
                                         Je construis des sites web <b>pratiques</b> et <b>productifs</b>.
                                     </div>
                                     <div class="link animated appear" data-show-name="fadeInUp" data-show-delay="300" data-hide-name="fadeOutUp" data-hide-delay="0">
-                                        <a href="/aboutme/"><span id="hello-typed"></span></a>
+                                        <a href="/aboutmefr/"><span id="hello-typed"></span></a>
                                     </div>
                                     <div id="typed-strings" style="display: none;">
                                         <p>En Savoir Plus<span class="arrow"></span></p>

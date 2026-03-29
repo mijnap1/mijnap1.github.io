@@ -125,8 +125,7 @@ body.intro-reveal #lang-box,
 body.intro-reveal #link-box,
 body.intro-reveal #social-box,
 body.intro-reveal #footer-box,
-body.intro-reveal .frame-table-container,
-body.intro-reveal .mobile-alert {
+body.intro-reveal .frame-table-container {
     animation: intro-page-fade-in 0.65s ease forwards;
 }
 

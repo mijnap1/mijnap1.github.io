@@ -13,13 +13,13 @@
 
     <meta property="og:title" content="Jamie Ryu's Portfolio website">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://jamieryus.com">
+    <meta property="og:url" content="https://jamieryu.com">
 
     <link rel="icon" href="/public/ico/logo/jamie3128.png">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="300">
     <meta property="og:description" content="A curated portfolio of Jamie Ryu’s work, growth, and ideas as a full-stack developer.">
-    <meta property="og:site_name" content="jamieryus.com">
+    <meta property="og:site_name" content="jamieryu.com">
 
     <!-- CSS -->
     <link type="text/css" href="/public/css/main.css" rel="stylesheet" media="all">
@@ -61,7 +61,7 @@
             content: "";
             position: absolute;
             inset: 0;
-            background: url(/public/ico/footer.png) center/cover no-repeat;
+            background: url(/public/ico/footer.png) center/93% auto no-repeat;
             opacity: 0.95;
             z-index: -1;
         }
@@ -210,7 +210,8 @@
             overflow: auto;
         }
         .frame.about-frame {
-            overflow: visible;
+            overflow-x: visible;
+            overflow-y: clip;
         }
         .about-frame .frame-table-container,
         .about-frame .frame-table-box {
@@ -300,9 +301,9 @@
     </style>
 
     <script>
-        var url = "https://www.jamieryus.com/";
-        var base = "https://www.jamieryus.com/";
-        var act_url = "https://www.jamieryus.com";
+        var url = "https://www.jamieryu.com/";
+        var base = "https://www.jamieryu.com/";
+        var act_url = "https://www.jamieryu.com";
         var modul = "home";
         var alias = "";
         var website_modules = {
@@ -373,7 +374,7 @@
     </noscript>
 
 
-    <h1 id="logo"><a href="https://jamieryus.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
+    <h1 id="logo"><a href="https://jamieryu.com/" title="Main Page"><img src="/public/ico/logo/jamie3128.png" alt="Main Page"><span class="sr-only">Jamie Ryu</span></a></h1>
     <h2 id="nav-label" class="hidden-xs hidden-sm animated now" data-show-name="activate" data-show-delay="0" data-hide-name="deactivate" data-hide-delay="0">
         <span class="animated now" data-show-name="fadeInUpAboutLabel" data-show-delay="0" data-hide-name="fadeOutUpAboutLabel" data-hide-delay="0">about me</span>
     </h2>
@@ -674,6 +675,7 @@
                             </div>
                         </div>
                     </section>
+
                 </main>
             </div>
         </div>

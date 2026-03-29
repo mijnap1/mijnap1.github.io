@@ -305,6 +305,10 @@ body.dark-mode .about-quote-sub {
     color: #cfcfcf;
 }
 
+body.dark-mode .about-scroll-hint {
+    color: #d9d9d9;
+}
+
 body.dark-mode .about-meta span {
     background: rgba(230, 230, 230, 0.08);
     color: #e6e6e6;
@@ -951,7 +955,8 @@ span.formatted-text {
 
 
 .about-frame {
-    overflow: visible;
+    overflow-x: visible;
+    overflow-y: clip;
     background: radial-gradient(circle at 20% 10%, rgba(169, 212, 0, 0.12), transparent 45%),
         radial-gradient(circle at 80% 20%, rgba(17, 17, 17, 0.08), transparent 40%),
         linear-gradient(180deg, #f6f5ef 0%, #ffffff 55%, #f4f7f1 100%);
@@ -1845,22 +1850,27 @@ body:not(.dark-mode) .music-dock__control.is-active:hover {
 }
 
 @media screen and (max-width: 767px) {
+    .music-stage-player {
+        --music-cd-rest: -70%;
+        --music-cd-play: -34%;
+    }
+
     .music-stage-cover,
     .music-stage-cd {
         top: 40%;
     }
 
     .music-stage-cover {
-        left: 57%;
+        left: 60%;
     }
 
     .music-stage-cd {
-        left: 66%;
+        left: 69%;
         width: min(46vw, 220px);
     }
 
     .music-stage-meta {
-        left: 57%;
+        left: 60%;
         top: calc(40% + min(30vw, 165px));
         width: min(62vw, 260px);
         transform: translateX(-50%);
@@ -1883,8 +1893,64 @@ body:not(.dark-mode) .music-dock__control.is-active:hover {
     }
 
     .music-dock {
-        left: 57%;
+        left: 60%;
         top: calc(40% + min(30vw, 165px) + 96px);
+    }
+
+    .music-stage-player.is-album-open .music-stage-cover--current {
+        left: 60%;
+    }
+
+    .music-stage-album {
+        left: 60%;
+        top: 42%;
+        width: min(56vw, 270px);
+        height: min(40vh, 300px);
+        aspect-ratio: auto;
+        border-radius: 18px;
+    }
+
+    .music-stage-album__cover {
+        height: 31%;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+    }
+
+    .music-stage-album__body {
+        padding: calc(31% + 12px) 10px 10px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0 16%, rgba(255, 255, 255, 0.18) 24%, rgba(255, 255, 255, 0.94) 38%, rgba(255, 255, 255, 0.985) 100%);
+    }
+
+    .music-stage-album__eyebrow {
+        margin-bottom: 8px;
+        padding: 12px 0 8px;
+        font-size: 9px;
+        letter-spacing: 0.14em;
+    }
+
+    .music-stage-album__list {
+        gap: 6px;
+    }
+
+    .music-stage-album__track,
+    .music-stage-album__archive-link-row {
+        grid-template-columns: 22px minmax(0, 1fr) 36px;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 12px;
+    }
+
+    .music-stage-album__track-title {
+        font-size: 11px;
+    }
+
+    .music-stage-album__track-artist {
+        font-size: 9px;
+    }
+
+    .music-stage-album__index,
+    .music-stage-album__duration {
+        font-size: 10px;
     }
 }
 
@@ -2073,8 +2139,15 @@ body:not(.dark-mode) .music-dock__control.is-active:hover {
 }
 
 .about-fr .about-quote-title {
-    max-width: 680px;
+    max-width: 620px;
     white-space: normal;
+    font-size: clamp(50px, 6.5vw, 84px);
+    line-height: 0.92;
+    letter-spacing: -0.02em;
+}
+
+.about-fr .card-snap {
+    max-width: 470px;
 }
 
 @keyframes quoteDrop {
@@ -2229,7 +2302,7 @@ body:not(.dark-mode) .music-dock__control.is-active:hover {
     left: 50%;
     top: 70%;
     margin-top: 8px;
-    transform: translateX(-50%) translateY(0) scale(0.96);
+    transform: translateX(-50%) translateY(4px) scale(0.96);
     opacity: 0;
     padding: 0;
     border-radius: 0;
@@ -2240,14 +2313,12 @@ body:not(.dark-mode) .music-dock__control.is-active:hover {
     color: #1b1b1b;
     white-space: nowrap;
     pointer-events: none;
+    transition: opacity 0.22s ease, transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .experience-folder:hover .folder-label {
-    animation: folderLabelPop 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
-
-.experience-folder:not(:hover) .folder-label {
-    animation: folderLabelHide 0.2s ease-in forwards;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
 }
 
 .experience-folder.tilt-left {
@@ -2600,28 +2671,11 @@ body.page-leaving .pfp-bubble {
     .about-preview-caption {
         font-size: 20px;
     }
+
 }
 
 body.about-preview-open {
     overflow: hidden;
-}
-
-@keyframes folderLabelPop {
-    0% {
-        opacity: 0;
-        transform: translateX(-50%) translateY(4px) scale(0.94);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0) scale(1);
-    }
-}
-
-@keyframes folderLabelHide {
-    to {
-        opacity: 0;
-        transform: translateX(-50%) translateY(4px) scale(0.96);
-    }
 }
 
 .about-emphasis {
@@ -2702,6 +2756,10 @@ body.about-preview-open {
 
     .about-experience.has-expanded-gallery {
         padding-bottom: 450px;
+    }
+
+    .about-fr .card-snap {
+        max-width: 420px;
     }
 }
 
@@ -2996,6 +3054,10 @@ body.navbar-open .navbar-box-right {
         width: 100%;
         padding-left: 30px;
         padding-right: 30px;
+    }
+
+    html[lang="fr"] .navbar-box>.navbar-box-right {
+        padding-top: 118px;
     }
 }
 
@@ -5109,7 +5171,7 @@ body,
 }
 
 .company-contacts {
-    margin: 40px 0px 0px;
+    margin: 44px 0px 0px;
     font-size: 12px;
     font-weight: 400;
     letter-spacing: 0.25em;
@@ -5129,6 +5191,35 @@ body,
 
 .company-resume {
     margin: 10px 0px 18px;
+}
+
+.company-contact-intro {
+    margin: 26px 0 0;
+    max-width: 420px;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.18em;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.72);
+}
+
+.company-contact-section {
+    margin: 34px 0 0;
+}
+
+.company-contact-section--info {
+    margin-top: 30px;
+}
+
+.company-contact-label {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: rgba(17, 17, 17, 0.46);
 }
 
 .company-resume .btn-primary {
@@ -5186,7 +5277,7 @@ body,
 }
 
 .company-founded {
-    margin: 20px 0px 35px;
+    margin: 28px 0px 18px;
     font-size: 12px;
     font-weight: 300;
     letter-spacing: 0.25em;
@@ -5271,7 +5362,7 @@ body,
 }
 
 .company-founder {
-    margin: 35px 0px 0px;
+    margin: 28px 0px 0px;
     font-size: 12px;
     font-weight: 300;
     letter-spacing: 0.25em;
@@ -5282,7 +5373,7 @@ body,
 .company-founder span {
     position: relative;
     z-index: 2;
-    text-transform: lowercase;
+    text-transform: none;
 }
 
 .company-founder b {
@@ -5291,27 +5382,37 @@ body,
 }
 
 .company-founder::before {
-    content: '';
-    position: absolute;
-    top: -5px;
-    left: -20px;
-    width: 35px;
-    height: 35px;
-    z-index: 1;
-    background: #a9d400;
-    background: rgba(0, 173, 29, 0.3);
-    -webkit-transform: rotate(7deg);
-    transform: rotate(7deg);
+    content: none;
 }
 
 @media screen and (max-width:767px) {
     .company-container {
         text-align: center;
     }
-    .company-founder::before {
-        left: 50%;
-        margin-left: -100px;
+
+    .company-contact-intro {
+        margin-left: auto;
+        margin-right: auto;
     }
+
+    .company-founder-card {
+        align-items: center;
+    }
+}
+
+.company-founder-card {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.company-founder-name {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    line-height: 1.5;
+    text-transform: uppercase;
+    color: #111;
 }
 
 .company-founder-img-box {
@@ -7554,9 +7655,7 @@ body.dark-mode .portfolio-grid-card-link {
     }
 
     .portfolio-view-toggle {
-        right: auto;
-        bottom: 148px;
-        left: 45px;
+        display: none;
     }
 
     .portfolio-grid-view {

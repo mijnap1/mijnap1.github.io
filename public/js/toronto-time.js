@@ -211,31 +211,49 @@
     }
 
     function renderTime() {
-        var locale = isFrenchPage() ? "fr-CA" : "en-CA";
-        var formatter = new Intl.DateTimeFormat(locale, {
-            timeZone: "America/Toronto",
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-            hour: "numeric",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: true,
-            timeZoneName: "shortOffset"
-        });
-        var parts = formatter.formatToParts(new Date());
+        var now = new Date();
         var timeText = "";
-        var tzText = "";
-        for (var i = 0; i < parts.length; i++) {
-            if (parts[i].type === "timeZoneName") {
-                tzText = parts[i].value;
-            } else {
-                timeText += parts[i].value;
+        if (isFrenchPage()) {
+            var dateFormatterFr = new Intl.DateTimeFormat("fr-CA", {
+                timeZone: "America/Toronto",
+                year: "numeric",
+                month: "long",
+                day: "numeric"
+            });
+            var timeFormatterFr = new Intl.DateTimeFormat("en-CA", {
+                timeZone: "America/Toronto",
+                hour: "numeric",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true,
+                timeZoneName: "shortOffset"
+            });
+            timeText = dateFormatterFr.format(now) + " à " + timeFormatterFr.format(now);
+        } else {
+            var formatter = new Intl.DateTimeFormat("en-CA", {
+                timeZone: "America/Toronto",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "2-digit",
+                second: "2-digit",
+                hour12: true,
+                timeZoneName: "shortOffset"
+            });
+            var parts = formatter.formatToParts(now);
+            var tzText = "";
+            for (var i = 0; i < parts.length; i++) {
+                if (parts[i].type === "timeZoneName") {
+                    tzText = parts[i].value;
+                } else {
+                    timeText += parts[i].value;
+                }
             }
+            timeText = timeText.replace(/\s+$/, "") + " " + tzText;
         }
-        timeText = timeText.replace(/\s+$/, "");
         if (timeTextEl) {
-            timeTextEl.textContent = timeText + " " + tzText;
+            timeTextEl.textContent = timeText;
         }
         if (iconEl) {
             iconEl.setAttribute("name", weatherIconName || (weatherIsDay ? "sunny-outline" : "moon-outline"));
