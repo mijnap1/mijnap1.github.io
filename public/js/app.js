@@ -85,24 +85,49 @@ $(document).ready(function() {
     //tooltip
     $('[data-toggle="tooltip"]').tooltip();
     //menu
+    var navbarCloseColorTimer = null;
+
+    function clearNavbarCloseColorTimer() {
+        if (navbarCloseColorTimer) {
+            clearTimeout(navbarCloseColorTimer);
+            navbarCloseColorTimer = null;
+        }
+    }
+
+    function queueNavbarCloseColorReset() {
+        clearNavbarCloseColorTimer();
+        $("#navbar-open-button").addClass('is-closing');
+        navbarCloseColorTimer = setTimeout(function() {
+            $("#navbar-open-button").removeClass('is-closing');
+            navbarCloseColorTimer = null;
+        }, 500);
+    }
+
     $("#navbar-open-button").click(function(e) {
         e.preventDefault();
+        clearNavbarCloseColorTimer();
+        $(this).removeClass('is-closing');
         $(this).toggleClass('navbar-close');
         $("body").toggleClass('navbar-open');
         if ($(this).hasClass('navbar-close')) {
             showAnimated();
         } else {
+            queueNavbarCloseColorReset();
             hideAnimated();
         }
     });
     $('.navbar-box').click(function(event) {
         if (!$(event.target).closest('.navbar-box-right').length) {
+            clearNavbarCloseColorTimer();
             $("#navbar-open-button").removeClass('navbar-close');
+            queueNavbarCloseColorReset();
             $("body").removeClass('navbar-open');
             hideAnimated();
         }
     });
     $(window).resize(function() {
+        clearNavbarCloseColorTimer();
+        $("#navbar-open-button").removeClass('is-closing');
         if ($("#navbar-open-button").hasClass('navbar-close')) {
             showAnimated();
         } else {

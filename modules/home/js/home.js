@@ -21,6 +21,9 @@
         window.clearTimeout(exitTimer);
         window.clearTimeout(revealTimer);
         window.clearTimeout(maxIntroTimer);
+        try {
+            window.sessionStorage.setItem('homeIntroSeen', '1');
+        } catch (error) {}
         root.classList.remove('has-intro-loader');
         body.classList.remove('intro-active');
         body.classList.add('intro-reveal');
@@ -134,6 +137,17 @@ $(document).ready(function() {
     snowLayer.className = 'home-hero-snow';
     var clearLayer = document.createElement('div');
     clearLayer.className = 'home-hero-clear';
+    var clockLayer = document.createElement('div');
+    clockLayer.className = 'home-hero-clock';
+    var hourHand = document.createElement('span');
+    hourHand.className = 'home-hero-clock-hand home-hero-clock-hand--hour';
+    var minuteHand = document.createElement('span');
+    minuteHand.className = 'home-hero-clock-hand home-hero-clock-hand--minute';
+    var secondHand = document.createElement('span');
+    secondHand.className = 'home-hero-clock-hand home-hero-clock-hand--second';
+    clockLayer.appendChild(hourHand);
+    clockLayer.appendChild(minuteHand);
+    clockLayer.appendChild(secondHand);
 
     for (var i = 0; i < 24; i++) {
         var left = (i * 4.1) + (i % 4) * 1.4;
@@ -185,9 +199,62 @@ $(document).ready(function() {
         clearLayer.appendChild(streak);
     }
 
+    heroImage.appendChild(clockLayer);
     heroImage.appendChild(clearLayer);
     heroImage.appendChild(rainLayer);
     heroImage.appendChild(snowLayer);
+
+    var torontoClockFormatter = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'America/Toronto',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hourCycle: 'h23'
+    });
+
+    var handAngles = {
+        hour: null,
+        minute: null,
+        second: null
+    };
+
+    function getContinuousAngle(previous, next) {
+        if (previous === null || !isFinite(previous)) {
+            return next;
+        }
+        while (next < previous) {
+            next += 360;
+        }
+        return next;
+    }
+
+    function updateHeroClock() {
+        var parts = torontoClockFormatter.formatToParts(new Date());
+        var hour = 0;
+        var minute = 0;
+        var second = 0;
+        for (var n = 0; n < parts.length; n++) {
+            if (parts[n].type === 'hour') {
+                hour = parseInt(parts[n].value, 10) || 0;
+            } else if (parts[n].type === 'minute') {
+                minute = parseInt(parts[n].value, 10) || 0;
+            } else if (parts[n].type === 'second') {
+                second = parseInt(parts[n].value, 10) || 0;
+            }
+        }
+
+        var hourAngle = ((hour % 12) + (minute / 60) + (second / 3600)) * 30;
+        var minuteAngle = (minute + (second / 60)) * 6;
+        var secondAngle = second * 6;
+
+        handAngles.hour = getContinuousAngle(handAngles.hour, hourAngle);
+        handAngles.minute = getContinuousAngle(handAngles.minute, minuteAngle);
+        handAngles.second = getContinuousAngle(handAngles.second, secondAngle);
+
+        hourHand.style.transform = 'rotate(' + (handAngles.hour - 90) + 'deg)';
+        minuteHand.style.transform = 'rotate(' + (handAngles.minute - 90) + 'deg)';
+        secondHand.style.transform = 'rotate(' + (handAngles.second - 90) + 'deg)';
+    }
 
     function applyWeatherState(detail) {
         var condition = detail && detail.condition ? detail.condition : document.documentElement.getAttribute('data-toronto-weather');
@@ -207,5 +274,7 @@ $(document).ready(function() {
         });
     }
 
+    updateHeroClock();
+    window.setInterval(updateHeroClock, 1000);
     applyWeatherState();
 })();

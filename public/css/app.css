@@ -5547,7 +5547,6 @@ body,
     transform: translateY(0px);
 }
 
-
 .alert-container {
     position: fixed;
     top: 0px;
@@ -7395,7 +7394,7 @@ fieldset[disabled] .btn-primary.active {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 34%, rgba(17, 17, 17, 0.04));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 32%, rgba(255, 255, 255, 0.04) 64%, rgba(255, 255, 255, 0.42) 100%);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
     pointer-events: none;
 }
@@ -7459,7 +7458,7 @@ fieldset[disabled] .btn-primary.active {
     text-align: center;
     white-space: nowrap;
     box-shadow: 0 8px 16px rgba(38, 46, 12, 0.1);
-    transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.22s ease, box-shadow 0.22s ease;
+    transition: background 0.24s ease, color 0.24s ease, border-color 0.24s ease, transform 0.24s ease, box-shadow 0.24s ease;
 }
 
 .portfolio-grid-card-open {
@@ -7487,12 +7486,12 @@ fieldset[disabled] .btn-primary.active {
 .portfolio-grid-card-open:focus,
 .portfolio-grid-card-link:hover,
 .portfolio-grid-card-link:focus {
-    background: #1c1c1c;
-    border-color: #1c1c1c;
+    background: #131313;
+    border-color: #131313;
     color: #fff;
     outline: none;
-    transform: translateY(-2px);
-    box-shadow: 0 16px 28px rgba(28, 28, 28, 0.18);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 22px rgba(28, 28, 28, 0.16);
 }
 
 body.portfolio-grid-stage-exit .carousel-page-number,
@@ -7623,6 +7622,11 @@ body.dark-mode .portfolio-grid-card-media {
     border-bottom-color: rgba(255, 255, 255, 0.08);
 }
 
+body.dark-mode .portfolio-grid-card-media::after {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0) 32%, rgba(15, 17, 19, 0.08) 64%, rgba(15, 17, 19, 0.38) 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
 body.dark-mode .portfolio-grid-card-actions {
     border-top-color: rgba(255, 255, 255, 0.06);
 }
@@ -7644,6 +7648,18 @@ body.dark-mode .portfolio-grid-card:focus-within {
 
 body.dark-mode .portfolio-grid-card-link {
     background: rgba(255, 255, 255, 0.06);
+}
+
+body.dark-mode .portfolio-grid-card-open:hover,
+body.dark-mode .portfolio-grid-card-open:focus,
+body.dark-mode .portfolio-grid-card-link:hover,
+body.dark-mode .portfolio-grid-card-link:focus {
+    background: #b7e600;
+    border-color: #b7e600;
+    color: #101010;
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 14px 24px rgba(115, 160, 0, 0.22);
 }
 
 @media screen and (max-width: 991px) {

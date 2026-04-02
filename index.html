@@ -69,6 +69,10 @@
             display: none;
         }
 
+        .home-mobile-contact {
+            display: none;
+        }
+
         .mobile-alert {
             display: none;
         }
@@ -150,6 +154,90 @@
                 display: none;
             }
 
+            .home-hello-container .caption,
+            .home-hello-container .desc,
+            .home-hello-container .link {
+                display: none;
+            }
+
+            .home-hello-container .image::before {
+                display: none;
+            }
+
+            .home-hero-clock {
+                display: block;
+                position: fixed;
+                top: 47%;
+                left: 50%;
+                width: 248px;
+                height: 248px;
+                margin-top: -124px;
+                margin-left: -124px;
+                z-index: 3;
+                opacity: 1;
+                filter: drop-shadow(0 18px 34px rgba(169, 212, 0, 0.1));
+            }
+
+            .home-hero-clock::after {
+                content: '';
+                position: absolute;
+                inset: 18px;
+                border-radius: 50%;
+                border: 2px solid rgba(169, 212, 0, 0.34);
+                box-shadow: inset 0 0 0 1px rgba(169, 212, 0, 0.08);
+                opacity: 1;
+            }
+
+            .home-hero-clock::before {
+                width: 14px;
+                height: 14px;
+                margin-left: -7px;
+                margin-top: -7px;
+                background: radial-gradient(circle, rgba(169, 212, 0, 1) 0%, rgba(169, 212, 0, 1) 58%, rgba(122, 165, 0, 0.94) 100%);
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.92), 0 0 0 6px rgba(169, 212, 0, 0.16);
+                filter: none;
+                opacity: 1;
+            }
+
+            .home-hero-clock-hand--hour {
+                width: 24%;
+                height: 6px;
+                margin-top: -3px;
+            }
+
+            .home-hero-clock-hand--hour::before {
+                background: linear-gradient(90deg, rgba(169, 212, 0, 0) 0%, rgba(169, 212, 0, 0.22) 20%, rgba(169, 212, 0, 0.82) 62%, rgba(169, 212, 0, 1) 100%);
+                box-shadow: 0 0 14px rgba(169, 212, 0, 0.12);
+                filter: none;
+                opacity: 1;
+            }
+
+            .home-hero-clock-hand--minute {
+                width: 34%;
+                height: 4px;
+                margin-top: -2px;
+            }
+
+            .home-hero-clock-hand--minute::before {
+                background: linear-gradient(90deg, rgba(169, 212, 0, 0) 0%, rgba(169, 212, 0, 0.2) 18%, rgba(169, 212, 0, 0.78) 64%, rgba(169, 212, 0, 1) 100%);
+                box-shadow: 0 0 12px rgba(169, 212, 0, 0.1);
+                filter: none;
+                opacity: 1;
+            }
+
+            .home-hero-clock-hand--second {
+                width: 39%;
+                height: 2px;
+                margin-top: -1px;
+            }
+
+            .home-hero-clock-hand--second::before {
+                background: linear-gradient(90deg, rgba(169, 212, 0, 0) 0%, rgba(169, 212, 0, 0.18) 12%, rgba(169, 212, 0, 0.72) 60%, rgba(169, 212, 0, 0.96) 100%);
+                box-shadow: 0 0 8px rgba(169, 212, 0, 0.08);
+                filter: none;
+                opacity: 1;
+            }
+
             .mobile-alert {
                 position: fixed;
                 top: 14px;
@@ -182,6 +270,12 @@
                 box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
             }
 
+            .mobile-alert.is-closing {
+                opacity: 0;
+                pointer-events: none;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+            }
+
             body.intro-reveal .mobile-alert {
                 animation: alert-fade-in 0.38s ease 0.06s both;
             }
@@ -207,19 +301,40 @@
                 top: 35px;
             }
 
+            .navbar-toggle .icon-bar {
+                transition-property: transform, width, opacity, margin, top, background-color;
+                transition-duration: 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.55s;
+                transition-delay: 0s, 0s, 0s, 0s, 0s, 0s;
+                transition-timing-function: ease, ease, ease, ease, ease, ease;
+            }
+
+            .navbar-toggle.navbar-close .icon-bar {
+                transition-delay: 0s, 0s, 0s, 0s, 0s, 0.48s;
+            }
+
+            .navbar-toggle.is-closing .icon-bar {
+                background: #fff;
+                transition-delay: 0s, 0s, 0s, 0s, 0s, 0.5s;
+            }
+
             #lang-box {
                 top: auto;
                 bottom: 53px;
             }
 
             .nav-search-btn {
-                top: 35px;
+                top: 45px;
+                right: 82px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 1;
             }
 
             .theme-toggle-mobile {
                 position: fixed;
-                top: 85px;
-                right: 35px;
+                top: 37px;
+                right: 95px;
                 width: 50px;
                 height: 40px;
                 border: 0px;
@@ -245,6 +360,47 @@
                 opacity: 0;
                 transition-delay: 0s;
                 pointer-events: none;
+            }
+
+            .home-mobile-contact {
+                position: fixed;
+                left: 40px;
+                bottom: 72px;
+                z-index: 12;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                text-decoration: none;
+                color: #000;
+                transition: color 0.22s ease, opacity 0.4s ease 0.6s, transform 0.22s ease;
+            }
+
+            .home-mobile-contact ion-icon {
+                font-size: 25px;
+                line-height: 1;
+            }
+
+            .home-mobile-contact:hover,
+            .home-mobile-contact:focus {
+                color: #000;
+                text-decoration: none;
+                transform: translateY(-1px);
+            }
+
+            body.dark-mode .home-mobile-contact {
+                color: #e6e6e6;
+            }
+
+            body.dark-mode .home-mobile-contact:hover,
+            body.dark-mode .home-mobile-contact:focus {
+                color: #e6e6e6;
+            }
+
+            body.navbar-open .home-mobile-contact {
+                opacity: 0;
+                transform: translateY(8px);
+                pointer-events: none;
+                transition-delay: 0s;
             }
 
             .home-hello-container .caption {
@@ -372,6 +528,16 @@
     </script>
     <script>
         (function () {
+            var introSeenKey = 'homeIntroSeen';
+
+            function hasSeenIntro() {
+                try {
+                    return window.sessionStorage.getItem(introSeenKey) === '1';
+                } catch (error) {
+                    return false;
+                }
+            }
+
             function normalizeHomePath(pathname) {
                 if (!pathname) {
                     return null;
@@ -403,7 +569,7 @@
                 }
             }
 
-            if (!isOtherHomeLanguage(document.referrer, window.location.pathname)) {
+            if (!hasSeenIntro() && !isOtherHomeLanguage(document.referrer, window.location.pathname)) {
                 document.documentElement.classList.add('has-intro-loader');
             }
         })();
@@ -420,7 +586,7 @@
     </div>
     <div class="mobile-alert" role="status" aria-live="polite">
         <span class="mobile-alert-icon" aria-hidden="true"><ion-icon name="notifications-outline"></ion-icon></span>
-        <span class="mobile-alert-text">Best viewed on a PC or larger screen for the full experience! Thanks!</span>
+        <span class="mobile-alert-text">Best viewed on a PC or larger screen for the full experience! Thanks! :)</span>
         <button class="mobile-alert-close" type="button" aria-label="Dismiss notification">×</button>
     </div>
     <svg class="curzr" hidden>
@@ -494,6 +660,9 @@
         aria-label="Toggle dark mode" title="Toggle dark mode" aria-pressed="false">
         <ion-icon name="moon"></ion-icon>
     </button>
+    <a class="home-mobile-contact" href="/contact/" aria-label="Open contact page">
+        <ion-icon name="mail-open-outline" aria-hidden="true"></ion-icon>
+    </a>
 
     <div id="navbar-open-button" class="navbar-toggle">
         <span class="icon-bar first"></span>
@@ -571,7 +740,9 @@
                                         <a href="/public/ico/hamster-2.jpeg"></a>
                                     </div>
                                     <div class="caption animated appear" data-show-name="fadeInUp" data-show-delay="100"
-                                        data-hide-name="fadeOutUp" data-hide-delay="0">Hello!</div>
+                                        data-hide-name="fadeOutUp" data-hide-delay="0" aria-label="Hello!">
+                                        <span class="hello-letter" style="--hello-delay: 0ms;">H</span><span class="hello-letter" style="--hello-delay: 70ms;">e</span><span class="hello-letter" style="--hello-delay: 140ms;">l</span><span class="hello-letter" style="--hello-delay: 210ms;">l</span><span class="hello-letter" style="--hello-delay: 280ms;">o</span><span class="hello-letter hello-mark" style="--hello-delay: 360ms;">!</span>
+                                    </div>
                                     <div class="desc animated appear" data-show-name="fadeInUp" data-show-delay="200"
                                         data-hide-name="fadeOutUp" data-hide-delay="0">
                                         <span class="home-desktop-only">
@@ -643,9 +814,38 @@
             }
             closeBtn.addEventListener('click', function () {
                 var alertEl = closeBtn.closest('.mobile-alert');
-                if (alertEl) {
-                    alertEl.style.display = 'none';
+                if (alertEl && !alertEl.classList.contains('is-closing')) {
+                    alertEl.classList.add('is-closing');
+                    window.setTimeout(function () {
+                        alertEl.style.display = 'none';
+                    }, 300);
                 }
+            });
+        })();
+    </script>
+    <script>
+        (function () {
+            var links = document.querySelectorAll('a[href]:not([target="_blank"])');
+            if (!links.length) {
+                return;
+            }
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    var href = link.getAttribute('href');
+                    if (!href || href.charAt(0) === '#' || link.dataset.leaveAnimating === "1") {
+                        return;
+                    }
+                    var url = new URL(href, window.location.href);
+                    if (url.origin !== window.location.origin) {
+                        return;
+                    }
+                    event.preventDefault();
+                    link.dataset.leaveAnimating = "1";
+                    document.body.classList.add('page-leaving');
+                    window.setTimeout(function () {
+                        window.location.href = url.href;
+                    }, 600);
+                });
             });
         })();
     </script>

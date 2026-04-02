@@ -186,14 +186,14 @@
         }
 
         html[lang="fr"] .home-hello-container .caption {
-            margin-left: -18px;
-            font-size: 220px;
-            line-height: 165px;
+            margin-left: 0;
+            font-size: 265px;
+            line-height: 200px;
             max-width: 1120px;
         }
 
         html[lang="fr"] .home-hello-container .desc {
-            margin-top: 68px;
+            margin-top: 40px;
         }
 
         html[lang="fr"] .home-hello-container .desc br.before-formatted {
@@ -202,35 +202,35 @@
 
         @media screen and (max-width: 1400px) {
             html[lang="fr"] .home-hello-container .caption {
-                font-size: 185px;
-                line-height: 142px;
+                font-size: 230px;
+                line-height: 176px;
             }
         }
 
         @media screen and (max-width: 1199px) {
             html[lang="fr"] .home-hello-container .caption {
-                font-size: 172px;
-                line-height: 132px;
+                font-size: 198px;
+                line-height: 150px;
             }
         }
 
         @media screen and (max-width: 991px) {
             html[lang="fr"] .home-hello-container .caption {
-                margin-left: -10px;
-                font-size: 152px;
-                line-height: 116px;
+                margin-left: 0;
+                font-size: 170px;
+                line-height: 128px;
             }
         }
 
         @media screen and (max-width: 767px) {
             html[lang="fr"] .home-hello-container .caption {
                 margin-left: 0;
-                font-size: 72px;
-                line-height: 54px;
+                font-size: 80px;
+                line-height: 60px;
             }
 
             html[lang="fr"] .home-hello-container .desc {
-                margin-top: 34px;
+                margin-top: 20px;
                 font-size: 16px;
                 line-height: 24px;
             }
@@ -318,6 +318,16 @@
     </script>
     <script>
         (function () {
+            var introSeenKey = 'homeIntroSeen';
+
+            function hasSeenIntro() {
+                try {
+                    return window.sessionStorage.getItem(introSeenKey) === '1';
+                } catch (error) {
+                    return false;
+                }
+            }
+
             function normalizeHomePath(pathname) {
                 if (!pathname) {
                     return null;
@@ -349,7 +359,7 @@
                 }
             }
 
-            if (!isOtherHomeLanguage(document.referrer, window.location.pathname)) {
+            if (!hasSeenIntro() && !isOtherHomeLanguage(document.referrer, window.location.pathname)) {
                 document.documentElement.classList.add('has-intro-loader');
             }
         })();
@@ -487,7 +497,9 @@
                                     <div class="image animated appear" data-show-name="activate" data-show-delay="0" data-hide-name="deactivate" data-hide-delay="0">
                                         <a href="/public/ico/hamster-2.jpeg"></a>
                                     </div>
-                                    <div class="caption animated appear" data-show-name="fadeInUp" data-show-delay="100" data-hide-name="fadeOutUp" data-hide-delay="0">Bonjour!</div>
+                                    <div class="caption animated appear" data-show-name="fadeInUp" data-show-delay="100" data-hide-name="fadeOutUp" data-hide-delay="0" aria-label="Salut!">
+                                        <span class="hello-letter" style="--hello-delay: 0ms;">S</span><span class="hello-letter" style="--hello-delay: 70ms;">a</span><span class="hello-letter" style="--hello-delay: 140ms;">l</span><span class="hello-letter" style="--hello-delay: 210ms;">u</span><span class="hello-letter" style="--hello-delay: 280ms;">t</span><span class="hello-letter hello-mark" style="--hello-delay: 360ms;">!</span>
+                                    </div>
                                     <div class="desc animated appear" data-show-name="fadeInUp" data-show-delay="200" data-hide-name="fadeOutUp" data-hide-delay="0">
                                         <b>Je m'appelle Jamie Ryu,</b><br>
                                         et je suis un&nbsp;&nbsp;&nbsp;<br class="before-formatted"><span class="formatted-text">développeur web full-stack !</span><br>
@@ -540,6 +552,32 @@
                 });
             });
             applyTheme();
+        })();
+    </script>
+    <script>
+        (function () {
+            var links = document.querySelectorAll('a[href]:not([target="_blank"])');
+            if (!links.length) {
+                return;
+            }
+            links.forEach(function (link) {
+                link.addEventListener('click', function (event) {
+                    var href = link.getAttribute('href');
+                    if (!href || href.charAt(0) === '#' || link.dataset.leaveAnimating === "1") {
+                        return;
+                    }
+                    var url = new URL(href, window.location.href);
+                    if (url.origin !== window.location.origin) {
+                        return;
+                    }
+                    event.preventDefault();
+                    link.dataset.leaveAnimating = "1";
+                    document.body.classList.add('page-leaving');
+                    window.setTimeout(function () {
+                        window.location.href = url.href;
+                    }, 600);
+                });
+            });
         })();
     </script>
     <script>
