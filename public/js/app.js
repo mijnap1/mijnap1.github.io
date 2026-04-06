@@ -660,6 +660,7 @@ $(document).ready(function() {
         var gridImageMap = {
             'Scratch': '/public/ico/projects/grid/scratch.png',
             'Mysemester': '/public/ico/projects/grid/mysemester.png',
+            'Detector': '/public/ico/projects/grid/detector.png',
             '3dvoxelizer': '/public/ico/projects/grid/dog.png',
             'langswitch': '/public/ico/projects/grid/langswitch.png',
             'Notion-timer': '/public/ico/projects/grid/notion-timer.png',
@@ -670,7 +671,14 @@ $(document).ready(function() {
             'Chess Game': '/public/ico/projects/grid/chess.png'
         };
         var gridImagePositionMap = {
-            'Notion-timer': '42% center'
+            'Notion-timer': '42% center',
+            'Detector': 'center -70px'
+        };
+        var gridImageSizeMap = {
+            'Detector': '133% auto'
+        };
+        var gridImageRepeatMap = {
+            'Detector': 'no-repeat'
         };
         var cards = [];
         $('#carousel_portfolio .item').each(function(index) {
@@ -682,12 +690,14 @@ $(document).ready(function() {
             var alias = $item.data('alias');
             var imgSrc = gridImageMap[alias] || $img.attr('src') || '';
             var imgPosition = gridImagePositionMap[alias] || 'center center';
+            var imgSize = gridImageSizeMap[alias] || 'cover';
+            var imgRepeat = gridImageRepeatMap[alias] || 'no-repeat';
             var imgAlt = $img.attr('alt') || title;
             var linkHref = $link.attr('href') || '';
             var linkLabel = $.trim($link.text());
             cards.push(
                 '<article class="portfolio-grid-card" style="--grid-card-delay:' + (500 + (index * 28)) + 'ms">' +
-                    '<div class="portfolio-grid-card-media" role="img" aria-label="' + escapePortfolioHtml(imgAlt) + '" style="background-image:url(\'' + escapePortfolioHtml(imgSrc) + '\');background-position:' + escapePortfolioHtml(imgPosition) + '"></div>' +
+                    '<div class="portfolio-grid-card-media" role="img" aria-label="' + escapePortfolioHtml(imgAlt) + '" style="background-image:url(\'' + escapePortfolioHtml(imgSrc) + '\');background-position:' + escapePortfolioHtml(imgPosition) + ';background-size:' + escapePortfolioHtml(imgSize) + ';background-repeat:' + escapePortfolioHtml(imgRepeat) + '"></div>' +
                     '<div class="portfolio-grid-card-body">' +
                         '<div class="portfolio-grid-card-index">' + padded(index + 1) + '</div>' +
                         '<div class="portfolio-grid-card-title">' + escapePortfolioHtml(title) + '</div>' +
