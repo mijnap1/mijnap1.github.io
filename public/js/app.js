@@ -640,9 +640,10 @@ $(document).ready(function() {
     var portfolioViewMode = 'carousel';
     var portfolioViewTransitioning = false;
     var portfolioViewTimers = [];
-    var PORTFOLIO_GRID_PANEL_DELAY = 360;
-    var PORTFOLIO_GRID_REVEAL_DELAY = 760;
-    var PORTFOLIO_RETURN_CONTENT_DELAY = 420;
+    var pendingPortfolioGridTargetIndex = null;
+    var PORTFOLIO_GRID_PANEL_DELAY = 160;
+    var PORTFOLIO_GRID_REVEAL_DELAY = 360;
+    var PORTFOLIO_RETURN_CONTENT_DELAY = 180;
     function escapePortfolioHtml(value) {
         return String(value || '')
             .replace(/&/g, '&amp;')
@@ -663,6 +664,7 @@ $(document).ready(function() {
             'Detector': '/public/ico/projects/grid/detector.png',
             '3dvoxelizer': '/public/ico/projects/grid/dog.png',
             'langswitch': '/public/ico/projects/grid/langswitch.png',
+            'pascal-mystery-hexagon': '/public/ico/projects/grid/pascal.png',
             'Notion-timer': '/public/ico/projects/grid/notion-timer.png',
             'Team Tomorrow': '/public/ico/projects/grid/tt.png',
             'UTKCC': '/public/ico/projects/grid/utkcc.png',
@@ -771,12 +773,20 @@ $(document).ready(function() {
         $portfolioGrid.attr('aria-hidden', 'true');
         updatePortfolioViewToggle();
         schedulePortfolioViewStep(function() {
+            if (pendingPortfolioGridTargetIndex !== null) {
+                setPortfolioActiveIndexImmediate(pendingPortfolioGridTargetIndex);
+                syncPortfolioUi(false);
+            }
             $('body').removeClass('portfolio-grid-stage-panel');
         }, 20);
         schedulePortfolioViewStep(function() {
             resetPortfolioGridState();
             portfolioViewTransitioning = false;
             updatePortfolioViewToggle();
+            if (pendingPortfolioGridTargetIndex !== null) {
+                animateActivePortfolioItem();
+                pendingPortfolioGridTargetIndex = null;
+            }
             $.force_appear();
             if (typeof onComplete === 'function') {
                 onComplete();
@@ -803,7 +813,7 @@ $(document).ready(function() {
     $portfolioGrid.on('click', '.portfolio-grid-card-open', function(event) {
         event.preventDefault();
         var targetIndex = parseInt($(this).data('target-index'), 10);
-        setPortfolioActiveIndexImmediate(targetIndex);
+        pendingPortfolioGridTargetIndex = targetIndex;
         setPortfolioView('carousel');
     });
     updatePortfolioViewToggle();
