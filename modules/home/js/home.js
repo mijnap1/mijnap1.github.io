@@ -270,13 +270,13 @@ $(document).ready(function() {
             },
             {
                 eyebrow: '02',
-                title: 'I am a',
+                title: "I'm a",
                 body: 'full stack web developer.'
             },
             {
                 eyebrow: '03',
-                title: 'Drift',
-                body: 'The lower note stays present but secondary to the center beat.'
+                title: 'Contact',
+                bodyHtml: '<span class="home-hero-story-contact"><ion-icon name="mail-outline" aria-hidden="true"></ion-icon><span>jamie.ryu07@gmail.com</span></span>'
             }
         ];
 
@@ -308,7 +308,11 @@ $(document).ready(function() {
             storyPanelSwapTimer = window.setTimeout(function () {
                 storyEyebrow.textContent = entry.eyebrow;
                 storyTitle.textContent = entry.title;
-                storyBody.textContent = entry.body;
+                if (entry.bodyHtml) {
+                    storyBody.innerHTML = entry.bodyHtml;
+                } else {
+                    storyBody.textContent = entry.body;
+                }
                 storyPanel.classList.remove('is-transitioning');
             }, 170);
         }
@@ -323,7 +327,11 @@ $(document).ready(function() {
             if (immediate) {
                 storyEyebrow.textContent = storyEntries[stepIndex].eyebrow;
                 storyTitle.textContent = storyEntries[stepIndex].title;
-                storyBody.textContent = storyEntries[stepIndex].body;
+                if (storyEntries[stepIndex].bodyHtml) {
+                    storyBody.innerHTML = storyEntries[stepIndex].bodyHtml;
+                } else {
+                    storyBody.textContent = storyEntries[stepIndex].body;
+                }
                 storyPanel.classList.remove('is-transitioning');
             } else {
                 updateStoryPanel(storyEntries[stepIndex]);
