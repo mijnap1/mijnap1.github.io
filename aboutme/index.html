@@ -233,20 +233,20 @@
             .about-frame::before {
                 content: "";
                 position: fixed;
-                top: 10px;
+                top: 0;
                 left: 10px;
                 width: calc(100vw - 24px);
-                height: 108px;
+                height: 118px;
                 z-index: 4;
                 pointer-events: none;
-                overflow: hidden;
-                border-radius: 14px 14px 18px 18px;
-                background: linear-gradient(180deg, rgba(246, 245, 239, 0.82) 0%, rgba(246, 245, 239, 0.62) 58%, rgba(246, 245, 239, 0) 100%);
-                backdrop-filter: blur(10px) saturate(1.02);
-                -webkit-backdrop-filter: blur(10px) saturate(1.02);
+                background: rgba(246, 245, 239, 0.28);
+                backdrop-filter: blur(14px) saturate(1.06);
+                -webkit-backdrop-filter: blur(14px) saturate(1.06);
+                mask-image: linear-gradient(180deg, #000 0%, #000 58%, transparent 100%);
+                -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 58%, transparent 100%);
             }
             body.dark-mode .about-frame::before {
-                background: linear-gradient(180deg, rgba(15, 17, 19, 0.82) 0%, rgba(15, 17, 19, 0.62) 58%, rgba(15, 17, 19, 0) 100%);
+                background: rgba(15, 17, 19, 0.32);
             }
             #logo img {
                 width: 75px;
@@ -332,6 +332,59 @@
             }
             .experience-card {
                 padding: 4px;
+            }
+            .about-experience-tiles {
+                height: auto;
+                margin-top: 18px;
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px 12px;
+                justify-items: center;
+            }
+            .experience-folder {
+                position: relative;
+                width: min(160px, 40vw);
+                max-width: none;
+                height: auto;
+                opacity: 1;
+                transform: none !important;
+                left: auto !important;
+                right: auto !important;
+                top: auto !important;
+                z-index: 1;
+            }
+            .experience-folder.tilt-left,
+            .experience-folder.tilt-center,
+            .experience-folder.tilt-right {
+                top: auto;
+                left: auto;
+                right: auto;
+                transform: none !important;
+            }
+            .experience-folder.tilt-right {
+                grid-column: 1 / -1;
+                justify-self: center;
+            }
+            .experience-folder .folder-label {
+                opacity: 0;
+                transform: translateX(-50%) translateY(4px) scale(0.96);
+            }
+            .experience-folder.is-open {
+                z-index: 6;
+            }
+            .experience-folder.is-open .folder-label {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+            .experience-gallery {
+                position: absolute;
+                left: 50%;
+                top: calc(100% + 8px);
+                width: min(320px, 80vw);
+                transform: translateX(-50%) translateY(12px);
+            }
+            .experience-folder.is-open .experience-gallery {
+                transform: translateX(-50%) translateY(0);
             }
             .about-scroll .animated.appear {
                 opacity: 1;
@@ -815,6 +868,7 @@
             if (!tiles) {
                 return;
             }
+            var isMobileExperienceLayout = window.innerWidth <= 767;
             var preview = document.getElementById('about-preview');
             var previewImage = preview ? preview.querySelector('.about-preview-image') : null;
             var previewCaption = preview ? preview.querySelector('.about-preview-caption') : null;
@@ -899,81 +953,83 @@
                         openPreview(image, folder);
                     });
                 });
-                folder.addEventListener('pointerdown', function (event) {
-                    if (event.button !== 0 && event.button !== undefined) {
-                        return;
-                    }
-                    event.preventDefault();
-                    folder.dataset.dragging = "0";
-                    var tilesRect = tiles.getBoundingClientRect();
-                    var rect = folder.getBoundingClientRect();
-                    folder.style.left = (rect.left - tilesRect.left) + "px";
-                    folder.style.top = (rect.top - tilesRect.top) + "px";
-                    folder.style.right = "auto";
-                    folder.setPointerCapture(event.pointerId);
-                    folder.classList.add('is-pressed');
-                    var offsetX = event.clientX - rect.left;
-                    var offsetY = event.clientY - rect.top;
-                    var startX = event.clientX;
-                    var startY = event.clientY;
-                    var currentX = rect.left - tilesRect.left;
-                    var currentY = rect.top - tilesRect.top;
-                    var targetX = currentX;
-                    var targetY = currentY;
-                    var hasStartedDragging = false;
-                    var animationFrame = 0;
-                    function animateTowardTarget() {
-                        var dx = targetX - currentX;
-                        var dy = targetY - currentY;
-                        currentX += dx * 0.1;
-                        currentY += dy * 0.1;
-                        if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
-                            currentX = targetX;
-                            currentY = targetY;
-                        }
-                        folder.style.left = currentX + "px";
-                        folder.style.top = currentY + "px";
-                        if (hasStartedDragging || Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2) {
-                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
-                        } else {
-                            animationFrame = 0;
-                        }
-                    }
-                    function onMove(moveEvent) {
-                        var dx = Math.abs(moveEvent.clientX - startX);
-                        var dy = Math.abs(moveEvent.clientY - startY);
-                        if (dx > 3 || dy > 3) {
-                            folder.dataset.dragging = "1";
-                            if (!hasStartedDragging) {
-                                hasStartedDragging = true;
-                                folder.classList.remove('is-pressed');
-                                folder.classList.add('is-dragging');
-                            }
-                        }
-                        if (!hasStartedDragging) {
+                if (!isMobileExperienceLayout) {
+                    folder.addEventListener('pointerdown', function (event) {
+                        if (event.button !== 0 && event.button !== undefined) {
                             return;
                         }
-                        targetX = moveEvent.clientX - tilesRect.left - offsetX;
-                        targetY = moveEvent.clientY - tilesRect.top - offsetY;
-                        if (!animationFrame) {
-                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                        event.preventDefault();
+                        folder.dataset.dragging = "0";
+                        var tilesRect = tiles.getBoundingClientRect();
+                        var rect = folder.getBoundingClientRect();
+                        folder.style.left = (rect.left - tilesRect.left) + "px";
+                        folder.style.top = (rect.top - tilesRect.top) + "px";
+                        folder.style.right = "auto";
+                        folder.setPointerCapture(event.pointerId);
+                        folder.classList.add('is-pressed');
+                        var offsetX = event.clientX - rect.left;
+                        var offsetY = event.clientY - rect.top;
+                        var startX = event.clientX;
+                        var startY = event.clientY;
+                        var currentX = rect.left - tilesRect.left;
+                        var currentY = rect.top - tilesRect.top;
+                        var targetX = currentX;
+                        var targetY = currentY;
+                        var hasStartedDragging = false;
+                        var animationFrame = 0;
+                        function animateTowardTarget() {
+                            var dx = targetX - currentX;
+                            var dy = targetY - currentY;
+                            currentX += dx * 0.1;
+                            currentY += dy * 0.1;
+                            if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
+                                currentX = targetX;
+                                currentY = targetY;
+                            }
+                            folder.style.left = currentX + "px";
+                            folder.style.top = currentY + "px";
+                            if (hasStartedDragging || Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2) {
+                                animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                            } else {
+                                animationFrame = 0;
+                            }
                         }
-                    }
-                    function onUp() {
-                        hasStartedDragging = false;
-                        folder.classList.remove('is-pressed');
-                        folder.classList.remove('is-dragging');
-                        if (!animationFrame && (Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2)) {
-                            animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                        function onMove(moveEvent) {
+                            var dx = Math.abs(moveEvent.clientX - startX);
+                            var dy = Math.abs(moveEvent.clientY - startY);
+                            if (dx > 3 || dy > 3) {
+                                folder.dataset.dragging = "1";
+                                if (!hasStartedDragging) {
+                                    hasStartedDragging = true;
+                                    folder.classList.remove('is-pressed');
+                                    folder.classList.add('is-dragging');
+                                }
+                            }
+                            if (!hasStartedDragging) {
+                                return;
+                            }
+                            targetX = moveEvent.clientX - tilesRect.left - offsetX;
+                            targetY = moveEvent.clientY - tilesRect.top - offsetY;
+                            if (!animationFrame) {
+                                animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                            }
                         }
-                        folder.removeEventListener('pointermove', onMove);
-                        folder.removeEventListener('pointerup', onUp);
-                        folder.removeEventListener('pointercancel', onUp);
-                    }
-                    folder.addEventListener('pointermove', onMove);
-                    folder.addEventListener('pointerup', onUp);
-                    folder.addEventListener('pointercancel', onUp);
-                });
+                        function onUp() {
+                            hasStartedDragging = false;
+                            folder.classList.remove('is-pressed');
+                            folder.classList.remove('is-dragging');
+                            if (!animationFrame && (Math.abs(targetX - currentX) > 0.2 || Math.abs(targetY - currentY) > 0.2)) {
+                                animationFrame = window.requestAnimationFrame(animateTowardTarget);
+                            }
+                            folder.removeEventListener('pointermove', onMove);
+                            folder.removeEventListener('pointerup', onUp);
+                            folder.removeEventListener('pointercancel', onUp);
+                        }
+                        folder.addEventListener('pointermove', onMove);
+                        folder.addEventListener('pointerup', onUp);
+                        folder.addEventListener('pointercancel', onUp);
+                    });
+                }
                 folder.addEventListener('click', function () {
                     if (preview && preview.classList.contains('is-open')) {
                         return;
