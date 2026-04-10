@@ -36,8 +36,35 @@
     var isSwitching = false;
     var isAlbumOpen = false;
     var timers = [];
+    var coverCache = {};
     var SWITCH_PREP_MS = 70;
     var RESTART_DELAY_MS = 120;
+
+    function preloadCover(imagePath) {
+        if (!imagePath) {
+            return Promise.resolve();
+        }
+        if (coverCache[imagePath]) {
+            return coverCache[imagePath];
+        }
+        coverCache[imagePath] = new Promise(function (resolve) {
+            var img = new Image();
+            function done() {
+                resolve();
+            }
+            img.onload = done;
+            img.onerror = done;
+            img.src = imagePath;
+            if (img.complete) {
+                done();
+                return;
+            }
+            if (typeof img.decode === "function") {
+                img.decode().then(done).catch(done);
+            }
+        });
+        return coverCache[imagePath];
+    }
 
     function setCover(target, imagePath) {
         if (!target) {
@@ -206,14 +233,16 @@
         syncToggleButton();
 
         queueTimeout(function () {
-            currentIndex = nextIndex;
-            setCover(currentCover, tracks[currentIndex].cover);
-            setCover(nextCover, tracks[currentIndex].cover);
-            setTrackMeta(tracks[currentIndex]);
-            queueTimeout(function () {
-                isSwitching = false;
-                beginPlaying();
-            }, RESTART_DELAY_MS);
+            preloadCover(tracks[nextIndex].cover).then(function () {
+                currentIndex = nextIndex;
+                setCover(currentCover, tracks[currentIndex].cover);
+                setCover(nextCover, tracks[currentIndex].cover);
+                setTrackMeta(tracks[currentIndex]);
+                queueTimeout(function () {
+                    isSwitching = false;
+                    beginPlaying();
+                }, RESTART_DELAY_MS);
+            });
         }, SWITCH_PREP_MS);
     }
 
@@ -273,16 +302,22 @@
             if (!button || isSwitching) {
                 return;
             }
-            currentIndex = Number(button.getAttribute("data-track-index"));
-            setCover(currentCover, tracks[currentIndex].cover);
-            setCover(nextCover, tracks[currentIndex].cover);
-            setTrackMeta(tracks[currentIndex]);
-            closeAlbumView();
-            beginPlaying();
+            var nextIndex = Number(button.getAttribute("data-track-index"));
+            preloadCover(tracks[nextIndex].cover).then(function () {
+                currentIndex = nextIndex;
+                setCover(currentCover, tracks[currentIndex].cover);
+                setCover(nextCover, tracks[currentIndex].cover);
+                setTrackMeta(tracks[currentIndex]);
+                closeAlbumView();
+                beginPlaying();
+            });
         });
     }
 
     renderAlbumList();
+    tracks.forEach(function (track) {
+        preloadCover(track.cover);
+    });
     setCover(currentCover, tracks[currentIndex].cover);
     setCover(nextCover, tracks[currentIndex].cover);
     setTrackMeta(tracks[currentIndex]);
