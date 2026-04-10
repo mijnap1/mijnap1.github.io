@@ -458,6 +458,7 @@ body.page-leaving .home-hello-container .caption .hello-mark {
     position: absolute;
     inset: 0;
     z-index: 1;
+    isolation: isolate;
     pointer-events: none;
     opacity: 1;
     transition: opacity 0.42s ease, transform 0.42s ease;
@@ -476,15 +477,46 @@ body.page-leaving .home-hello-container .caption .hello-mark {
     background: radial-gradient(circle, rgba(243, 255, 220, 0.82) 0%, rgba(209, 244, 126, 0.3) 45%, rgba(169, 212, 0, 0) 78%);
     filter: blur(8px);
     opacity: 0.7;
+    z-index: 4;
+}
+
+.home-hero-clock-glass {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.home-hero-clock-scale {
+    display: none;
+}
+
+.home-hero-clock-scale-item {
+    display: none;
+}
+
+.home-hero-story {
+    display: none;
+}
+
+.home-hero-story-eyebrow,
+.home-hero-story-title,
+.home-hero-story-body {
+    display: none;
 }
 
 .home-hero-clock-hand {
     position: absolute;
     left: 50%;
     top: 50%;
+    z-index: 3;
     transform-origin: 0 50%;
     will-change: transform;
     transition: transform 0.42s cubic-bezier(0.22, 0.8, 0.24, 1);
+}
+
+.home-hero-clock.is-booting .home-hero-clock-hand {
+    transition: none;
 }
 
 .home-hero-clock-hand::before {
