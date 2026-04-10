@@ -230,6 +230,24 @@
             body {
                 overflow-x: hidden;
             }
+            .about-frame::before {
+                content: "";
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                width: calc(100vw - 24px);
+                height: 108px;
+                z-index: 4;
+                pointer-events: none;
+                overflow: hidden;
+                border-radius: 14px 14px 18px 18px;
+                background: linear-gradient(180deg, rgba(246, 245, 239, 0.82) 0%, rgba(246, 245, 239, 0.62) 58%, rgba(246, 245, 239, 0) 100%);
+                backdrop-filter: blur(10px) saturate(1.02);
+                -webkit-backdrop-filter: blur(10px) saturate(1.02);
+            }
+            body.dark-mode .about-frame::before {
+                background: linear-gradient(180deg, rgba(15, 17, 19, 0.82) 0%, rgba(15, 17, 19, 0.62) 58%, rgba(15, 17, 19, 0) 100%);
+            }
             #logo img {
                 width: 75px;
                 height: 75px;
@@ -246,8 +264,8 @@
             }
             .theme-toggle-mobile {
                 position: fixed;
-                top: 85px;
-                right: 35px;
+                top: 37px;
+                right: 95px;
                 width: 50px;
                 height: 40px;
                 border: 0px;
@@ -274,6 +292,22 @@
             .about-section-head {
                 margin-bottom: 16px;
             }
+            .about-hero-text {
+                display: flex;
+                justify-content: center;
+            }
+            .about-quote-title {
+                font-size: clamp(34px, 13vw, 52px);
+                line-height: 1;
+                margin: 0;
+                max-width: 100%;
+                white-space: normal;
+                text-align: center;
+            }
+            .about-quote-title .nowrap {
+                display: inline-block;
+                white-space: nowrap;
+            }
             .about-eyebrow {
                 font-size: 20px;
                 letter-spacing: 0.2em;
@@ -282,6 +316,9 @@
                 font-size: 16px;
                 line-height: 26px;
             }
+            .about-scroll-hint {
+                display: none;
+            }
             .card-snap {
                 max-width: 240px;
                 margin-left: 20px;
@@ -289,6 +326,9 @@
             .sticker-draggable {
                 width: 60px;
                 max-width: 18vw;
+            }
+            .sticker-story .sticker-draggable:nth-child(1) {
+                top: 20px !important;
             }
             .experience-card {
                 padding: 4px;

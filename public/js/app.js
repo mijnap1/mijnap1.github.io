@@ -665,6 +665,7 @@ $(document).ready(function() {
             '3dvoxelizer': '/public/ico/projects/grid/dog.png',
             'langswitch': '/public/ico/projects/grid/langswitch.png',
             'pascal-mystery-hexagon': '/public/ico/projects/grid/pascal.png',
+            'hand-detector-lab': '/public/ico/projects/grid/hand.png',
             'Notion-timer': '/public/ico/projects/grid/notion-timer.png',
             'Team Tomorrow': '/public/ico/projects/grid/tt.png',
             'UTKCC': '/public/ico/projects/grid/utkcc.png',
@@ -677,7 +678,8 @@ $(document).ready(function() {
             'Detector': 'center -70px'
         };
         var gridImageSizeMap = {
-            'Detector': '133% auto'
+            'Detector': '133% auto',
+            'hand-detector-lab': '130% auto'
         };
         var gridImageRepeatMap = {
             'Detector': 'no-repeat'
@@ -767,19 +769,39 @@ $(document).ready(function() {
         clearPortfolioViewTimers();
         portfolioViewMode = 'carousel';
         portfolioViewTransitioning = true;
+        var isCompactPortfolioViewport = window.innerWidth <= 991;
+        var isMobilePortfolioViewport = window.innerWidth <= 767;
+        var $portfolioBg = $('.portfolio-carousel-bg');
         $('body')
             .addClass('portfolio-grid-transition portfolio-grid-stage-return portfolio-grid-stage-panel')
             .removeClass('portfolio-grid-mode portfolio-grid-stage-exit');
         $portfolioGrid.attr('aria-hidden', 'true');
+        if (isMobilePortfolioViewport && $portfolioBg.length) {
+            $portfolioBg.css({
+                top: '132px',
+                right: '24px',
+                bottom: '24px',
+                width: 'calc(100% - 48px)',
+                transition: 'width 0.18s cubic-bezier(1, 0, .25, 1), opacity 0.18s ease'
+            });
+        }
         updatePortfolioViewToggle();
         schedulePortfolioViewStep(function() {
+            if (isMobilePortfolioViewport && $portfolioBg.length) {
+                $portfolioBg.css('width', '15px');
+            }
             if (pendingPortfolioGridTargetIndex !== null) {
                 setPortfolioActiveIndexImmediate(pendingPortfolioGridTargetIndex);
                 syncPortfolioUi(false);
             }
-            $('body').removeClass('portfolio-grid-stage-panel');
+            if (!isCompactPortfolioViewport) {
+                $('body').removeClass('portfolio-grid-stage-panel');
+            }
         }, 20);
         schedulePortfolioViewStep(function() {
+            if (isMobilePortfolioViewport && $portfolioBg.length) {
+                $portfolioBg.attr('style', '');
+            }
             resetPortfolioGridState();
             portfolioViewTransitioning = false;
             updatePortfolioViewToggle();

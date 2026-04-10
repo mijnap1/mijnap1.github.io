@@ -1994,6 +1994,10 @@ body:not(.dark-mode) .music-dock__control.is-active:hover {
     margin-top: 56px;
 }
 
+.about-philosophies {
+    margin-top: 72px;
+}
+
 .about-experience {
     position: relative;
     z-index: 2;
@@ -2261,6 +2265,40 @@ body:not(.dark-mode) .music-dock__control.is-active:hover {
     max-width: 780px;
     font-family: "Poppins", "Montserrat", sans-serif;
     font-weight: 400;
+}
+
+.about-philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+}
+
+.about-philosophy-card {
+    min-height: 220px;
+    padding: 24px 22px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    border-radius: 24px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(248, 245, 238, 0.98));
+    box-shadow: 0 18px 40px rgba(17, 17, 17, 0.06);
+}
+
+.about-philosophy-title {
+    margin: 0 0 12px;
+    font-family: "Cormorant Garamond", "Times New Roman", serif;
+    font-size: 34px;
+    line-height: 0.95;
+    font-style: italic;
+    font-weight: 600;
+    color: #222;
+}
+
+.about-philosophy-copy {
+    margin: 0;
+    font-family: "Poppins", "Montserrat", sans-serif;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #3a3a3a;
 }
 
 .about-experience-tiles {
@@ -2746,7 +2784,8 @@ body.about-preview-open {
     }
 
     .about-story-grid,
-    .about-highlights-grid {
+    .about-highlights-grid,
+    .about-philosophy-grid {
         grid-template-columns: 1fr;
     }
 
