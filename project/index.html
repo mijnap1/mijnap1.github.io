@@ -119,6 +119,9 @@
             .portfolio-title {
                 margin-top: 80px;
             }
+            .item.has-wrapped-title .portfolio-img-box img {
+                margin-top: -48px !important;
+            }
             .portfolio-intro {
                 margin-top: 6px;
             }
@@ -764,6 +767,39 @@
     <script defer type="text/javascript" src="/public/js/jquery.lazy.min.js"></script>
     <script defer type="text/javascript" src="/modules/home/js/typed.min.js"></script>
     <script defer type="text/javascript" src="/modules/home/js/home.js"></script>
+    <script>
+        (function () {
+            function updateMobileWrappedProjectTitles() {
+                var items = document.querySelectorAll('#carousel_portfolio .item');
+                if (!items.length) {
+                    return;
+                }
+                for (var i = 0; i < items.length; i++) {
+                    var item = items[i];
+                    item.classList.remove('has-wrapped-title');
+                }
+                if (window.innerWidth > 767) {
+                    return;
+                }
+                for (var j = 0; j < items.length; j++) {
+                    var title = items[j].querySelector('.portfolio-title');
+                    if (!title) {
+                        continue;
+                    }
+                    var computed = window.getComputedStyle(title);
+                    var lineHeight = parseFloat(computed.lineHeight);
+                    if (!lineHeight) {
+                        continue;
+                    }
+                    if (title.offsetHeight > (lineHeight * 1.5)) {
+                        items[j].classList.add('has-wrapped-title');
+                    }
+                }
+            }
+            updateMobileWrappedProjectTitles();
+            window.addEventListener('resize', updateMobileWrappedProjectTitles);
+        })();
+    </script>
     <script>
         (function () {
             var toggles = document.querySelectorAll('.theme-toggle-btn-main');
