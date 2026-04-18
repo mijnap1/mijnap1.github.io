@@ -3612,15 +3612,28 @@ body,
     width: 30px;
     height: 3px;
     border-radius: 1px;
-    -webkit-transition: all 0.3s 0s ease, background 0s 1.3s ease;
-    transition: all 0.3s 0s ease, background 0s 1.3s ease;
+    -webkit-transition-property: transform, width, opacity, margin, top, background-color;
+    transition-property: transform, width, opacity, margin, top, background-color;
+    -webkit-transition-duration: 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.55s;
+    transition-duration: 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.55s;
+    -webkit-transition-delay: 0s, 0s, 0s, 0s, 0s, 0s;
+    transition-delay: 0s, 0s, 0s, 0s, 0s, 0s;
+    -webkit-transition-timing-function: ease, ease, ease, ease, ease, ease;
+    transition-timing-function: ease, ease, ease, ease, ease, ease;
     background: #000;
 }
 
 .navbar-toggle .icon-bar+.icon-bar {}
 
 .navbar-toggle .icon-bar {
-    transition: all 0.3s 0s ease, background 0s 0s ease;
+    -webkit-transition-property: transform, width, opacity, margin, top, background-color;
+    transition-property: transform, width, opacity, margin, top, background-color;
+    -webkit-transition-duration: 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.55s;
+    transition-duration: 0.3s, 0.3s, 0.3s, 0.3s, 0.3s, 0.55s;
+    -webkit-transition-delay: 0s, 0s, 0s, 0s, 0s, 0s;
+    transition-delay: 0s, 0s, 0s, 0s, 0s, 0s;
+    -webkit-transition-timing-function: ease, ease, ease, ease, ease, ease;
+    transition-timing-function: ease, ease, ease, ease, ease, ease;
 }
 
 .navbar-toggle .icon-bar.first,
@@ -3666,8 +3679,14 @@ body,
 
 .navbar-toggle.navbar-close .icon-bar {
     background: #fff;
-    -webkit-transition-delay: 0s;
-    transition-delay: 0s;
+    -webkit-transition-delay: 0s, 0s, 0s, 0s, 0s, 0.58s;
+    transition-delay: 0s, 0s, 0s, 0s, 0s, 0.58s;
+}
+
+.navbar-toggle.is-closing .icon-bar {
+    background: #fff;
+    -webkit-transition-delay: 0s, 0s, 0s, 0s, 0s, 1.45s;
+    transition-delay: 0s, 0s, 0s, 0s, 0s, 1.45s;
 }
 
 .navbar-toggle.navbar-close .icon-bar.center {
