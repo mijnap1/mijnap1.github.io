@@ -261,6 +261,7 @@ $(document).ready(function() {
         var clockTickTimer = null;
         var storyTimer = null;
         var storyPanelSwapTimer = null;
+        var activeStoryStep = 0;
         var scaleItems = clockScale.querySelectorAll('.home-hero-clock-scale-item');
         var storyEntries = [
             {
@@ -318,6 +319,10 @@ $(document).ready(function() {
         }
 
         function setActiveStoryStep(stepIndex, immediate) {
+            if (stepIndex < 0 || stepIndex >= storyEntries.length) {
+                return;
+            }
+            activeStoryStep = stepIndex;
             for (var scaleCursor = 0; scaleCursor < scaleItems.length; scaleCursor++) {
                 scaleItems[scaleCursor].classList.remove('slot-top', 'slot-center', 'slot-bottom');
                 scaleItems[scaleCursor].classList.add(storySlotMap[stepIndex][scaleCursor]);
@@ -336,6 +341,90 @@ $(document).ready(function() {
             } else {
                 updateStoryPanel(storyEntries[stepIndex]);
             }
+        }
+
+        function moveStoryStep(direction) {
+            var nextStep = activeStoryStep + direction;
+            if (nextStep < 0) {
+                nextStep = storyEntries.length - 1;
+            } else if (nextStep >= storyEntries.length) {
+                nextStep = 0;
+            }
+            stopStorySequence();
+            setActiveStoryStep(nextStep, false);
+        }
+
+        function bindMobileSwipeInteractions() {
+            if (window.innerWidth > 767) {
+                return;
+            }
+
+            var touchStartX = 0;
+            var touchStartY = 0;
+            var touchLastX = 0;
+            var touchLastY = 0;
+            var isTrackingTouch = false;
+            var hasHandledSwipe = false;
+            var minSwipeDistance = 44;
+
+            function shouldIgnoreSwipeTarget(target) {
+                if (!target || typeof target.closest !== 'function') {
+                    return false;
+                }
+                return !!target.closest('a, button, input, textarea, select, .navbar-box, .mobile-alert, #navbar-open-button');
+            }
+
+            document.addEventListener('touchstart', function (event) {
+                if (window.innerWidth > 767 || document.body.classList.contains('navbar-open') || shouldIgnoreSwipeTarget(event.target)) {
+                    isTrackingTouch = false;
+                    return;
+                }
+                if (!event.touches || event.touches.length !== 1) {
+                    isTrackingTouch = false;
+                    return;
+                }
+                touchStartX = event.touches[0].clientX;
+                touchStartY = event.touches[0].clientY;
+                touchLastX = touchStartX;
+                touchLastY = touchStartY;
+                isTrackingTouch = true;
+                hasHandledSwipe = false;
+            }, { passive: true });
+
+            document.addEventListener('touchmove', function (event) {
+                if (!isTrackingTouch || !event.touches || event.touches.length !== 1) {
+                    return;
+                }
+                touchLastX = event.touches[0].clientX;
+                touchLastY = event.touches[0].clientY;
+
+                var deltaX = touchLastX - touchStartX;
+                var deltaY = touchLastY - touchStartY;
+                if (Math.abs(deltaY) > 18 && Math.abs(deltaY) > Math.abs(deltaX) * 1.15 && event.cancelable) {
+                    event.preventDefault();
+                }
+            }, { passive: false });
+
+            document.addEventListener('touchend', function () {
+                if (!isTrackingTouch || hasHandledSwipe) {
+                    isTrackingTouch = false;
+                    return;
+                }
+                var deltaX = touchLastX - touchStartX;
+                var deltaY = touchLastY - touchStartY;
+                isTrackingTouch = false;
+
+                if (Math.abs(deltaY) < minSwipeDistance || Math.abs(deltaY) < Math.abs(deltaX) * 1.2) {
+                    return;
+                }
+
+                hasHandledSwipe = true;
+                moveStoryStep(deltaY < 0 ? 1 : -1);
+            }, { passive: true });
+
+            document.addEventListener('touchcancel', function () {
+                isTrackingTouch = false;
+            }, { passive: true });
         }
 
         function bindStoryInteractions() {
@@ -454,6 +543,7 @@ $(document).ready(function() {
         }
 
         bindStoryInteractions();
+        bindMobileSwipeInteractions();
         clockLayer.classList.add('is-booting');
         updateHeroClock();
         startClockTicking();

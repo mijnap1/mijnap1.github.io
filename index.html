@@ -196,6 +196,16 @@
                 display: none;
             }
 
+            body.dark-mode .home-hero-clock {
+                background: transparent;
+                box-shadow: none;
+            }
+
+            body.dark-mode .home-hero-clock::after {
+                border-color: transparent;
+                box-shadow: none;
+            }
+
             .home-hero-clock-glass {
                 inset: 28px;
                 border-radius: 50%;
@@ -206,6 +216,17 @@
                     inset 0 -28px 60px rgba(196, 200, 190, 0.08);
                 backdrop-filter: blur(3px) saturate(1.03);
                 -webkit-backdrop-filter: blur(3px) saturate(1.03);
+            }
+
+            body.dark-mode .home-hero-clock-glass {
+                background:
+                    radial-gradient(circle at 58% 38%, rgba(98, 104, 101, 0.28) 0%, rgba(54, 60, 60, 0.2) 34%, rgba(19, 24, 25, 0.04) 68%),
+                    linear-gradient(122deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.018) 42%, rgba(0, 0, 0, 0.12));
+                box-shadow:
+                    inset -14px 0 38px rgba(255, 255, 255, 0.035),
+                    inset 22px 0 48px rgba(0, 0, 0, 0.2);
+                backdrop-filter: blur(2px) saturate(1.02);
+                -webkit-backdrop-filter: blur(2px) saturate(1.02);
             }
 
             .home-hero-rain {
