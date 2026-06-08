@@ -2,7 +2,7 @@
 
 Hi! I’m Jamie Ryu, and this is my personal portfolio site—a simple, friendly space to share what I build and what I’m into. You’ll find my projects, music picks, and ways to connect, all presented with clean typography, smooth flow, and quick navigation. The site is fully static and available in both English and French.
 
-Green accent: `#a9d400` 💚
+Green accent: `--brand-accent` uses `#a9d400` in light mode and `#8fae12` in dark mode.
 
 ## Sections at a Glance
 

@@ -127,7 +127,6 @@ body.intro-reveal #navbar-open-button,
 body.intro-reveal #lang-box,
 body.intro-reveal #link-box,
 body.intro-reveal #social-box,
-body.intro-reveal #footer-box,
 body.intro-reveal .frame-table-container {
     animation: intro-page-fade-in 0.65s ease forwards;
 }
@@ -165,7 +164,7 @@ body.intro-reveal .frame-table-container {
     right: 0;
     bottom: 8px;
     z-index: -1;
-    background: #a9d400;
+    background: var(--brand-accent);
     height: 10px;
     max-width: 100%;
 }
@@ -209,7 +208,7 @@ body.intro-reveal .frame-table-container {
         width: 1px;
         height: 20px;
         margin-top: -10px;
-        background: #a9d400;
+        background: var(--brand-accent);
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         -webkit-transition-property: -webkit-transform, right;
@@ -228,7 +227,7 @@ body.intro-reveal .frame-table-container {
         top: 0px;
         width: 1px;
         height: 0px;
-        background: #a9d400;
+        background: var(--brand-accent);
         -webkit-transition-property: height;
         transition-property: height;
         -webkit-transition-duration: 0.3s;
@@ -399,7 +398,7 @@ body.page-leaving .home-hello-container .caption .hello-mark {
 
 .home-hello-container .link a {
     text-decoration: none;
-    color: #a9d400;
+    color: var(--brand-accent);
     font-weight: 700;
     display: inline-block;
     min-width: 140px;
@@ -408,7 +407,7 @@ body.page-leaving .home-hello-container .caption .hello-mark {
 .home-hello-container .link a:focus,
 .home-hello-container .link a:hover {
     text-decoration: none;
-    color: #a9d400;
+    color: var(--brand-accent);
 }
 
 .home-hello-container .image {
@@ -429,11 +428,11 @@ body.page-leaving .home-hello-container .caption .hello-mark {
     right: 0px;
     width: 0px;
     height: 100%;
-    background: #a9d400;
-    background: -webkit-linear-gradient(45deg, #a9d400 0%, #1bd258 100%);
-    background: -moz-linear-gradient(45deg, #a9d400 0%, #1bd258 100%);
-    background: -o-linear-gradient(45deg, #a9d400 0%, #1bd258 100%);
-    background: linear-gradient(45deg, #a9d400 0%, #1bd258 100%);
+    background: var(--brand-accent);
+    background: -webkit-linear-gradient(45deg, var(--brand-accent) 0%, var(--brand-accent-gradient-end) 100%);
+    background: -moz-linear-gradient(45deg, var(--brand-accent) 0%, var(--brand-accent-gradient-end) 100%);
+    background: -o-linear-gradient(45deg, var(--brand-accent) 0%, var(--brand-accent-gradient-end) 100%);
+    background: linear-gradient(45deg, var(--brand-accent) 0%, var(--brand-accent-gradient-end) 100%);
     -webkit-transition-property: width;
     -moz-transition-property: width;
     transition-property: width;
@@ -1285,7 +1284,7 @@ body.page-leaving .home-hero-clock {
 
 .home-social-container .desc b {
     font-weight: 300;
-    color: #a9d400;
+    color: var(--brand-accent);
 }
 
 .home-social-container .link {
