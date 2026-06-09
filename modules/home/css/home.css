@@ -518,6 +518,11 @@ body.page-leaving .home-hello-container .caption .hello-mark {
     transition: none;
 }
 
+.home-hero-clock.is-booting .home-hero-clock-scale-item,
+.home-hero-clock.is-booting + .home-hero-story {
+    transition: none;
+}
+
 .home-hero-clock-hand::before {
     content: '';
     display: block;
@@ -841,6 +846,10 @@ body.page-leaving .home-hero-clock {
 
     .home-hero-clear-streak {
         width: 62%;
+    }
+
+    body.dark-mode .home-hero-clear {
+        display: none;
     }
 
     .home-hero-clock::before {

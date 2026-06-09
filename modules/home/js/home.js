@@ -145,7 +145,7 @@ $(document).ready(function() {
         var clearLayer = document.createElement('div');
         clearLayer.className = 'home-hero-clear';
         var clockLayer = document.createElement('div');
-        clockLayer.className = 'home-hero-clock';
+        clockLayer.className = 'home-hero-clock is-booting';
         var clockGlass = document.createElement('div');
         clockGlass.className = 'home-hero-clock-glass';
         var clockScale = document.createElement('div');
@@ -158,6 +158,9 @@ $(document).ready(function() {
         storyTitle.className = 'home-hero-story-title';
         var storyBody = document.createElement('span');
         storyBody.className = 'home-hero-story-body';
+        storyEyebrow.textContent = '01';
+        storyTitle.textContent = 'Hello,';
+        storyBody.textContent = 'I am Jamie Ryu.';
         storyPanel.appendChild(storyEyebrow);
         storyPanel.appendChild(storyTitle);
         storyPanel.appendChild(storyBody);
@@ -176,11 +179,13 @@ $(document).ready(function() {
 
         for (var scaleIndex = 0; scaleIndex < 3; scaleIndex++) {
             var scaleItem = document.createElement('span');
-            scaleItem.className = 'home-hero-clock-scale-item';
+            var initialSlotClass = scaleIndex === 0 ? 'slot-center' : (scaleIndex === 1 ? 'slot-top' : 'slot-bottom');
+            scaleItem.className = 'home-hero-clock-scale-item ' + initialSlotClass + (scaleIndex === 0 ? ' is-active' : '');
             scaleItem.textContent = '0' + (scaleIndex + 1);
             scaleItem.setAttribute('role', 'button');
             scaleItem.setAttribute('tabindex', '0');
             scaleItem.setAttribute('aria-label', 'Open clock story step ' + (scaleIndex + 1));
+            scaleItem.setAttribute('aria-pressed', scaleIndex === 0 ? 'true' : 'false');
             scaleItem.setAttribute('data-step-index', String(scaleIndex));
             clockScale.appendChild(scaleItem);
         }
@@ -452,7 +457,6 @@ $(document).ready(function() {
                 return;
             }
             stopStorySequence();
-            setActiveStoryStep(0, true);
         }
 
         function getContinuousAngle(previous, next) {
@@ -544,7 +548,6 @@ $(document).ready(function() {
 
         bindStoryInteractions();
         bindMobileSwipeInteractions();
-        clockLayer.classList.add('is-booting');
         updateHeroClock();
         startClockTicking();
         startStorySequence();
