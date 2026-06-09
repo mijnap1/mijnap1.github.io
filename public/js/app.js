@@ -80,6 +80,26 @@ $(document).ready(function() {
     clearSocialLinkFocus();
     window.addEventListener('pageshow', clearSocialLinkFocus);
 
+    function updateThemeAwareImages() {
+        var isDark = document.body.classList.contains('dark-mode');
+        $('img[data-light-src][data-dark-src]').each(function() {
+            var image = this;
+            var nextSrc = isDark ? image.getAttribute('data-dark-src') : image.getAttribute('data-light-src');
+            if (nextSrc && image.getAttribute('src') !== nextSrc) {
+                image.setAttribute('src', nextSrc);
+            }
+        });
+    }
+
+    updateThemeAwareImages();
+    if (window.MutationObserver) {
+        var themeObserver = new MutationObserver(updateThemeAwareImages);
+        themeObserver.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+    }
+
     //autosize
     autosize($('textarea'));
     //tooltip
@@ -670,6 +690,7 @@ $(document).ready(function() {
             'Team Tomorrow': '/public/ico/projects/grid/tt.png',
             'UTKCC': '/public/ico/projects/grid/utkcc.png',
             'LFTimes': '/public/ico/projects/grid/lftimes.png',
+            'myskincare': '/public/ico/projects/grid/myskincare.png',
             'yourname': '/public/ico/projects/grid/yourname.png',
             'Chess Game': '/public/ico/projects/grid/chess.png'
         };
