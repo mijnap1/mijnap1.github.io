@@ -2928,27 +2928,27 @@ body.about-preview-open {
         drop-shadow(0 10px 18px rgba(17, 17, 17, 0.08))
         drop-shadow(0 0 0 rgba(169, 212, 0, 0));
     transition:
-        transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
-        opacity 0.45s ease,
-        filter 0.42s ease;
+        transform 0.72s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.72s ease,
+        opacity 0.42s ease;
     will-change: transform, filter;
 }
 
 #logo a:hover img {
-    transform: translateY(-2px) rotate(-1.5deg) scale(1.025);
+    transform: translate3d(0, -4px, 0) rotate(-1.6deg) scale(1.026);
     opacity: 1;
     filter:
-        drop-shadow(0 14px 20px rgba(17, 17, 17, 0.11))
-        drop-shadow(0 0 12px rgba(169, 212, 0, 0.22));
+        drop-shadow(0 16px 24px rgba(17, 17, 17, 0.13))
+        drop-shadow(0 0 11px rgba(169, 212, 0, 0.18));
 }
 
 #logo a:active img {
-    transition-duration: 0.18s;
-    transform: translateY(0) rotate(-0.5deg) scale(0.992);
+    transition-duration: 0.22s;
+    transform: translate3d(0, -1px, 0) rotate(-0.6deg) scale(1.01);
     opacity: 0.98;
     filter:
-        drop-shadow(0 7px 12px rgba(17, 17, 17, 0.09))
-        drop-shadow(0 0 7px rgba(169, 212, 0, 0.16));
+        drop-shadow(0 10px 16px rgba(17, 17, 17, 0.1))
+        drop-shadow(0 0 7px rgba(169, 212, 0, 0.14));
 }
 
 @keyframes fade-in {
@@ -2975,25 +2975,14 @@ body.about-preview-open {
     }
 }
 
-#logo a::before,
-#logo a::after {
-    content: '';
-    position: absolute;
-    border: 3px solid transparent;
-    width: 0;
-    height: 0;
-}
+@media (prefers-reduced-motion: reduce) {
+    #logo img {
+        transition-duration: 0.01ms;
+    }
 
-#logo a::before {
-    top: 0;
-    left: 0;
-    transition: border-color 0s ease-out 0.2s, width 0.10s ease-out 0.10s, height 0.10s ease-out;
-}
-
-#logo a::after {
-    top: 0;
-    left: 0;
-    transition: border-color 0s ease-out 0.2s, height 0.10s ease-out 0.10s, width 0.10s ease-out;
+    #logo a:hover img {
+        transform: none;
+    }
 }
 
 
