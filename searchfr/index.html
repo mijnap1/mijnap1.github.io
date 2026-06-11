@@ -124,8 +124,8 @@
             }
             .theme-toggle-mobile {
                 position: fixed;
-                top: 85px;
-                right: 35px;
+                top: 37px;
+                right: 95px;
                 width: 50px;
                 height: 40px;
                 border: 0px;
@@ -308,7 +308,7 @@
                                 <div class="search-page">
                                     <form id="search_main_form" method="GET" action="https://mijnap.github.io">
                                         <div class="form-group gr-form">
-                                            <input class="gr-field" type="text" name="s" value="" placeholder="N'hésitez pas à explorer tout sujet qui vous intrigue !" autocomplete="off">
+                                            <input class="gr-field" type="search" name="s" value="" placeholder="Rechercher..." autocomplete="off" enterkeyhint="search" aria-label="Rechercher sur le site">
                                         </div>
                                     </form>
                                     <div class="search-results-wrap">
@@ -332,6 +332,7 @@
         (function () {
             var input = document.querySelector('.gr-field');
             var form = document.getElementById('search_main_form');
+            var searchPage = document.querySelector('.search-page');
             var resultsEl = document.getElementById('search-results');
             var emptyEl = document.getElementById('search-empty');
             var countEl = document.getElementById('search-count');
@@ -458,6 +459,10 @@
 
             function runSearch(value) {
                 var query = normalize(value);
+                var isActive = Boolean(query);
+                if (searchPage) {
+                    searchPage.classList.toggle('search-page--active', isActive);
+                }
                 if (!query) {
                     renderResults([]);
                     return;

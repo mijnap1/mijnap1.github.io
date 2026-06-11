@@ -51,23 +51,10 @@
         }
 
         #footer-box {
-            padding: 10px 18px;
-            border-radius: 12px;
-            overflow: hidden;
-            isolation: isolate;
             opacity: 1;
             transform: translateX(-50%) translateY(0);
             transition: opacity 0.22s ease, transform 0.22s ease;
             will-change: opacity, transform;
-        }
-
-        #footer-box::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url(/public/ico/footer.png) center/93% auto no-repeat;
-            opacity: 0.95;
-            z-index: -1;
         }
 
         #footer-box.about-footer-hidden {
@@ -97,15 +84,17 @@
             transform-origin: 50% 65%;
             animation: none;
             will-change: transform, filter;
-            transition: transform 0.8s cubic-bezier(0.22, 0.8, 0.2, 1);
+            filter: drop-shadow(0 0 0 rgba(169, 212, 0, 0));
+            transition:
+                transform 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.42s ease;
         }
 
         .wave:hover img {
-            animation: cloverHoverPop 0.9s cubic-bezier(0.22, 0.8, 0.2, 1);
-        }
-
-        .wave:not(:hover) img {
-            animation: cloverReturnPop 0.7s cubic-bezier(0.22, 0.8, 0.2, 1);
+            transform: translateY(-0.08em) rotate(-3deg) scale(1.035);
+            filter:
+                drop-shadow(0 0.14em 0.22em rgba(17, 17, 17, 0.12))
+                drop-shadow(0 0 0.38em rgba(169, 212, 0, 0.28));
         }
 
         @keyframes cloverBloom {
@@ -131,32 +120,6 @@
             }
         }
 
-        @keyframes cloverHoverPop {
-            0% {
-                transform: scale(1) rotate(0deg);
-            }
-            40% {
-                transform: scale(1.08) rotate(3deg);
-            }
-            70% {
-                transform: scale(1.02) rotate(-1deg);
-            }
-            100% {
-                transform: scale(1.05) rotate(1deg);
-            }
-        }
-
-        @keyframes cloverReturnPop {
-            0% {
-                transform: scale(1.05) rotate(1deg);
-            }
-            55% {
-                transform: scale(0.99) rotate(-0.5deg);
-            }
-            100% {
-                transform: scale(1) rotate(0deg);
-            }
-        }
         .card-snap {
             position: relative;
             width: 100%;
