@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="2020년부터 현재까지 한국의 유행어를 모은 타임라인" />
+    <title>유행어 타임라인</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-brand">
+      <a href="index.html">요즘말</a>
+      <p>그때 우리는 이렇게 말했다.</p>
+    </header>
+    <nav class="corner-nav" aria-label="사이트 메뉴">
+      <a href="sources.html">Sources</a>
+      <a href="about.html">About</a>
+    </nav>
+    <main class="timeline" aria-label="2020년부터 현재까지의 유행어 타임라인">
+      <div class="timeline-track" aria-live="polite"></div>
+      <noscript>이 타임라인을 보려면 JavaScript를 켜주세요.</noscript>
+    </main>
+    <aside class="definition-panel" aria-live="polite" aria-hidden="true">
+      <button class="definition-close" type="button" aria-label="설명 닫기">×</button>
+      <div class="definition-meta">
+        <time class="definition-date"></time>
+        <span>유행어 뜻</span>
+      </div>
+      <div class="definition-heading">
+        <span class="definition-icon" aria-hidden="true"></span>
+        <h2 class="definition-term"></h2>
+      </div>
+      <p class="definition-text"></p>
+      <div class="definition-origin">
+        <span>유래</span>
+        <p class="definition-origin-text"></p>
+      </div>
+      <div class="definition-usage">
+        <span>활용</span>
+        <p class="definition-when"></p>
+        <blockquote class="definition-example"></blockquote>
+      </div>
+    </aside>
+  </body>
+</html>
