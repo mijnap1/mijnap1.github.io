@@ -4,11 +4,30 @@
         return;
     }
 
-    var WEATHER_URL = "https://api.open-meteo.com/v1/forecast?latitude=43.6532&longitude=-79.3832&current=weather_code,is_day,precipitation,rain,showers,snowfall&minutely_15=precipitation,rain,showers,snowfall,weather_code&past_minutely_15=2&forecast_minutely_15=1&timezone=America%2FToronto";
+    var WEATHER_URL = "https://api.open-meteo.com/v1/forecast?latitude=43.6532&longitude=-79.3832&current=temperature_2m,weather_code,is_day,precipitation,rain,showers,snowfall&minutely_15=precipitation,rain,showers,snowfall,weather_code&past_minutely_15=2&forecast_minutely_15=1&timezone=America%2FToronto";
     var CURRENT_CONDITIONS_URL = "https://api.weather.gc.ca/collections/citypageweather-realtime/items/on-128?f=json";
     var WEATHER_REFRESH_MS = 15 * 60 * 1000;
     var weatherIconName = "sunny-outline";
     var weatherIsDay = true;
+    var weatherTemperature = null;
+    var CONDITION_LABELS = {
+        en: {
+            clear: "Clear",
+            "partly-cloudy": "Partly cloudy",
+            cloud: "Cloudy",
+            rain: "Rain",
+            snow: "Snow",
+            storm: "Thunderstorm"
+        },
+        fr: {
+            clear: "Dégagé",
+            "partly-cloudy": "Partiellement nuageux",
+            cloud: "Nuageux",
+            rain: "Pluie",
+            snow: "Neige",
+            storm: "Orage"
+        }
+    };
 
     timeEl.classList.add("tz-single");
     timeEl.innerHTML = '<div class="tz-row"><ion-icon class="tz-weather-icon" name="sunny-outline"></ion-icon><span class="tz-text"></span></div>';
@@ -197,14 +216,43 @@
         return "clear";
     }
 
-    function publishWeatherState(condition, isDay, weatherCode, source) {
-        document.documentElement.setAttribute("data-toronto-weather", condition);
-        document.documentElement.setAttribute("data-toronto-is-day", isDay ? "true" : "false");
+    function describeCondition(condition) {
+        var labels = isFrenchPage() ? CONDITION_LABELS.fr : CONDITION_LABELS.en;
+        return labels[condition] || "";
+    }
+
+    function toSentenceCase(text) {
+        var normalized = normalizeConditionText(text);
+        return normalized ? normalized.charAt(0).toUpperCase() + normalized.slice(1) : "";
+    }
+
+    function readTemperature(current) {
+        if (!current) {
+            return null;
+        }
+        if (typeof current.temperature_2m === "number") {
+            return current.temperature_2m;
+        }
+        return typeof current.temperature === "number" ? current.temperature : null;
+    }
+
+    function publishWeatherState(condition, isDay, weatherCode, source, conditionText) {
+        var root = document.documentElement;
+        root.setAttribute("data-toronto-weather", condition);
+        root.setAttribute("data-toronto-is-day", isDay ? "true" : "false");
+        root.setAttribute("data-toronto-condition-text", conditionText || "");
+        if (weatherTemperature === null) {
+            root.removeAttribute("data-toronto-temp");
+        } else {
+            root.setAttribute("data-toronto-temp", String(weatherTemperature));
+        }
         document.dispatchEvent(new CustomEvent("toronto-weather-change", {
             detail: {
                 condition: condition,
                 isDay: isDay,
                 weatherCode: weatherCode,
+                temperature: weatherTemperature,
+                conditionText: conditionText || "",
                 source: source || "unknown"
             }
         }));
@@ -260,13 +308,13 @@
         }
     }
 
-    function applyWeather(current, minutely) {
+    function applyWeather(current, minutely, isFallback) {
         var weatherCode = current && typeof current.weather_code === "number" ? current.weather_code : current && typeof current.weathercode === "number" ? current.weathercode : null;
         var isDay = current && typeof current.is_day === "number" ? current.is_day === 1 : isDayInToronto();
         var condition = classifyWeather(weatherCode, current, minutely);
         weatherIsDay = isDay;
         weatherIconName = pickWeatherIcon(weatherCode, isDay, current, minutely);
-        publishWeatherState(condition, isDay, weatherCode, "open-meteo");
+        publishWeatherState(condition, isDay, weatherCode, isFallback ? "fallback" : "open-meteo", isFallback ? "" : describeCondition(condition));
         renderTime();
     }
 
@@ -281,9 +329,10 @@
             return false;
         }
 
+        var localizedText = isFrenchPage() && currentConditions.condition.fr ? currentConditions.condition.fr : conditionText;
         weatherIsDay = isDay;
         weatherIconName = pickConditionIcon(condition, isDay);
-        publishWeatherState(condition, isDay, null, "environment-canada");
+        publishWeatherState(condition, isDay, null, "environment-canada", toSentenceCase(localizedText) || describeCondition(condition));
         renderTime();
         return true;
     }
@@ -311,13 +360,14 @@
         window.Promise.all([currentConditionsRequest, openMeteoRequest]).then(function (results) {
             var currentConditionsData = results[0];
             var openMeteoData = results[1];
+            var current = openMeteoData ? openMeteoData.current || openMeteoData.current_weather || {} : null;
+            weatherTemperature = readTemperature(current);
 
             if (applyCurrentConditions(currentConditionsData)) {
                 return;
             }
 
             if (openMeteoData) {
-                var current = openMeteoData.current || openMeteoData.current_weather || {};
                 var minutely = openMeteoData.minutely_15 || {};
                 applyWeather(current, minutely);
                 return;
@@ -325,11 +375,12 @@
 
             applyWeather({
                 is_day: isDayInToronto() ? 1 : 0
-            }, null);
+            }, null, true);
         }).catch(function () {
+            weatherTemperature = null;
             applyWeather({
                 is_day: isDayInToronto() ? 1 : 0
-            }, null);
+            }, null, true);
         });
     }
 

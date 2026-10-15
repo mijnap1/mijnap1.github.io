@@ -177,6 +177,20 @@ $(document).ready(function() {
         clockLayer.appendChild(minuteHand);
         clockLayer.appendChild(secondHand);
 
+        var weatherLabel = document.createElement('div');
+        weatherLabel.className = 'home-hero-weather-label';
+        var weatherLabelCity = document.createElement('span');
+        weatherLabelCity.className = 'home-hero-weather-label-city';
+        weatherLabelCity.textContent = 'Toronto';
+        var weatherLabelTime = document.createElement('span');
+        weatherLabelTime.className = 'home-hero-weather-label-time';
+        var weatherLabelCondition = document.createElement('span');
+        weatherLabelCondition.className = 'home-hero-weather-label-condition';
+        weatherLabel.appendChild(weatherLabelCity);
+        weatherLabel.appendChild(weatherLabelTime);
+        weatherLabel.appendChild(weatherLabelCondition);
+        clockLayer.appendChild(weatherLabel);
+
         for (var scaleIndex = 0; scaleIndex < 3; scaleIndex++) {
             var scaleItem = document.createElement('span');
             var initialSlotClass = scaleIndex === 0 ? 'slot-center' : (scaleIndex === 1 ? 'slot-top' : 'slot-bottom');
@@ -256,6 +270,12 @@ $(document).ready(function() {
             minute: '2-digit',
             second: '2-digit',
             hourCycle: 'h23'
+        });
+        var isFrenchHome = (document.documentElement.lang || '').toLowerCase().indexOf('fr') === 0;
+        var weatherLabelTimeFormatter = new Intl.DateTimeFormat(isFrenchHome ? 'fr-CA' : 'en-US', {
+            timeZone: 'America/Toronto',
+            hour: 'numeric',
+            minute: '2-digit'
         });
 
         var handAngles = {
@@ -495,6 +515,11 @@ $(document).ready(function() {
             hourHand.style.transform = 'rotate(' + (handAngles.hour - 90) + 'deg)';
             minuteHand.style.transform = 'rotate(' + (handAngles.minute - 90) + 'deg)';
             secondHand.style.transform = 'rotate(' + (handAngles.second - 90) + 'deg)';
+
+            var labelTime = weatherLabelTimeFormatter.format(new Date());
+            if (weatherLabelTime.textContent !== labelTime) {
+                weatherLabelTime.textContent = labelTime;
+            }
         }
 
         function stopClockTicking() {
@@ -534,6 +559,22 @@ $(document).ready(function() {
             heroImage.classList.toggle('is-rainy', condition === 'rain');
             heroImage.classList.toggle('is-snowy', condition === 'snow');
             heroImage.classList.toggle('is-clear-day', condition === 'clear' && isDay);
+            updateWeatherLabel(detail);
+        }
+
+        function updateWeatherLabel(detail) {
+            var rootEl = document.documentElement;
+            var temperature = detail ? detail.temperature : parseFloat(rootEl.getAttribute('data-toronto-temp'));
+            var conditionText = detail ? detail.conditionText : rootEl.getAttribute('data-toronto-condition-text');
+            var pieces = [];
+            if (typeof temperature === 'number' && isFinite(temperature)) {
+                pieces.push((Math.round(temperature) || 0) + '°C');
+            }
+            if (conditionText) {
+                pieces.push(conditionText);
+            }
+            weatherLabelCondition.textContent = pieces.join(' · ');
+            weatherLabel.classList.toggle('has-weather', pieces.length > 0);
         }
 
         document.addEventListener('toronto-weather-change', function (event) {

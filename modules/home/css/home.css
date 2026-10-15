@@ -572,6 +572,72 @@ body.page-leaving .home-hero-clock {
     opacity: 0.9;
 }
 
+.home-hero-weather-label {
+    position: absolute;
+    left: 28px;
+    bottom: 26px;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #ffffff;
+    text-shadow:
+        0 0 18px rgba(244, 255, 232, 0.4),
+        0 1px 10px rgba(28, 64, 0, 0.16);
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+    filter: blur(6px);
+    transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease;
+}
+
+.home-hello-container .image.activate .home-hero-weather-label {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition-delay: 0.55s;
+}
+
+.home-hero-weather-label-city {
+    font-size: 11px;
+    line-height: 14px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: lowercase;
+    opacity: 0.8;
+}
+
+.home-hero-weather-label-time {
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+}
+
+.home-hero-weather-label-condition {
+    min-height: 18px;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    opacity: 0;
+    filter: blur(4px);
+    transition: opacity 0.6s ease, filter 0.6s ease;
+}
+
+.home-hero-weather-label.has-weather .home-hero-weather-label-condition {
+    opacity: 0.9;
+    filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-hero-weather-label,
+    .home-hero-weather-label-condition {
+        transform: none;
+        filter: none;
+        transition-duration: 0.12s;
+    }
+}
+
 .home-hero-rain {
     position: absolute;
     inset: 0;
@@ -830,6 +896,10 @@ body.page-leaving .home-hero-clock {
     .home-hello-container .image {
         width: 210px;
         height: 340px;
+    }
+
+    .home-hero-weather-label {
+        display: none;
     }
 
     .home-hero-rain-drop {
