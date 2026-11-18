@@ -1,0 +1,147 @@
+/* Projects page styles (moved from the inline <style> in project/index.html). */
+
+body {
+    overflow: hidden;
+}
+.theme-toggle-mobile {
+    display: none;
+}
+ @media screen and (max-width: 767px) {
+    #logo img {
+        width: 75px;
+        height: 75px;
+    }
+    .portfolio-carousel-bg.activate {
+        width: 15px;
+    }
+    .portfolio-img-box img {
+        width: 85% !important;
+        height: auto;
+        margin-top: -20px;
+    }
+    .portfolio-title {
+        margin-top: 80px;
+    }
+    .item.has-wrapped-title .portfolio-img-box img {
+        margin-top: -48px !important;
+    }
+    .portfolio-intro {
+        margin-top: 6px;
+    }
+    .portfolio-desc {
+        margin-top: 16px;
+    }
+    .carousel-change.left {
+        top: -20px;
+    }
+    .carousel-change.right {
+        bottom: -20px;
+    }
+    .navbar-toggle {
+        top: 35px;
+    }
+    #lang-box {
+        top: auto;
+        bottom: 53px;
+    }
+    .nav-search-btn {
+        top: 35px;
+    }
+    .theme-toggle-mobile {
+        position: fixed;
+        top: 37px;
+        right: 95px;
+        width: 50px;
+        height: 40px;
+        border: 0px;
+        background: transparent;
+        color: #000;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 11;
+        opacity: 1;
+        transition: opacity 0.4s ease 0.6s;
+    }
+    .theme-toggle-mobile ion-icon {
+        font-size: 23px;
+    }
+    .portfolio-view-toggle {
+        display: inline-flex !important;
+        position: fixed;
+        top: 85px;
+        right: 35px;
+        bottom: auto;
+        left: auto;
+        width: 50px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        z-index: 11;
+        font-size: 23px;
+        line-height: 1;
+        text-align: center;
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.4s ease 0.6s, visibility 0s linear 0.6s, color 0.18s ease;
+        animation: none !important;
+        transform: none !important;
+    }
+    .portfolio-view-toggle.animated,
+    .portfolio-view-toggle.animated.appear,
+    .portfolio-view-toggle.fadeInRight,
+    .portfolio-view-toggle.fadeOutRight {
+        opacity: 1 !important;
+        animation: none !important;
+        transform: none !important;
+    }
+    body.dark-mode .theme-toggle-mobile {
+        color: #fff;
+    }
+    body.dark-mode .portfolio-view-toggle {
+        color: #fff;
+    }
+    body.portfolio-grid-stage-panel .portfolio-carousel-bg,
+    body.portfolio-grid-stage-return .portfolio-carousel-bg,
+    body.portfolio-grid-mode .portfolio-carousel-bg {
+        display: block !important;
+        top: 132px;
+        right: 24px;
+        bottom: 24px;
+        width: calc(100% - 48px);
+    }
+    .portfolio-grid-view {
+        top: 132px;
+        right: 24px;
+        bottom: 24px;
+        left: 24px;
+        padding-top: 18px;
+        padding-bottom: 24px;
+    }
+    body.portfolio-grid-stage-exit .carousel-page-number,
+    body.portfolio-grid-stage-panel .carousel-page-number,
+    body.portfolio-grid-mode .carousel-page-number {
+        display: none !important;
+    }
+    body.portfolio-grid-stage-return #carousel_portfolio {
+        opacity: 0 !important;
+        pointer-events: none;
+    }
+    body.portfolio-grid-stage-panel #lang-box,
+    body.portfolio-grid-mode #lang-box {
+        display: none !important;
+        opacity: 0;
+        pointer-events: none;
+    }
+    body.navbar-open .theme-toggle-mobile {
+        opacity: 0;
+        transition-delay: 0s;
+        pointer-events: none;
+    }
+    body.navbar-open .portfolio-view-toggle {
+        opacity: 0;
+        visibility: hidden;
+        transition-delay: 0s;
+        pointer-events: none;
+    }
+}

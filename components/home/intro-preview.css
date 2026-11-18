@@ -1,0 +1,47 @@
+/* Intro preview page styles (moved from the inline <style> in intro/index.html). */
+
+body.intro-preview-page {
+    min-height: 100vh;
+    margin: 0;
+    background: #ffffff;
+    color: #111111;
+    font-family: "Poppins", sans-serif;
+    overflow: hidden;
+}
+
+.intro-preview-shell {
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 32px 18px;
+}
+
+.intro-preview-controls {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+}
+
+.intro-preview-replay {
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 22px;
+    background: #aad400;
+    color: #152100;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.intro-preview-note {
+    font-size: 13px;
+    line-height: 20px;
+    color: rgba(17, 17, 17, 0.72);
+}

@@ -1,0 +1,83 @@
+/* Music archive hub styles (moved from the inline <style> in archive/music/index.html). */
+
+body {
+    overflow: hidden;
+}
+.theme-toggle-mobile {
+    display: none;
+}
+ @media screen and (max-width: 767px) {
+    html,
+    body {
+        overflow: auto;
+    }
+    #logo img {
+        width: 75px;
+        height: 75px;
+    }
+    .navbar-toggle {
+        top: 35px;
+    }
+    #lang-box {
+        top: auto;
+        bottom: 53px;
+    }
+    .nav-search-btn {
+        top: 35px;
+    }
+    .theme-toggle-mobile {
+        position: fixed;
+        top: 85px;
+        right: 35px;
+        width: 50px;
+        height: 40px;
+        border: 0px;
+        background: transparent;
+        color: #000;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 11;
+        opacity: 1;
+        transition: opacity 0.4s ease 0.6s;
+    }
+    .theme-toggle-mobile ion-icon {
+        font-size: 23px;
+    }
+    body.dark-mode .theme-toggle-mobile {
+        color: #fff;
+    }
+    body.navbar-open .theme-toggle-mobile {
+        opacity: 0;
+        transition-delay: 0s;
+        pointer-events: none;
+    }
+    .music-intro {
+        text-align: center;
+    }
+    .music-intro .mobile-line {
+        display: block;
+    }
+    .music-intro h2 {
+        font-size: 48px;
+        margin-left: -10px;  
+        margin-top: 50px;
+    }
+    .music-intro p {
+        font-size: 13px;
+        margin-left: -10px;  
+    }
+    .music-hero {
+        margin-left: -25px;
+    }
+    .music-playlists {
+        width: 100%;
+        justify-content: center;
+    }
+    .music-intro.animated.appear,
+    .music-playlists .animated.appear {
+        opacity: 1;
+        animation: none;
+    }
+
+}

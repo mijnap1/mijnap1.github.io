@@ -1,0 +1,55 @@
+/* Contact page styles (moved from the inline <style> in contact/index.html). */
+
+body {
+    overflow: auto;
+}
+.theme-toggle-mobile {
+    display: none;
+}
+@media screen and (max-width: 767px) {
+    html,
+    body {
+        overflow: auto;
+    }
+    #logo img {
+        width: 75px;
+        height: 75px;
+    }
+    .navbar-toggle {
+        top: 35px;
+    }
+    #lang-box {
+        top: auto;
+        bottom: 53px;
+    }
+    .nav-search-btn {
+        top: 35px;
+    }
+    .theme-toggle-mobile {
+        position: fixed;
+        top: 37px;
+        right: 95px;
+        width: 50px;
+        height: 40px;
+        border: 0px;
+        background: transparent;
+        color: #000;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 11;
+        opacity: 1;
+        transition: opacity 0.4s ease 0.6s;
+    }
+    .theme-toggle-mobile ion-icon {
+        font-size: 23px;
+    }
+    body.dark-mode .theme-toggle-mobile {
+        color: #fff;
+    }
+    body.navbar-open .theme-toggle-mobile {
+        opacity: 0;
+        transition-delay: 0s;
+        pointer-events: none;
+    }
+}

@@ -1,0 +1,41 @@
+/*
+ * Page-to-page transitions. The frame (white page and green border), logo,
+ * socials and footer are the same on every page, so only each page's own
+ * content fades: out when a link is clicked, and back in on the next page.
+ * (The rotated nav label has its own line-draw animation in app.css.)
+ *
+ * Opacity only — a transform or filter on these wrappers would break the
+ * fixed-position pieces inside some pages (the mobile clock, project grid).
+ */
+
+@keyframes page-content-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes page-content-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.frame-table-container {
+    animation: page-content-in 0.8s ease both;
+}
+
+body.page-leaving .frame-table-container {
+    animation: page-content-out 0.55s ease forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .frame-table-container {
+        animation-duration: 0.01s;
+    }
+}

@@ -1,0 +1,371 @@
+/*
+ * Full-screen menu. It is the site's green panel grown to fill the screen:
+ * the panel starts on the hero panel's box (or the right edge) and its edges
+ * move out to the viewport, so the gradient stretches with it the whole way.
+ * Then the links drift in out of a blur.
+ *
+ * Closing runs in reverse: the content fades out first, then the green shrinks
+ * back into the rectangle it came from.
+ */
+
+.site-menu {
+    /*
+     * One smooth in-out curve for the whole rectangle: it starts gently (the hero
+     * panel beginning to grow), moves with intent through the middle and settles
+     * softly. All four edges share it, so the panel grows as one shape.
+     */
+    --menu-ease: cubic-bezier(0.76, 0, 0.24, 1);
+    --menu-grow: 1.1s;
+    --menu-shrink: 0.95s;
+    --menu-content-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 48px;
+    padding: 112px 9vw 48px;
+    overflow-y: auto;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    visibility: hidden;
+    /* Stays visible until the panel has shrunk back and handed over to the hero panel. */
+    transition: visibility 0s linear 1.5s;
+}
+
+.site-menu.is-open {
+    visibility: visible;
+    transition: visibility 0s;
+}
+
+/*
+ * The green itself — the hero panel, grown. Its edges move (rather than being
+ * clipped) so the gradient always matches the hero panel, and they all share one
+ * timing so the rectangle keeps its shape as it grows. No overshoot, no bounce.
+ */
+.site-menu__panel {
+    position: fixed;
+    top: var(--menu-top);
+    right: var(--menu-right);
+    bottom: var(--menu-bottom);
+    left: var(--menu-left);
+    z-index: -1;
+    background: linear-gradient(45deg, var(--brand-accent) 0%, var(--brand-accent-gradient-end) 100%);
+    will-change: top, right, bottom, left;
+    /*
+     * Fading in/out at the hero panel's spot is invisible over the panel itself and
+     * softly covers/uncovers the "Hello!" text that overlaps it.
+     */
+    opacity: 0;
+    /* Closing: wait for the text to fade, shrink back into the hero box, then hand over to it. */
+    transition:
+        top var(--menu-shrink) var(--menu-ease) 0.3s,
+        right var(--menu-shrink) var(--menu-ease) 0.3s,
+        bottom var(--menu-shrink) var(--menu-ease) 0.3s,
+        left var(--menu-shrink) var(--menu-ease) 0.3s,
+        opacity 0.25s ease 1.25s;
+}
+
+.site-menu.is-open .site-menu__panel {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 1;
+    /* It barely moves for the first instant, while it fades in over the hero panel's own green. */
+    transition:
+        top var(--menu-grow) var(--menu-ease),
+        right var(--menu-grow) var(--menu-ease),
+        bottom var(--menu-grow) var(--menu-ease),
+        left var(--menu-grow) var(--menu-ease),
+        opacity 0.2s ease;
+}
+
+.site-menu.is-placing .site-menu__panel {
+    transition: none;
+}
+
+/* The same soft, blurry light as the hero clock; it grows with the panel. */
+.site-menu__panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 78% 22%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 45%),
+        radial-gradient(circle at 12% 88%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 40%);
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.site-menu.is-open .site-menu__panel::before {
+    opacity: 1;
+    transition: opacity 1.2s ease 0.6s;
+}
+
+/* Links: a quiet list with hairline dividers, like the rest of the site. */
+
+.site-menu > nav {
+    width: min(100%, 940px);
+    margin-block: auto;
+}
+
+.site-menu__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    /* Four rows plus the bottom bar must fit any window, so the size follows width and height. */
+    font-size: clamp(34px, min(5.4vw, 8.4vh), 88px);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.025em;
+}
+
+/* Entrance/exit is on the item, so hover dimming on the link never waits for these delays. */
+.site-menu__item {
+    border-top: 1px solid rgba(255, 255, 255, 0.32);
+    opacity: 0;
+    filter: blur(10px);
+    transform: translate3d(0, 0.28em, 0);
+    transition:
+        opacity 0.35s ease,
+        filter 0.35s ease,
+        transform 0.45s ease;
+}
+
+.site-menu__item:last-child {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.site-menu.is-open .site-menu__item {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+    transition:
+        opacity 0.8s ease calc(0.78s + var(--i) * 0.08s),
+        filter 0.9s ease calc(0.78s + var(--i) * 0.08s),
+        transform 1.1s var(--menu-content-ease) calc(0.78s + var(--i) * 0.08s);
+}
+
+.site-menu__link {
+    display: grid;
+    grid-template-columns: 76px 1fr auto;
+    align-items: center;
+    padding: 0.2em 0 0.22em;
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.35s ease;
+}
+
+.site-menu__link:hover,
+.site-menu__link:focus,
+.site-menu__link:focus-visible {
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+}
+
+/* Small spaced-out numbers, like the site's lowercase labels. */
+.site-menu__index {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.3em;
+    opacity: 0.7;
+}
+
+.site-menu__label {
+    position: relative;
+    isolation: isolate;
+    width: fit-content;
+    transition: transform 0.5s var(--menu-content-ease);
+}
+
+/* Highlighter stroke, like the one under "Full-Stack Web Developer!". */
+.site-menu__label::after {
+    content: "";
+    position: absolute;
+    left: -0.04em;
+    right: -0.04em;
+    bottom: 0.1em;
+    height: 0.2em;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.28);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.45s var(--menu-content-ease);
+}
+
+.site-menu__arrow {
+    font-size: 0.42em;
+    opacity: 0;
+    transform: translate3d(-14px, 0, 0);
+    transition:
+        opacity 0.35s ease,
+        transform 0.45s var(--menu-content-ease);
+}
+
+.site-menu__link:hover .site-menu__label,
+.site-menu__link:focus-visible .site-menu__label {
+    transform: translate3d(0.14em, 0, 0);
+}
+
+.site-menu__link:hover .site-menu__arrow,
+.site-menu__link:focus-visible .site-menu__arrow {
+    opacity: 1;
+    transform: none;
+}
+
+.site-menu__link:hover .site-menu__label::after,
+.site-menu__link:focus-visible .site-menu__label::after,
+.site-menu__link[aria-current="page"] .site-menu__label::after {
+    transform: scaleX(1);
+}
+
+/* Hovering one link quiets the others. */
+@media (hover: hover) {
+    .site-menu__links:hover .site-menu__link:not(:hover) {
+        opacity: 0.5;
+    }
+}
+
+/* Bottom bar: time, email, socials, language */
+
+.site-menu__meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px 48px;
+    padding-top: 22px;
+    border-top: 1px solid rgba(255, 255, 255, 0.32);
+    font-size: 11px;
+    line-height: 18px;
+    letter-spacing: 0.24em;
+    text-transform: lowercase;
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate3d(0, 12px, 0);
+    transition:
+        opacity 0.25s ease,
+        filter 0.25s ease,
+        transform 0.3s ease;
+}
+
+.site-menu.is-open .site-menu__meta {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+    transition:
+        opacity 0.8s ease 1.15s,
+        filter 0.8s ease 1.15s,
+        transform 1s var(--menu-content-ease) 1.15s;
+}
+
+.site-menu__meta a {
+    color: #fff;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.site-menu__meta a:hover,
+.site-menu__meta a:focus-visible {
+    color: #fff;
+    opacity: 0.7;
+    text-decoration: none;
+}
+
+.site-menu__contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 40px;
+}
+
+.site-menu__meta .tz-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.site-menu__meta ion-icon {
+    flex: 0 0 auto;
+    font-size: 15px;
+}
+
+.site-menu__socials {
+    display: flex;
+    gap: 22px;
+    font-size: 15px;
+}
+
+.site-menu__langs {
+    display: flex;
+    gap: 18px;
+}
+
+.site-menu__langs a {
+    opacity: 0.55;
+}
+
+.site-menu__langs a.active {
+    opacity: 1;
+    box-shadow: 0 1px 0 #fff;
+}
+
+@media screen and (max-width: 767px) {
+    .site-menu {
+        gap: 40px;
+        padding: 120px 28px 36px;
+    }
+
+    .site-menu__links {
+        font-size: clamp(34px, 11vw, 52px);
+    }
+
+    .site-menu__link {
+        grid-template-columns: 44px 1fr auto;
+    }
+
+    .site-menu__contact {
+        flex-direction: column;
+    }
+
+    .site-menu__meta {
+        flex-direction: column;
+        align-items: flex-start;
+        letter-spacing: 0.12em;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .site-menu__panel,
+    .site-menu.is-open .site-menu__panel {
+        inset: 0;
+        transition: none;
+        animation: none;
+    }
+
+    .site-menu,
+    .site-menu.is-open {
+        opacity: 0;
+        transition:
+            opacity 0.2s ease,
+            visibility 0s linear 0.2s;
+    }
+
+    .site-menu.is-open {
+        opacity: 1;
+        transition: opacity 0.2s ease;
+    }
+
+    .site-menu__item,
+    .site-menu.is-open .site-menu__item,
+    .site-menu__meta,
+    .site-menu.is-open .site-menu__meta {
+        filter: none;
+        transform: none;
+        transition: opacity 0.2s ease;
+    }
+}

@@ -1,0 +1,96 @@
+/*
+ * Corner logo hover: a sticker lifting off the page. It tilts toward the
+ * cursor, its shadow deepens and slides away from the tilt, and a soft gloss
+ * (cut to the logo's own shape) glides across it. Values come from LogoMark.tsx.
+ *
+ * Selectors start with "#logo .logo-mark" so they outrank the older
+ * "#logo a:hover img" rules in app.css.
+ */
+
+#logo .logo-mark {
+    --logo-tilt-x: 0deg;
+    --logo-tilt-y: 0deg;
+    --logo-shadow-x: 0px;
+    --logo-shadow-y: 10px;
+    --logo-gloss-x: 50%;
+    --logo-gloss-y: 50%;
+    --logo-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    display: inline-block;
+    perspective: 600px;
+}
+
+#logo .logo-mark .logo-mark__img {
+    display: block;
+    transform: rotateX(var(--logo-tilt-x)) rotateY(var(--logo-tilt-y)) translate3d(0, 0, 0) scale(1);
+    filter: drop-shadow(var(--logo-shadow-x) var(--logo-shadow-y) 18px rgba(17, 17, 17, 0.08));
+    transition:
+        transform 0.8s var(--logo-ease),
+        filter 0.8s var(--logo-ease);
+    will-change: transform;
+}
+
+#logo a:hover .logo-mark.is-hovered .logo-mark__img,
+#logo .logo-mark.is-hovered .logo-mark__img {
+    transform: rotateX(var(--logo-tilt-x)) rotateY(var(--logo-tilt-y)) translate3d(0, -4px, 0) scale(1.06);
+    filter: drop-shadow(var(--logo-shadow-x) var(--logo-shadow-y) 22px rgba(17, 17, 17, 0.17));
+    transition:
+        transform 0.45s var(--logo-ease),
+        filter 0.45s var(--logo-ease);
+}
+
+/* Once lifted, follow the cursor closely but still smoothly. */
+#logo a:hover .logo-mark.is-tracking .logo-mark__img,
+#logo .logo-mark.is-tracking .logo-mark__img {
+    transition:
+        transform 0.18s ease-out,
+        filter 0.18s ease-out;
+}
+
+#logo a:active .logo-mark .logo-mark__img {
+    transform: rotateX(var(--logo-tilt-x)) rotateY(var(--logo-tilt-y)) translate3d(0, -1px, 0) scale(0.96);
+    transition-duration: 0.14s;
+}
+
+/* Gloss: a soft light that only exists on the logo's own pixels. */
+#logo .logo-mark .logo-mark__gloss {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at var(--logo-gloss-x) var(--logo-gloss-y),
+        rgba(255, 255, 255, 0.55) 0%,
+        rgba(255, 255, 255, 0.18) 28%,
+        rgba(255, 255, 255, 0) 55%
+    );
+    -webkit-mask: url("/ico/logo/jamie3128.png") center / contain no-repeat;
+    mask: url("/ico/logo/jamie3128.png") center / contain no-repeat;
+    mix-blend-mode: soft-light;
+    opacity: 0;
+    transform: rotateX(var(--logo-tilt-x)) rotateY(var(--logo-tilt-y)) translate3d(0, 0, 0) scale(1);
+    transition:
+        opacity 0.6s ease,
+        transform 0.8s var(--logo-ease);
+}
+
+#logo .logo-mark.is-hovered .logo-mark__gloss {
+    opacity: 1;
+    transform: rotateX(var(--logo-tilt-x)) rotateY(var(--logo-tilt-y)) translate3d(0, -4px, 0) scale(1.06);
+    transition:
+        opacity 0.45s ease,
+        transform 0.45s var(--logo-ease);
+}
+
+#logo .logo-mark.is-tracking .logo-mark__gloss {
+    transition:
+        opacity 0.45s ease,
+        transform 0.18s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #logo .logo-mark .logo-mark__img,
+    #logo .logo-mark.is-hovered .logo-mark__img,
+    #logo .logo-mark.is-hovered .logo-mark__gloss {
+        transform: none;
+    }
+}
